@@ -1,0 +1,2313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vynedental/main/json-schema/vynedental-partial-benefit-type-schema.json",
+  "title": "PartialBenefitType",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PartialBenefitType",
+  "type": "object",
+  "properties": {
+    "network": {
+      "$ref": "#/$defs/NetworkEnum"
+    },
+    "network_qualifier": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/NetworkQualifierEnum"
+        }
+      ]
+    },
+    "individual_deductible": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "individual_deductible_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "family_deductible": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "family_deductible_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "individual_maximum": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "individual_maximum_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "family_maximum": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "family_maximum_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "orthodontic_deductible": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "orthodontic_deductible_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "orthodontic_maximum": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "orthodontic_maximum_remaining": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "coverages": {
+      "$ref": "#/$defs/PartialCoverages"
+    }
+  },
+  "required": [
+    "network",
+    "network_qualifier",
+    "individual_deductible",
+    "individual_deductible_remaining",
+    "family_deductible",
+    "family_deductible_remaining",
+    "individual_maximum",
+    "individual_maximum_remaining",
+    "family_maximum",
+    "family_maximum_remaining",
+    "orthodontic_deductible",
+    "orthodontic_deductible_remaining",
+    "orthodontic_maximum",
+    "orthodontic_maximum_remaining",
+    "coverages"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "BaseLimitationComponentType": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "quantity_qualifier": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BenefitCoverageType": {
+      "type": "object",
+      "properties": {
+        "coinsurance_percentage": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "deductible_applies": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "maximum_applies": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "non_covered_procedure_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProcedureCodeType"
+          }
+        },
+        "source_indicator": {
+          "nullable": true,
+          "allOf": [
+            {
+              "$ref": "#/$defs/SourceIndicatorEnum"
+            }
+          ]
+        },
+        "alternate_benefit_applies": {
+          "type": "boolean"
+        },
+        "fees": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/FeeComponentType"
+          }
+        },
+        "procedure_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProcedureCodeType"
+          }
+        },
+        "dental_classification": {
+          "nullable": true,
+          "allOf": [
+            {
+              "$ref": "#/$defs/DentalClassificationEnum"
+            }
+          ]
+        },
+        "disclaimers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitation": {
+          "$ref": "#/$defs/LimitationType"
+        },
+        "service_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ServiceHistoryType"
+          }
+        }
+      },
+      "required": [
+        "coinsurance_percentage",
+        "deductible_applies",
+        "maximum_applies",
+        "non_covered_procedure_codes",
+        "source_indicator",
+        "alternate_benefit_applies",
+        "fees",
+        "procedure_codes",
+        "dental_classification",
+        "disclaimers",
+        "limitation",
+        "service_history"
+      ],
+      "additionalProperties": false
+    },
+    "DentalClassificationEnum": {
+      "type": "string",
+      "enum": [
+        "BASIC",
+        "MAJOR",
+        "ORTHO",
+        "PREVENTIVE"
+      ]
+    },
+    "FeeComponentType": {
+      "type": "object",
+      "properties": {
+        "allowable": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "copayment": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "allowable",
+        "copayment"
+      ],
+      "additionalProperties": false
+    },
+    "FrequencyComponentType": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "quantity_qualifier": {
+          "type": "string"
+        },
+        "time_period_qualifier": {
+          "type": "string"
+        },
+        "time_period_value": {
+          "type": "string"
+        },
+        "unit_qualifier": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LimitationType": {
+      "type": "object",
+      "properties": {
+        "age_high_components": {
+          "$ref": "#/$defs/BaseLimitationComponentType"
+        },
+        "age_high_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "age_low_components": {
+          "$ref": "#/$defs/BaseLimitationComponentType"
+        },
+        "age_low_value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "frequency_component": {
+          "$ref": "#/$defs/FrequencyComponentType"
+        },
+        "frequency_count": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "frequency_rule": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "remaining_component": {
+          "$ref": "#/$defs/RemainingComponentType"
+        },
+        "remaining_count": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "age_high_components",
+        "age_high_value",
+        "age_low_components",
+        "age_low_value",
+        "frequency_component",
+        "frequency_count",
+        "frequency_rule",
+        "remaining_component",
+        "remaining_count"
+      ],
+      "additionalProperties": false
+    },
+    "NetworkEnum": {
+      "type": "string",
+      "enum": [
+        "IN_NETWORK",
+        "OUT_OF_NETWORK"
+      ]
+    },
+    "NetworkQualifierEnum": {
+      "type": "string",
+      "enum": [
+        "PPO",
+        "PREMIER"
+      ]
+    },
+    "PartialCoverages": {
+      "type": "object",
+      "properties": {
+        "diagnostic": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "exams": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pre_diagnostic_services": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "fmx": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "periapicals": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "bitewings": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "panoramic_images": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "cephalometric_image": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "intraoral_photos": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "diagnostic_tests_exams": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "cone_beam": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "advanced_images": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "surface_scans": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "interpretation_and_report_only": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "advanced_imaging_cbct_interpretation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "blood_saliva_tests": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "microbial_genetic_testing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "caries_pulp_testing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "abnormality_detection": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "diagnostic_cast": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "carie_risk_assessment": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "caries_risk_assessment": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "antigen_testing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "image_only": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "preventive": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "prophy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "fluoride": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "counseling": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "sealants": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "preventative_agents": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "space_maintainer_fixed": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "space_maintainer_removable": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "space_maintainer_rebond": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "space_maintainer_removal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "distal_space_maintainer": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "restorative": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "amalgam_fillings": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "anterior_composite_fillings": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "posterior_composite_fillings": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "gold_foil_restoration": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "porcelain_inlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "metallic_inlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "porcelain_onlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "metallic_onlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "porcelain_ceramic_veneers": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "resin_veneers": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "porcelain_crowns": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "fullcast_crown": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "recement_crown": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "prefab_stainless_steel_crown": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "core_buildup": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "post_core": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "prefab_post_core": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "labial_veneer": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "composite_inlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "composite_onlays": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "endodontics": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "pulp_capping": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pulpotomy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pulpal_therapy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "endo_therapy_permanent": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "endo_therapy_special": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "endo_retreat": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "apex_recal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pulpal_regeneration": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "apico_surgery": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "additional_endo": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "periodontics": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "gingivectomy_gingivoplasty": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "surgical_removal_granulation_tissue": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "gingival_flap_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "crown_lengthening_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "osseous_surgery": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "perio_bone_graft": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "guided_tissue_regeneration": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "soft_tissue_grafts": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "autogenous_tissue_graft": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "scaling_and_root_planing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "full_mouth_debridement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "scaling_presence_of_inflammation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "periodontal_maintenance": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "prosthodontics_removable": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "complete_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "immediate_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "partial_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "adjustments_complete_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "repairs_complete_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "repairs_partial_dentures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "denture_rebase_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "denture_reline_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "interim_denture": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "interim_partial_denture": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "other_removable_prosthetic_services": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "maxillofacial_prosthetics": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "facial_moulage": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "obturator_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "facial_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "mandibular_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "palatal_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "speech_aid_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "augmentative_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "nasal_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orbital_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "auricular_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "ocular_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "cranial_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "implant_services": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "pre_surgical_evaluation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "surgical_implant_placement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "subperiosteal_implants": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_bone_graft": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_crowns_restorations": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "additional_implant_prosthetic_services": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "overdenture": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "hybrid_prosthesis": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "abutment_supported_crowns": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_supported_crowns": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "abutment_supported_fixed_partial_denture_fpd": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_supported_fixed_partial_denture_fpd": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_maintenance": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_crowns_prosthesis_repairs": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "recement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_component_replacement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_removal_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_tissue_regeneration": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "prosthodontics_fixed": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "pontics_porcelain_ceramic": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pontics_cast_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pontics_titanium_high_noble_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pontics_porcelain_fused_to_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "pontics_resin_with_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "retainers_inlays_metallic_ceramic": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "retainers_onlays_ceramic_resin_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "retainers_crowns_porcelain_ceramic": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "retainers_crowns_porcelain_fused_to_metal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "retainers_crowns_metallic": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "services_recementation_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "stress_breakers_precision_attachments": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "surgical_specialized_prosthetic_work": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "oral_maxillofacial_surgery": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "extractions_and_removals": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "advanced_surgical_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "alveoloplasty": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "vestibuloplasty": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "excision_of_soft_tissue_lesions": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "excision_of_intra_osseous_lesions": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "excision_of_bone_tissue": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "surgical_incision": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "treatment_of_closed_fractures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "tmj_surgical": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "tmj_nonsurgical": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "wound_suturing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "regeneration_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "osteoplasty_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "osteotomy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "lefort": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "extract_bone_graft": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "frenectomy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "salivary_gland_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "special_surgical_procedures": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "implant_placement_surgical": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "appliance_removal": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "orthodontics": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "limited_orthodontic_treatment": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "comprehensive_orthodontic_treatment": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "appliances": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_evaluation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "periodic_orthodontic_treatment_visit": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "periodic_orthognathic_surgery_visit": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_retention": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_appliance_removal_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_fixed_retainer_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_repairs": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_replacement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "adjunctive_services": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "palliative_treatment": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "partial_denture_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "tmj_therapy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "local_anesthesia": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "deep_sedation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "moderate_sedation": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "nitrous": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "professional_consultation_in_person": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "professional_visits_limited_follow_up": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "professional_visits_extended_home_care": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "drugs_injection": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "drugs_prescription_dispensing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "miscellaneous_services_preventive_protective": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "clean_inspect_removal_denture": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "custom_aesthetic_appliance": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "athletic_occlusal_guard": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "occlusal_guard_adjustment_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "occlusal_guards": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "orthodontic_splint_therapy": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "cosmetic_aesthetic": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "whitening": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "misc_fees": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "appointment_support": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "teledentistry": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "patient_education": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "sleep_apnea": {
+          "type": "object",
+          "properties": {
+            "coinsurance_percentage": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "deductible_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "maximum_applies": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "non_covered_procedure_codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ProcedureCodeType"
+              }
+            },
+            "source_indicator": {
+              "nullable": true,
+              "allOf": [
+                {
+                  "$ref": "#/$defs/SourceIndicatorEnum"
+                }
+              ]
+            },
+            "custom_appliance_fabrication_placement": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "adjustment_repair": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "reline_resurfacing": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "oral_appliance_therapy_oat_accessories": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "titration_follow_up": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            },
+            "testing_screening": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/BenefitCoverageType"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProcedureCodeType": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 5,
+      "pattern": "^D.*"
+    },
+    "RemainingComponentType": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "string"
+        },
+        "quantity_qualifier": {
+          "type": "string"
+        },
+        "time_period_qualifier": {
+          "type": "string"
+        },
+        "time_period_value": {
+          "type": "string"
+        },
+        "unit_qualifier": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ServiceHistoryType": {
+      "type": "object",
+      "properties": {
+        "service_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "procedure_code": {
+          "nullable": true,
+          "allOf": [
+            {
+              "$ref": "#/$defs/ProcedureCodeType"
+            }
+          ]
+        },
+        "service_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$"
+        },
+        "tooth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "surfaces": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "area": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "procedure_code",
+        "service_date",
+        "tooth",
+        "surfaces",
+        "area"
+      ],
+      "additionalProperties": false
+    },
+    "SourceIndicatorEnum": {
+      "type": "string",
+      "enum": [
+        "BY_CATEGORY",
+        "BY_CATEGORY_CODES",
+        "BY_PROCEDURE_CODE"
+      ]
+    }
+  }
+}

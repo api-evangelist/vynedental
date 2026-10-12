@@ -1,23 +1,114 @@
 aid: vynedental
 name: Vyne Dental
-description: 'Vyne Dental is a company surfaced via the API Evangelist harvest backlog (source: market-gap)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Vyne Dental is a dental revenue-cycle and connectivity company: clearinghouse claims and attachments (FastAttach), eligibility and benefits verification, patient statements and payments, and the Vyne Trellis practice portal. Its developer surface is the Eligibility and Benefits API family (Onederful API, ClearCoverage API, Standard API) documented at the Vyne API Documentation Portal (developers.onederful.co), returning JSON, HTML or X12 270/271 responses from hundreds of dental payers, with OAuth2 bearer authentication and a sandbox.'
 url: https://raw.githubusercontent.com/api-evangelist/vynedental/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:market-gap
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (local-v5; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-13'
 modified: '2026-10-13'
 tags:
 - Company
-apis: []
+- Dental
+- Healthcare
+- Insurance
+- Eligibility
+- Claims
+- EDI
+- Payments
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+image: https://developer.onederful.co/img/Vyne_Dental_Logo_Primary_Full_Color__2_.png
 common:
+- type: Sandbox
+  url: sandbox/vynedental-sandbox.yml
+- type: AgenticAccess
+  url: agentic-access/vynedental-agentic-access.yml
+- type: Spectral
+  url: rules/vynedental-rules.yml
+- type: JSONLD
+  url: json-ld/vynedental-context.jsonld
+- type: Vocabulary
+  url: vocabulary/vynedental-vocabulary.yml
+- type: DataModel
+  url: data-model/vynedental-data-model.yml
+- type: ErrorCatalog
+  url: errors/vynedental-problem-types.yml
+- type: Conformance
+  url: conformance/vynedental-conformance.yml
+- type: Hosts
+  url: hosts/vynedental-hosts.yml
+- type: Vendors
+  url: vendors/vynedental-vendors.yml
+- type: ChangeLog
+  url: https://vynedental.com/resources/blog/release-notes/
+- type: Authentication
+  url: authentication/vynedental-authentication.yml
+- type: DomainSecurity
+  url: security/vynedental-domain-security.yml
 - type: Website
   url: https://vynedental.com
+- type: DeveloperPortal
+  url: https://developers.onederful.co/
+- type: Documentation
+  url: https://developers.onederful.co/documentation/
+- type: APIReference
+  url: https://production.onederful.co/api-docs/
+- type: Blog
+  url: https://developer.onederful.co/blog/
+- type: Support
+  url: https://developer.onederful.co/docs/faq/
+- type: StatusPage
+  url: https://status.vynedental.com
+- type: TermsOfService
+  url: https://vynedental.com/terms/
+- type: PrivacyPolicy
+  url: https://vynedental.com/privacy/
+- type: Login
+  url: https://app.vynetrellis.com/
+- type: Pricing
+  url: https://vynedental.com/schedule-a-demo/
+apis:
+- aid: vynedental:eligibility-and-benefits-api
+  name: Vyne Dental Eligibility and Benefits API (Onederful)
+  description: Real-time and asynchronous dental eligibility and benefits checks (JSON, HTML and EDI 271 responses), enhanced/ClearCoverage eligibility, async status and response retrieval, and OAuth2 token issuance. 17 paths published by Vyne Dental at production.onederful.co/swagger.json.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Eligibility
+  - Benefits
+  - Dental
+  - EDI
+  - Insurance
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-eligibility-api-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://production.onederful.co/swagger.json
+  - type: Documentation
+    url: https://developers.onederful.co/documentation/
+  - type: APIReference
+    url: https://production.onederful.co/api-docs/
+  - type: JSONSchema
+    url: json-schema/vynedental-partial-benefit-type-schema.json
+  - type: JSONSchema
+    url: json-schema/vynedental-benefit-type-schema.json
+  - type: JSONSchema
+    url: json-schema/vynedental-ebgeneric-benefit-type-schema.json
+  - type: JSONSchema
+    url: json-schema/vynedental-rules-type-schema.json
+  - type: JSONSchema
+    url: json-schema/vynedental-plan-type-schema.json
+  - type: JSONSchema
+    url: json-schema/vynedental-patient-type-schema.json
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v5

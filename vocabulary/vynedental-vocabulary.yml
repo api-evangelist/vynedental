@@ -1,0 +1,459 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/vynedental-eligibility-api-openapi.yml
+vocabulary:
+  name: Vyne Dental Domain Vocabulary
+  description: 'Terms declared by Vyne Dental''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: CoverageStatusEnumInput
+    definition: 'Enumeration declared by the contract with values: ACTIVE, INACTIVE, NOT_FOUND, TERMINATED, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/CoverageStatusEnumInput
+  - term: ClearCoverageStructureEnumInput
+    definition: 'Enumeration declared by the contract with values: CLEAR_COVERAGE_V1, CLEAR_COVERAGE_V2.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ClearCoverageStructureEnumInput
+  - term: DentalClassificationEnumInput
+    definition: 'Enumeration declared by the contract with values: BASIC, MAJOR, ORTHO, PREVENTIVE.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/DentalClassificationEnumInput
+  - term: GenderEnumInput
+    definition: 'Enumeration declared by the contract with values: FEMALE, MALE, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/GenderEnumInput
+  - term: NetworkEnumInput
+    definition: 'Enumeration declared by the contract with values: IN_NETWORK, OUT_OF_NETWORK.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/NetworkEnumInput
+  - term: NetworkQualifierEnumInput
+    definition: 'Enumeration declared by the contract with values: PPO, PREMIER.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/NetworkQualifierEnumInput
+  - term: OrthodonticRecurringPaymentFrequencyEnumInput
+    definition: 'Enumeration declared by the contract with values: ANNUALLY, MONTHLY, QUARTERLY, SEMI_ANNUALLY, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/OrthodonticRecurringPaymentFrequencyEnumInput
+  - term: PlanTypeEnumInput
+    definition: 'Enumeration declared by the contract with values: GOV, HMO, IDM, POS, PPO, GROUP_POLICY, UKN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PlanTypeEnumInput
+  - term: PolicyPeriodEnumInput
+    definition: 'Enumeration declared by the contract with values: CALENDAR, PLAN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PolicyPeriodEnumInput
+  - term: RelationshipEnumInput
+    definition: 'Enumeration declared by the contract with values: CHILD, DEPENDENT, SELF, SPOUSE, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RelationshipEnumInput
+  - term: SourceIndicatorEnumInput
+    definition: 'Enumeration declared by the contract with values: BY_CATEGORY, BY_CATEGORY_CODES, BY_PROCEDURE_CODE.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/SourceIndicatorEnumInput
+  - term: SeatPrepEnumInput
+    definition: 'Enumeration declared by the contract with values: PREP, SEAT, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/SeatPrepEnumInput
+  - term: YesNoEnumInput
+    definition: 'Enumeration declared by the contract with values: NO, YES.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/YesNoEnumInput
+  - term: AddressTypeInput
+    definition: 'Object declared by the contract with fields: city, state, street, zip.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/AddressTypeInput
+  - term: BaseLimitationComponentTypeInput
+    definition: 'Object declared by the contract with fields: quantity, quantity_qualifier.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/BaseLimitationComponentTypeInput
+  - term: FrequencyComponentTypeInput
+    definition: 'Object declared by the contract with fields: quantity, quantity_qualifier, time_period_qualifier, time_period_value, unit_qualifier,
+      unit.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/FrequencyComponentTypeInput
+  - term: RemainingComponentTypeInput
+    definition: 'Object declared by the contract with fields: quantity, quantity_qualifier, time_period_qualifier, time_period_value, unit_qualifier,
+      unit.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RemainingComponentTypeInput
+  - term: LimitationTypeInput
+    definition: 'Object declared by the contract with fields: age_high_components, age_high_value, age_low_components, age_low_value, frequency_component,
+      frequency_count, frequency_rule, remaining_component, remaining_count.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/LimitationTypeInput
+  - term: ServiceHistoryTypeInput
+    definition: 'Object declared by the contract with fields: service_type, procedure_code, service_date, tooth, surfaces, area.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ServiceHistoryTypeInput
+  - term: FeeComponentTypeInput
+    definition: 'Object declared by the contract with fields: allowable, copayment.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/FeeComponentTypeInput
+  - term: BaseCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/BaseCoverageTypeInput
+  - term: BenefitCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, alternate_benefit_applies, fees, procedure_codes, dental_classification, disclaimers, limitation, service_history.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/BenefitCoverageTypeInput
+  - term: DiagnosticCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, exams, pre_diagnostic_services, fmx, periapicals, bitewings, panoramic_images, cephalometric_image. (16 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/DiagnosticCoverageTypeInput
+  - term: PreventiveCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, prophy, fluoride, counseling, sealants, preventative_agents, space_maintainer_fixed, space_maintainer_removable. (3 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PreventiveCoverageTypeInput
+  - term: RestorativeCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, amalgam_fillings, anterior_composite_fillings, posterior_composite_fillings, gold_foil_restoration, porcelain_inlays,
+      metallic_inlays, porcelain_onlays. (13 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RestorativeCoverageTypeInput
+  - term: EndodonticsCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, pulp_capping, pulpotomy, pulpal_therapy, endo_therapy_permanent, endo_therapy_special, endo_retreat, apex_recal. (3 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EndodonticsCoverageTypeInput
+  - term: PeriodonticsCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, gingivectomy_gingivoplasty, surgical_removal_granulation_tissue, gingival_flap_procedures, crown_lengthening_procedures,
+      osseous_surgery, perio_bone_graft, guided_tissue_regeneration. (6 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PeriodonticsCoverageTypeInput
+  - term: ProsthodonticsRemovableCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, complete_dentures, immediate_dentures, partial_dentures, adjustments_complete_dentures, repairs_complete_dentures, repairs_partial_dentures,
+      denture_rebase_procedures. (4 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ProsthodonticsRemovableCoverageTypeInput
+  - term: MaxillofacialProstheticsCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, facial_moulage, obturator_prosthesis, facial_prosthesis, mandibular_prosthesis, palatal_prosthesis, speech_aid_prosthesis,
+      augmentative_prosthesis. (5 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/MaxillofacialProstheticsCoverageTypeInput
+  - term: ImplantServicesCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, pre_surgical_evaluation, surgical_implant_placement, subperiosteal_implants, implant_bone_graft, implant_crowns_restorations,
+      additional_implant_prosthetic_services, overdenture. (11 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ImplantServicesCoverageTypeInput
+  - term: ProsthodonticsFixedCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, pontics_porcelain_ceramic, pontics_cast_metal, pontics_titanium_high_noble_metal, pontics_porcelain_fused_to_metal, pontics_resin_with_metal,
+      retainers_inlays_metallic_ceramic, retainers_onlays_ceramic_resin_metal. (6 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ProsthodonticsFixedCoverageTypeInput
+  - term: OralMaxillofacialSurgeryCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, extractions_and_removals, advanced_surgical_procedures, alveoloplasty, vestibuloplasty, excision_of_soft_tissue_lesions,
+      excision_of_intra_osseous_lesions, excision_of_bone_tissue. (15 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/OralMaxillofacialSurgeryCoverageTypeInput
+  - term: OrthodonticsCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, limited_orthodontic_treatment, comprehensive_orthodontic_treatment, appliances, orthodontic_evaluation, periodic_orthodontic_treatment_visit,
+      periodic_orthognathic_surgery_visit, orthodontic_retention. (4 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/OrthodonticsCoverageTypeInput
+  - term: AdjunctiveServicesCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, palliative_treatment, partial_denture_repair, tmj_therapy, local_anesthesia, deep_sedation, moderate_sedation, nitrous.
+      (18 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/AdjunctiveServicesCoverageTypeInput
+  - term: SleepApneaCoverageTypeInput
+    definition: 'Object declared by the contract with fields: coinsurance_percentage, deductible_applies, maximum_applies, non_covered_procedure_codes,
+      source_indicator, custom_appliance_fabrication_placement, adjustment_repair, reline_resurfacing, oral_appliance_therapy_oat_accessories,
+      titration_follow_up, testing_screening.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/SleepApneaCoverageTypeInput
+  - term: CoveragesInput
+    definition: 'Object declared by the contract with fields: diagnostic, preventive, restorative, endodontics, periodontics, prosthodontics_removable,
+      maxillofacial_prosthetics, implant_services, prosthodontics_fixed, oral_maxillofacial_surgery, orthodontics, adjunctive_services. (1 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/CoveragesInput
+  - term: PartialCoveragesInput
+    definition: 'Object declared by the contract with fields: diagnostic, preventive, restorative, endodontics, periodontics, prosthodontics_removable,
+      maxillofacial_prosthetics, implant_services, prosthodontics_fixed, oral_maxillofacial_surgery, orthodontics, adjunctive_services. (1 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PartialCoveragesInput
+  - term: BenefitTypeInput
+    definition: 'Object declared by the contract with fields: network, network_qualifier, individual_deductible, individual_deductible_remaining,
+      family_deductible, family_deductible_remaining, individual_maximum, individual_maximum_remaining, family_maximum, family_maximum_remaining,
+      orthodontic_deductible, orthodontic_deductible_remaining. (3 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/BenefitTypeInput
+  - term: PartialBenefitTypeInput
+    definition: 'Object declared by the contract with fields: network, network_qualifier, individual_deductible, individual_deductible_remaining,
+      family_deductible, family_deductible_remaining, individual_maximum, individual_maximum_remaining, family_maximum, family_maximum_remaining,
+      orthodontic_deductible, orthodontic_deductible_remaining. (3 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PartialBenefitTypeInput
+  - term: PatientCoverageTypeInput
+    definition: 'Object declared by the contract with fields: effective_date, end_date, status.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PatientCoverageTypeInput
+  - term: PatientTypeInput
+    definition: 'Object declared by the contract with fields: address, coverage, dob, first_name, gender, last_name, member_id, middle_name, name,
+      relationship.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PatientTypeInput
+  - term: PayerTypeInput
+    definition: 'Object declared by the contract with fields: id, payer_id, name, phone_number, address, website.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PayerTypeInput
+  - term: PlanTypeInput
+    definition: 'Object declared by the contract with fields: disclaimers, end_date, group_name, group_number, group_or_policy_number, id, insurance_type,
+      name, number, payer_plan_name, payer_plan_identifier, payer_plan_description. (3 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PlanTypeInput
+  - term: RulesTypeInput
+    definition: 'Object declared by the contract with fields: alternative_benefits_may_apply, coordination_of_benefits_requirements, dependent_child_max_age,
+      dependent_student_max_age, missing_tooth_clause_applies, orthodontic_initial_payment_percentage, orthodontic_recurring_payment_frequency,
+      payment_on_seat_or_prep, predetermination_requirements, waiting_period_for_basic_services, waiting_period_for_major_services.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RulesTypeInput
+  - term: ProviderTypeInput
+    definition: 'Object declared by the contract with fields: npi, first_name, last_name, tax_id, organization_name.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ProviderTypeInput
+  - term: EBCoverageLevelEnumInput
+    definition: 'Enumeration declared by the contract with values: children_only, dependents_only, employee_and_children, employee_and_spouse,
+      employee_only, family, individual, spouse_and_children, spouse_only, unknown.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBCoverageLevelEnumInput
+  - term: EBPlanPeriodEnumInput
+    definition: 'Enumeration declared by the contract with values: calendar, contract, lifetime, lifetime_remaining, lifetime_used, plan, policy,
+      remaining, service, unknown, used, year_to_date.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPlanPeriodEnumInput
+  - term: EBAgeLimitInput
+    definition: 'Object declared by the contract with fields: age_high_value, age_low_value.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBAgeLimitInput
+  - term: EBEligibilityDetailsInput
+    definition: 'Object declared by the contract with fields: date, eligibility, location.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBEligibilityDetailsInput
+  - term: EBGenericHSDTypeInput
+    definition: 'Object declared by the contract with fields: delivery_frequency, delivery_pattern_time, quantity, quantity_qualifier, time_period_qualifier,
+      time_period_value, unit, unit_qualifier.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBGenericHSDTypeInput
+  - term: EBPlanMetadataTypeInput
+    definition: 'Object declared by the contract with fields: description, qualifier, value.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPlanMetadataTypeInput
+  - term: EBReferenceTypeInput
+    definition: 'Object declared by the contract with fields: description, reference_qualifier, reference_value.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBReferenceTypeInput
+  - term: EBServiceHistoryTypeInput
+    definition: 'Object declared by the contract with fields: category, procedure_code, service_date, service_type, tooth_code, tooth_range, tooth_surfaces,
+      type, value.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBServiceHistoryTypeInput
+  - term: EBGenericBenefitTypeInput
+    definition: 'Object declared by the contract with fields: age_limit, amount, applies_to_deductible, category, coverage_level, disclaimers,
+      does_deductible_apply_to_basic, does_deductible_apply_to_preventive, eligibility_details, health_service_descriptions, insurance_type, limitation.
+      (14 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBGenericBenefitTypeInput
+  - term: EBBenefitComputedTypeInput
+    definition: 'Object declared by the contract with fields: amount, percent.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBBenefitComputedTypeInput
+  - term: EBCoverageTypeInput
+    definition: 'Object declared by the contract with fields: effective_date, end_date, start_date, status.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBCoverageTypeInput
+  - term: EBBenefitAmountRemainingInput
+    definition: 'Object declared by the contract with fields: amount, category, coverage_level, key, network, plan_period, remaining, service_type,
+      used.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBBenefitAmountRemainingInput
+  - term: EBAddressTypeInput
+    definition: 'Object declared by the contract with fields: city, state, street1, street2, zip.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBAddressTypeInput
+  - term: EBPatientTypeMetadataInput
+    definition: 'Object declared by the contract with fields: type, value.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPatientTypeMetadataInput
+  - term: EBPatientTypeInput
+    definition: 'Object declared by the contract with fields: address, age, coverage, dob, first_name, gender, is_subscriber, last_name, member_id,
+      metadata, middle_name, name. (1 more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPatientTypeInput
+  - term: EBEffectivePeriodInput
+    definition: 'Object declared by the contract with fields: category, effective_date, is_a_waiting_period, network, service_type.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBEffectivePeriodInput
+  - term: EBMetadataTypeInput
+    definition: 'Object declared by the contract with fields: dependent_age_limit, student_age_limit.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBMetadataTypeInput
+  - term: EBPayerTypeInput
+    definition: 'Object declared by the contract with fields: claim_address, id, name, phone.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPayerTypeInput
+  - term: EBPlanTypeInput
+    definition: 'Object declared by the contract with fields: group_name, group_number, metadata, name, number, period, state, type, payer_plan_name,
+      payer_plan_identifier, insurance_type.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBPlanTypeInput
+  - term: EBProcedureCodeComputedTypeInput
+    definition: 'Object declared by the contract with fields: category, category_service, disclaimers, disclaimers_string, eligibility_details,
+      is_covered, limitation, limitation_applies_to, limitation_applies_to_string, percent_computed, searched_procedure_code, service_dates. (3
+      more)'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBProcedureCodeComputedTypeInput
+  - term: EBProviderTypeInput
+    definition: 'Object declared by the contract with fields: first_name, last_name, npi, organization_name, tax_id.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBProviderTypeInput
+  - term: EBRejectionReasonTypeInput
+    definition: 'Object declared by the contract with fields: code, message, followup_action.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBRejectionReasonTypeInput
+  - term: EBRetryDetailTypeInput
+    definition: 'Object declared by the contract with fields: strategy_code, fields_used, reject_reason, invalid_fields, start, end, skipped_duplicate_of.'
+    tags:
+    - Object
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBRetryDetailTypeInput
+  - term: CoverageStatusEnum
+    definition: 'Enumeration declared by the contract with values: ACTIVE, INACTIVE, NOT_FOUND, TERMINATED, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/CoverageStatusEnum
+  - term: ClearCoverageStructureEnum
+    definition: 'Enumeration declared by the contract with values: CLEAR_COVERAGE_V1, CLEAR_COVERAGE_V2.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/ClearCoverageStructureEnum
+  - term: DentalClassificationEnum
+    definition: 'Enumeration declared by the contract with values: BASIC, MAJOR, ORTHO, PREVENTIVE.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/DentalClassificationEnum
+  - term: GenderEnum
+    definition: 'Enumeration declared by the contract with values: FEMALE, MALE, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/GenderEnum
+  - term: NetworkEnum
+    definition: 'Enumeration declared by the contract with values: IN_NETWORK, OUT_OF_NETWORK.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/NetworkEnum
+  - term: NetworkQualifierEnum
+    definition: 'Enumeration declared by the contract with values: PPO, PREMIER.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/NetworkQualifierEnum
+  - term: OrthodonticRecurringPaymentFrequencyEnum
+    definition: 'Enumeration declared by the contract with values: ANNUALLY, MONTHLY, QUARTERLY, SEMI_ANNUALLY, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/OrthodonticRecurringPaymentFrequencyEnum
+  - term: PlanTypeEnum
+    definition: 'Enumeration declared by the contract with values: GOV, HMO, IDM, POS, PPO, GROUP_POLICY, UKN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PlanTypeEnum
+  - term: PolicyPeriodEnum
+    definition: 'Enumeration declared by the contract with values: CALENDAR, PLAN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PolicyPeriodEnum
+  - term: RelationshipEnum
+    definition: 'Enumeration declared by the contract with values: CHILD, DEPENDENT, SELF, SPOUSE, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RelationshipEnum
+  - term: SourceIndicatorEnum
+    definition: 'Enumeration declared by the contract with values: BY_CATEGORY, BY_CATEGORY_CODES, BY_PROCEDURE_CODE.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/SourceIndicatorEnum
+  - term: SeatPrepEnum
+    definition: 'Enumeration declared by the contract with values: PREP, SEAT, UNKNOWN.'
+    tags:
+    - Enumeration
+    source: openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/SeatPrepEnum

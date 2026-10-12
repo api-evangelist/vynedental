@@ -1,0 +1,13 @@
+generated: '2026-10-13'
+method: searched
+source: https://developers.onederful.co/documentation/
+description: The Eligibility Sandbox (POST https://sandbox.onederful.co/sandbox/eligibility) returns static stub responses for specific test cases (e.g. subscriber TEST PERSON, payer PRINCIPAL, version v2) to show response shape and basic validation; it does not vary with dynamic input and is not a substitute for production testing.
+docs:
+- https://developers.onederful.co/documentation/
+environments:
+- name: sandbox
+  base_url: https://sandbox.onederful.co
+- name: production
+  base_url: https://production.onederful.co
+gaps:
+- Responses are static stub data; no time simulation or triggers documented.

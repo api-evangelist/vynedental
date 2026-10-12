@@ -1,0 +1,105 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 7
+  own: 3
+  other_domain: 4
+  platform: 0
+  roles:
+  - api
+  - docs
+  - identity
+  - portal
+  - status
+  - support
+  - website
+hosts:
+- host: api.vynedental.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: vynedental.com
+  role: api
+  relation: own
+- host: app.vynetrellis.com
+  found_by:
+  - pointer
+  types:
+  - Login
+  serves: []
+  registrable_domain: vynetrellis.com
+  role: identity
+  relation: other-domain
+- host: developer.onederful.co
+  found_by:
+  - pointer
+  types:
+  - Blog
+  - Support
+  serves: []
+  registrable_domain: onederful.co
+  role: support
+  relation: other-domain
+- host: developers.onederful.co
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - DeveloperPortal
+  - Documentation
+  serves:
+  - docs
+  - cdn
+  vendor: cloudfront
+  registrable_domain: onederful.co
+  role: portal
+  relation: other-domain
+- host: production.onederful.co
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - APIReference
+  serves:
+  - api
+  registrable_domain: onederful.co
+  role: docs
+  relation: other-domain
+- host: status.vynedental.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - StatusPage
+  serves:
+  - status-page
+  vendor: betterstack
+  registrable_domain: vynedental.com
+  role: status
+  relation: own
+- host: vynedental.com
+  found_by:
+  - pointer
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - ChangeLog
+  - Website
+  - TermsOfService
+  - PrivacyPolicy
+  - Pricing
+  serves:
+  - docs
+  registrable_domain: vynedental.com
+  role: website
+  relation: own

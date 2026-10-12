@@ -1,0 +1,84 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/vynedental-eligibility-api-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.vynedental.com, vynedental.com, status.vynedental.com; verdict
+  absent. Candidate tools below are derived from the 14 operation(s) in the provider's own OpenAPI (14 listed); they describe what a server WOULD
+  expose, not one that exists.
+tools:
+- name: create_async_eligibility
+  operationId: POST /async/eligibility
+  method: POST
+  path: /async/eligibility
+  description: Asynchronous eligibility check
+- name: create_eligibility_sequenced-search
+  operationId: POST /async/eligibility/sequenced-search
+  method: POST
+  path: /async/eligibility/sequenced-search
+  description: Asynchronous eligibility check (Sequenced Alternate Member Searching)
+- name: create_edi_eligibility
+  operationId: POST /async/edi/eligibility
+  method: POST
+  path: /async/edi/eligibility
+  description: Asynchronous EDI eligibility check
+- name: create_async_enhanced-eligibility
+  operationId: POST /async/enhanced-eligibility
+  method: POST
+  path: /async/enhanced-eligibility
+  description: POST /async/enhanced-eligibility
+- name: create_enhanced-eligibility_targeted
+  operationId: POST /async/enhanced-eligibility/targeted
+  method: POST
+  path: /async/enhanced-eligibility/targeted
+  description: POST /async/enhanced-eligibility/targeted
+- name: get_eligibility-response
+  operationId: GET /eligibility-response/{onederfulId}
+  method: GET
+  path: /eligibility-response/{onederfulId}
+  description: GET /eligibility-response/{onederfulId}
+- name: get_eligibility-response_html
+  operationId: GET /eligibility-response/{onederfulId}/html
+  method: GET
+  path: /eligibility-response/{onederfulId}/html
+  description: GET /eligibility-response/{onederfulId}/html
+- name: get_eligibility-response_edi
+  operationId: GET /eligibility-response/{onederfulId}/edi
+  method: GET
+  path: /eligibility-response/{onederfulId}/edi
+  description: Retrieve EDI 271 for a prior async eligibility request
+- name: create_eligibility
+  operationId: POST /eligibility
+  method: POST
+  path: /eligibility
+  description: POST /eligibility
+- name: create_enhanced-eligibility
+  operationId: POST /enhanced-eligibility
+  method: POST
+  path: /enhanced-eligibility
+  description: POST /enhanced-eligibility
+- name: get_eligibility-status
+  operationId: GET /eligibility-status/{onederfulId}
+  method: GET
+  path: /eligibility-status/{onederfulId}
+  description: GET /eligibility-status/{onederfulId}
+- name: create_oauth2_token
+  operationId: POST /oauth2/token
+  method: POST
+  path: /oauth2/token
+  description: POST /oauth2/token
+- name: create_token_invalidate
+  operationId: POST /oauth2/token/invalidate
+  method: POST
+  path: /oauth2/token/invalidate
+  description: POST /oauth2/token/invalidate
+- name: get_.well-known_jwks.json
+  operationId: GET /.well-known/jwks.json
+  method: GET
+  path: /.well-known/jwks.json
+  description: GET /.well-known/jwks.json

@@ -1,0 +1,1573 @@
+{
+  "@context": {
+    "@vocab": "https://vynedental.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "vynedental": "https://vynedental.com/schema#",
+    "CoverageStatusEnumInput": "vynedental:CoverageStatusEnumInput",
+    "ClearCoverageStructureEnumInput": "vynedental:ClearCoverageStructureEnumInput",
+    "DentalClassificationEnumInput": "vynedental:DentalClassificationEnumInput",
+    "GenderEnumInput": "vynedental:GenderEnumInput",
+    "NetworkEnumInput": "vynedental:NetworkEnumInput",
+    "NetworkQualifierEnumInput": "vynedental:NetworkQualifierEnumInput",
+    "OrthodonticRecurringPaymentFrequencyEnumInput": "vynedental:OrthodonticRecurringPaymentFrequencyEnumInput",
+    "PlanTypeEnumInput": "vynedental:PlanTypeEnumInput",
+    "PolicyPeriodEnumInput": "vynedental:PolicyPeriodEnumInput",
+    "RelationshipEnumInput": "vynedental:RelationshipEnumInput",
+    "SourceIndicatorEnumInput": "vynedental:SourceIndicatorEnumInput",
+    "SeatPrepEnumInput": "vynedental:SeatPrepEnumInput",
+    "YesNoEnumInput": "vynedental:YesNoEnumInput",
+    "AddressTypeInput": "vynedental:AddressTypeInput",
+    "city": {
+      "@id": "vynedental:city",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "vynedental:state",
+      "@type": "xsd:string"
+    },
+    "street": {
+      "@id": "vynedental:street",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "vynedental:zip",
+      "@type": "xsd:string"
+    },
+    "BaseLimitationComponentTypeInput": "vynedental:BaseLimitationComponentTypeInput",
+    "quantity": {
+      "@id": "vynedental:quantity",
+      "@type": "xsd:string"
+    },
+    "quantity_qualifier": {
+      "@id": "vynedental:quantity_qualifier",
+      "@type": "xsd:string"
+    },
+    "FrequencyComponentTypeInput": "vynedental:FrequencyComponentTypeInput",
+    "time_period_qualifier": {
+      "@id": "vynedental:time_period_qualifier",
+      "@type": "xsd:string"
+    },
+    "time_period_value": {
+      "@id": "vynedental:time_period_value",
+      "@type": "xsd:string"
+    },
+    "unit_qualifier": {
+      "@id": "vynedental:unit_qualifier",
+      "@type": "xsd:string"
+    },
+    "unit": {
+      "@id": "vynedental:unit",
+      "@type": "xsd:string"
+    },
+    "RemainingComponentTypeInput": "vynedental:RemainingComponentTypeInput",
+    "LimitationTypeInput": "vynedental:LimitationTypeInput",
+    "age_high_components": {
+      "@id": "vynedental:age_high_components",
+      "@type": "@id"
+    },
+    "age_high_value": {
+      "@id": "vynedental:age_high_value",
+      "@type": "xsd:decimal"
+    },
+    "age_low_components": {
+      "@id": "vynedental:age_low_components",
+      "@type": "@id"
+    },
+    "age_low_value": {
+      "@id": "vynedental:age_low_value",
+      "@type": "xsd:decimal"
+    },
+    "frequency_component": {
+      "@id": "vynedental:frequency_component",
+      "@type": "@id"
+    },
+    "frequency_count": {
+      "@id": "vynedental:frequency_count",
+      "@type": "xsd:decimal"
+    },
+    "frequency_rule": {
+      "@id": "vynedental:frequency_rule",
+      "@type": "xsd:string"
+    },
+    "remaining_component": {
+      "@id": "vynedental:remaining_component",
+      "@type": "@id"
+    },
+    "remaining_count": {
+      "@id": "vynedental:remaining_count",
+      "@type": "xsd:decimal"
+    },
+    "ServiceHistoryTypeInput": "vynedental:ServiceHistoryTypeInput",
+    "service_type": {
+      "@id": "vynedental:service_type",
+      "@type": "xsd:string"
+    },
+    "procedure_code": {
+      "@id": "vynedental:procedure_code"
+    },
+    "service_date": {
+      "@id": "vynedental:service_date",
+      "@type": "xsd:string"
+    },
+    "tooth": {
+      "@id": "vynedental:tooth",
+      "@type": "xsd:string"
+    },
+    "surfaces": {
+      "@id": "vynedental:surfaces",
+      "@type": "xsd:string"
+    },
+    "area": {
+      "@id": "vynedental:area",
+      "@type": "xsd:string"
+    },
+    "FeeComponentTypeInput": "vynedental:FeeComponentTypeInput",
+    "allowable": {
+      "@id": "vynedental:allowable",
+      "@type": "xsd:decimal"
+    },
+    "copayment": {
+      "@id": "vynedental:copayment",
+      "@type": "xsd:decimal"
+    },
+    "BaseCoverageTypeInput": "vynedental:BaseCoverageTypeInput",
+    "coinsurance_percentage": {
+      "@id": "vynedental:coinsurance_percentage",
+      "@type": "xsd:decimal"
+    },
+    "deductible_applies": {
+      "@id": "vynedental:deductible_applies",
+      "@type": "xsd:boolean"
+    },
+    "maximum_applies": {
+      "@id": "vynedental:maximum_applies",
+      "@type": "xsd:boolean"
+    },
+    "non_covered_procedure_codes": {
+      "@id": "vynedental:non_covered_procedure_codes",
+      "@container": "@list"
+    },
+    "source_indicator": {
+      "@id": "vynedental:source_indicator"
+    },
+    "BenefitCoverageTypeInput": "vynedental:BenefitCoverageTypeInput",
+    "alternate_benefit_applies": {
+      "@id": "vynedental:alternate_benefit_applies",
+      "@type": "xsd:boolean"
+    },
+    "fees": {
+      "@id": "vynedental:fees"
+    },
+    "procedure_codes": {
+      "@id": "vynedental:procedure_codes",
+      "@container": "@list"
+    },
+    "dental_classification": {
+      "@id": "vynedental:dental_classification"
+    },
+    "disclaimers": {
+      "@id": "vynedental:disclaimers",
+      "@container": "@list"
+    },
+    "limitation": {
+      "@id": "vynedental:limitation",
+      "@type": "@id"
+    },
+    "service_history": {
+      "@id": "vynedental:service_history",
+      "@container": "@list"
+    },
+    "DiagnosticCoverageTypeInput": "vynedental:DiagnosticCoverageTypeInput",
+    "exams": {
+      "@id": "vynedental:exams",
+      "@type": "@id"
+    },
+    "pre_diagnostic_services": {
+      "@id": "vynedental:pre_diagnostic_services",
+      "@type": "@id"
+    },
+    "fmx": {
+      "@id": "vynedental:fmx",
+      "@type": "@id"
+    },
+    "periapicals": {
+      "@id": "vynedental:periapicals",
+      "@type": "@id"
+    },
+    "bitewings": {
+      "@id": "vynedental:bitewings",
+      "@type": "@id"
+    },
+    "panoramic_images": {
+      "@id": "vynedental:panoramic_images",
+      "@type": "@id"
+    },
+    "cephalometric_image": {
+      "@id": "vynedental:cephalometric_image",
+      "@type": "@id"
+    },
+    "intraoral_photos": {
+      "@id": "vynedental:intraoral_photos",
+      "@type": "@id"
+    },
+    "diagnostic_tests_exams": {
+      "@id": "vynedental:diagnostic_tests_exams",
+      "@type": "@id"
+    },
+    "cone_beam": {
+      "@id": "vynedental:cone_beam",
+      "@type": "@id"
+    },
+    "advanced_images": {
+      "@id": "vynedental:advanced_images",
+      "@type": "@id"
+    },
+    "surface_scans": {
+      "@id": "vynedental:surface_scans",
+      "@type": "@id"
+    },
+    "interpretation_and_report_only": {
+      "@id": "vynedental:interpretation_and_report_only",
+      "@type": "@id"
+    },
+    "advanced_imaging_cbct_interpretation": {
+      "@id": "vynedental:advanced_imaging_cbct_interpretation",
+      "@type": "@id"
+    },
+    "blood_saliva_tests": {
+      "@id": "vynedental:blood_saliva_tests",
+      "@type": "@id"
+    },
+    "microbial_genetic_testing": {
+      "@id": "vynedental:microbial_genetic_testing",
+      "@type": "@id"
+    },
+    "caries_pulp_testing": {
+      "@id": "vynedental:caries_pulp_testing",
+      "@type": "@id"
+    },
+    "abnormality_detection": {
+      "@id": "vynedental:abnormality_detection",
+      "@type": "@id"
+    },
+    "diagnostic_cast": {
+      "@id": "vynedental:diagnostic_cast",
+      "@type": "@id"
+    },
+    "carie_risk_assessment": {
+      "@id": "vynedental:carie_risk_assessment",
+      "@type": "@id"
+    },
+    "caries_risk_assessment": {
+      "@id": "vynedental:caries_risk_assessment"
+    },
+    "antigen_testing": {
+      "@id": "vynedental:antigen_testing",
+      "@type": "@id"
+    },
+    "image_only": {
+      "@id": "vynedental:image_only",
+      "@type": "@id"
+    },
+    "PreventiveCoverageTypeInput": "vynedental:PreventiveCoverageTypeInput",
+    "prophy": {
+      "@id": "vynedental:prophy",
+      "@type": "@id"
+    },
+    "fluoride": {
+      "@id": "vynedental:fluoride",
+      "@type": "@id"
+    },
+    "counseling": {
+      "@id": "vynedental:counseling",
+      "@type": "@id"
+    },
+    "sealants": {
+      "@id": "vynedental:sealants",
+      "@type": "@id"
+    },
+    "preventative_agents": {
+      "@id": "vynedental:preventative_agents",
+      "@type": "@id"
+    },
+    "space_maintainer_fixed": {
+      "@id": "vynedental:space_maintainer_fixed",
+      "@type": "@id"
+    },
+    "space_maintainer_removable": {
+      "@id": "vynedental:space_maintainer_removable",
+      "@type": "@id"
+    },
+    "space_maintainer_rebond": {
+      "@id": "vynedental:space_maintainer_rebond",
+      "@type": "@id"
+    },
+    "space_maintainer_removal": {
+      "@id": "vynedental:space_maintainer_removal",
+      "@type": "@id"
+    },
+    "distal_space_maintainer": {
+      "@id": "vynedental:distal_space_maintainer",
+      "@type": "@id"
+    },
+    "RestorativeCoverageTypeInput": "vynedental:RestorativeCoverageTypeInput",
+    "amalgam_fillings": {
+      "@id": "vynedental:amalgam_fillings",
+      "@type": "@id"
+    },
+    "anterior_composite_fillings": {
+      "@id": "vynedental:anterior_composite_fillings",
+      "@type": "@id"
+    },
+    "posterior_composite_fillings": {
+      "@id": "vynedental:posterior_composite_fillings",
+      "@type": "@id"
+    },
+    "gold_foil_restoration": {
+      "@id": "vynedental:gold_foil_restoration",
+      "@type": "@id"
+    },
+    "porcelain_inlays": {
+      "@id": "vynedental:porcelain_inlays",
+      "@type": "@id"
+    },
+    "metallic_inlays": {
+      "@id": "vynedental:metallic_inlays",
+      "@type": "@id"
+    },
+    "porcelain_onlays": {
+      "@id": "vynedental:porcelain_onlays",
+      "@type": "@id"
+    },
+    "metallic_onlays": {
+      "@id": "vynedental:metallic_onlays",
+      "@type": "@id"
+    },
+    "porcelain_ceramic_veneers": {
+      "@id": "vynedental:porcelain_ceramic_veneers",
+      "@type": "@id"
+    },
+    "resin_veneers": {
+      "@id": "vynedental:resin_veneers",
+      "@type": "@id"
+    },
+    "porcelain_crowns": {
+      "@id": "vynedental:porcelain_crowns",
+      "@type": "@id"
+    },
+    "fullcast_crown": {
+      "@id": "vynedental:fullcast_crown",
+      "@type": "@id"
+    },
+    "recement_crown": {
+      "@id": "vynedental:recement_crown",
+      "@type": "@id"
+    },
+    "prefab_stainless_steel_crown": {
+      "@id": "vynedental:prefab_stainless_steel_crown",
+      "@type": "@id"
+    },
+    "core_buildup": {
+      "@id": "vynedental:core_buildup",
+      "@type": "@id"
+    },
+    "post_core": {
+      "@id": "vynedental:post_core",
+      "@type": "@id"
+    },
+    "prefab_post_core": {
+      "@id": "vynedental:prefab_post_core",
+      "@type": "@id"
+    },
+    "labial_veneer": {
+      "@id": "vynedental:labial_veneer",
+      "@type": "@id"
+    },
+    "composite_inlays": {
+      "@id": "vynedental:composite_inlays",
+      "@type": "@id"
+    },
+    "composite_onlays": {
+      "@id": "vynedental:composite_onlays",
+      "@type": "@id"
+    },
+    "EndodonticsCoverageTypeInput": "vynedental:EndodonticsCoverageTypeInput",
+    "pulp_capping": {
+      "@id": "vynedental:pulp_capping",
+      "@type": "@id"
+    },
+    "pulpotomy": {
+      "@id": "vynedental:pulpotomy",
+      "@type": "@id"
+    },
+    "pulpal_therapy": {
+      "@id": "vynedental:pulpal_therapy",
+      "@type": "@id"
+    },
+    "endo_therapy_permanent": {
+      "@id": "vynedental:endo_therapy_permanent",
+      "@type": "@id"
+    },
+    "endo_therapy_special": {
+      "@id": "vynedental:endo_therapy_special",
+      "@type": "@id"
+    },
+    "endo_retreat": {
+      "@id": "vynedental:endo_retreat",
+      "@type": "@id"
+    },
+    "apex_recal": {
+      "@id": "vynedental:apex_recal",
+      "@type": "@id"
+    },
+    "pulpal_regeneration": {
+      "@id": "vynedental:pulpal_regeneration",
+      "@type": "@id"
+    },
+    "apico_surgery": {
+      "@id": "vynedental:apico_surgery",
+      "@type": "@id"
+    },
+    "additional_endo": {
+      "@id": "vynedental:additional_endo",
+      "@type": "@id"
+    },
+    "PeriodonticsCoverageTypeInput": "vynedental:PeriodonticsCoverageTypeInput",
+    "gingivectomy_gingivoplasty": {
+      "@id": "vynedental:gingivectomy_gingivoplasty",
+      "@type": "@id"
+    },
+    "surgical_removal_granulation_tissue": {
+      "@id": "vynedental:surgical_removal_granulation_tissue",
+      "@type": "@id"
+    },
+    "gingival_flap_procedures": {
+      "@id": "vynedental:gingival_flap_procedures",
+      "@type": "@id"
+    },
+    "crown_lengthening_procedures": {
+      "@id": "vynedental:crown_lengthening_procedures",
+      "@type": "@id"
+    },
+    "osseous_surgery": {
+      "@id": "vynedental:osseous_surgery",
+      "@type": "@id"
+    },
+    "perio_bone_graft": {
+      "@id": "vynedental:perio_bone_graft",
+      "@type": "@id"
+    },
+    "guided_tissue_regeneration": {
+      "@id": "vynedental:guided_tissue_regeneration",
+      "@type": "@id"
+    },
+    "soft_tissue_grafts": {
+      "@id": "vynedental:soft_tissue_grafts",
+      "@type": "@id"
+    },
+    "autogenous_tissue_graft": {
+      "@id": "vynedental:autogenous_tissue_graft",
+      "@type": "@id"
+    },
+    "scaling_and_root_planing": {
+      "@id": "vynedental:scaling_and_root_planing",
+      "@type": "@id"
+    },
+    "full_mouth_debridement": {
+      "@id": "vynedental:full_mouth_debridement",
+      "@type": "@id"
+    },
+    "scaling_presence_of_inflammation": {
+      "@id": "vynedental:scaling_presence_of_inflammation",
+      "@type": "@id"
+    },
+    "periodontal_maintenance": {
+      "@id": "vynedental:periodontal_maintenance",
+      "@type": "@id"
+    },
+    "ProsthodonticsRemovableCoverageTypeInput": "vynedental:ProsthodonticsRemovableCoverageTypeInput",
+    "complete_dentures": {
+      "@id": "vynedental:complete_dentures",
+      "@type": "@id"
+    },
+    "immediate_dentures": {
+      "@id": "vynedental:immediate_dentures",
+      "@type": "@id"
+    },
+    "partial_dentures": {
+      "@id": "vynedental:partial_dentures",
+      "@type": "@id"
+    },
+    "adjustments_complete_dentures": {
+      "@id": "vynedental:adjustments_complete_dentures",
+      "@type": "@id"
+    },
+    "repairs_complete_dentures": {
+      "@id": "vynedental:repairs_complete_dentures",
+      "@type": "@id"
+    },
+    "repairs_partial_dentures": {
+      "@id": "vynedental:repairs_partial_dentures",
+      "@type": "@id"
+    },
+    "denture_rebase_procedures": {
+      "@id": "vynedental:denture_rebase_procedures",
+      "@type": "@id"
+    },
+    "denture_reline_procedures": {
+      "@id": "vynedental:denture_reline_procedures",
+      "@type": "@id"
+    },
+    "interim_denture": {
+      "@id": "vynedental:interim_denture",
+      "@type": "@id"
+    },
+    "interim_partial_denture": {
+      "@id": "vynedental:interim_partial_denture",
+      "@type": "@id"
+    },
+    "other_removable_prosthetic_services": {
+      "@id": "vynedental:other_removable_prosthetic_services",
+      "@type": "@id"
+    },
+    "MaxillofacialProstheticsCoverageTypeInput": "vynedental:MaxillofacialProstheticsCoverageTypeInput",
+    "facial_moulage": {
+      "@id": "vynedental:facial_moulage",
+      "@type": "@id"
+    },
+    "obturator_prosthesis": {
+      "@id": "vynedental:obturator_prosthesis",
+      "@type": "@id"
+    },
+    "facial_prosthesis": {
+      "@id": "vynedental:facial_prosthesis",
+      "@type": "@id"
+    },
+    "mandibular_prosthesis": {
+      "@id": "vynedental:mandibular_prosthesis",
+      "@type": "@id"
+    },
+    "palatal_prosthesis": {
+      "@id": "vynedental:palatal_prosthesis",
+      "@type": "@id"
+    },
+    "speech_aid_prosthesis": {
+      "@id": "vynedental:speech_aid_prosthesis",
+      "@type": "@id"
+    },
+    "augmentative_prosthesis": {
+      "@id": "vynedental:augmentative_prosthesis",
+      "@type": "@id"
+    },
+    "nasal_prosthesis": {
+      "@id": "vynedental:nasal_prosthesis",
+      "@type": "@id"
+    },
+    "orbital_prosthesis": {
+      "@id": "vynedental:orbital_prosthesis",
+      "@type": "@id"
+    },
+    "auricular_prosthesis": {
+      "@id": "vynedental:auricular_prosthesis",
+      "@type": "@id"
+    },
+    "ocular_prosthesis": {
+      "@id": "vynedental:ocular_prosthesis",
+      "@type": "@id"
+    },
+    "cranial_prosthesis": {
+      "@id": "vynedental:cranial_prosthesis",
+      "@type": "@id"
+    },
+    "ImplantServicesCoverageTypeInput": "vynedental:ImplantServicesCoverageTypeInput",
+    "pre_surgical_evaluation": {
+      "@id": "vynedental:pre_surgical_evaluation",
+      "@type": "@id"
+    },
+    "surgical_implant_placement": {
+      "@id": "vynedental:surgical_implant_placement",
+      "@type": "@id"
+    },
+    "subperiosteal_implants": {
+      "@id": "vynedental:subperiosteal_implants",
+      "@type": "@id"
+    },
+    "implant_bone_graft": {
+      "@id": "vynedental:implant_bone_graft",
+      "@type": "@id"
+    },
+    "implant_crowns_restorations": {
+      "@id": "vynedental:implant_crowns_restorations",
+      "@type": "@id"
+    },
+    "additional_implant_prosthetic_services": {
+      "@id": "vynedental:additional_implant_prosthetic_services",
+      "@type": "@id"
+    },
+    "overdenture": {
+      "@id": "vynedental:overdenture",
+      "@type": "@id"
+    },
+    "hybrid_prosthesis": {
+      "@id": "vynedental:hybrid_prosthesis",
+      "@type": "@id"
+    },
+    "abutment_supported_crowns": {
+      "@id": "vynedental:abutment_supported_crowns",
+      "@type": "@id"
+    },
+    "implant_supported_crowns": {
+      "@id": "vynedental:implant_supported_crowns",
+      "@type": "@id"
+    },
+    "abutment_supported_fixed_partial_denture_fpd": {
+      "@id": "vynedental:abutment_supported_fixed_partial_denture_fpd",
+      "@type": "@id"
+    },
+    "implant_supported_fixed_partial_denture_fpd": {
+      "@id": "vynedental:implant_supported_fixed_partial_denture_fpd",
+      "@type": "@id"
+    },
+    "implant_maintenance": {
+      "@id": "vynedental:implant_maintenance",
+      "@type": "@id"
+    },
+    "implant_crowns_prosthesis_repairs": {
+      "@id": "vynedental:implant_crowns_prosthesis_repairs",
+      "@type": "@id"
+    },
+    "recement": {
+      "@id": "vynedental:recement",
+      "@type": "@id"
+    },
+    "implant_component_replacement": {
+      "@id": "vynedental:implant_component_replacement",
+      "@type": "@id"
+    },
+    "implant_removal_repair": {
+      "@id": "vynedental:implant_removal_repair",
+      "@type": "@id"
+    },
+    "implant_tissue_regeneration": {
+      "@id": "vynedental:implant_tissue_regeneration",
+      "@type": "@id"
+    },
+    "ProsthodonticsFixedCoverageTypeInput": "vynedental:ProsthodonticsFixedCoverageTypeInput",
+    "pontics_porcelain_ceramic": {
+      "@id": "vynedental:pontics_porcelain_ceramic",
+      "@type": "@id"
+    },
+    "pontics_cast_metal": {
+      "@id": "vynedental:pontics_cast_metal",
+      "@type": "@id"
+    },
+    "pontics_titanium_high_noble_metal": {
+      "@id": "vynedental:pontics_titanium_high_noble_metal",
+      "@type": "@id"
+    },
+    "pontics_porcelain_fused_to_metal": {
+      "@id": "vynedental:pontics_porcelain_fused_to_metal",
+      "@type": "@id"
+    },
+    "pontics_resin_with_metal": {
+      "@id": "vynedental:pontics_resin_with_metal",
+      "@type": "@id"
+    },
+    "retainers_inlays_metallic_ceramic": {
+      "@id": "vynedental:retainers_inlays_metallic_ceramic",
+      "@type": "@id"
+    },
+    "retainers_onlays_ceramic_resin_metal": {
+      "@id": "vynedental:retainers_onlays_ceramic_resin_metal",
+      "@type": "@id"
+    },
+    "retainers_crowns_porcelain_ceramic": {
+      "@id": "vynedental:retainers_crowns_porcelain_ceramic",
+      "@type": "@id"
+    },
+    "retainers_crowns_porcelain_fused_to_metal": {
+      "@id": "vynedental:retainers_crowns_porcelain_fused_to_metal",
+      "@type": "@id"
+    },
+    "retainers_crowns_metallic": {
+      "@id": "vynedental:retainers_crowns_metallic",
+      "@type": "@id"
+    },
+    "services_recementation_repair": {
+      "@id": "vynedental:services_recementation_repair",
+      "@type": "@id"
+    },
+    "stress_breakers_precision_attachments": {
+      "@id": "vynedental:stress_breakers_precision_attachments",
+      "@type": "@id"
+    },
+    "surgical_specialized_prosthetic_work": {
+      "@id": "vynedental:surgical_specialized_prosthetic_work",
+      "@type": "@id"
+    },
+    "OralMaxillofacialSurgeryCoverageTypeInput": "vynedental:OralMaxillofacialSurgeryCoverageTypeInput",
+    "extractions_and_removals": {
+      "@id": "vynedental:extractions_and_removals",
+      "@type": "@id"
+    },
+    "advanced_surgical_procedures": {
+      "@id": "vynedental:advanced_surgical_procedures",
+      "@type": "@id"
+    },
+    "alveoloplasty": {
+      "@id": "vynedental:alveoloplasty",
+      "@type": "@id"
+    },
+    "vestibuloplasty": {
+      "@id": "vynedental:vestibuloplasty",
+      "@type": "@id"
+    },
+    "excision_of_soft_tissue_lesions": {
+      "@id": "vynedental:excision_of_soft_tissue_lesions",
+      "@type": "@id"
+    },
+    "excision_of_intra_osseous_lesions": {
+      "@id": "vynedental:excision_of_intra_osseous_lesions",
+      "@type": "@id"
+    },
+    "excision_of_bone_tissue": {
+      "@id": "vynedental:excision_of_bone_tissue",
+      "@type": "@id"
+    },
+    "surgical_incision": {
+      "@id": "vynedental:surgical_incision",
+      "@type": "@id"
+    },
+    "treatment_of_closed_fractures": {
+      "@id": "vynedental:treatment_of_closed_fractures",
+      "@type": "@id"
+    },
+    "tmj_surgical": {
+      "@id": "vynedental:tmj_surgical",
+      "@type": "@id"
+    },
+    "tmj_nonsurgical": {
+      "@id": "vynedental:tmj_nonsurgical",
+      "@type": "@id"
+    },
+    "wound_suturing": {
+      "@id": "vynedental:wound_suturing",
+      "@type": "@id"
+    },
+    "regeneration_procedures": {
+      "@id": "vynedental:regeneration_procedures",
+      "@type": "@id"
+    },
+    "osteoplasty_procedures": {
+      "@id": "vynedental:osteoplasty_procedures",
+      "@type": "@id"
+    },
+    "osteotomy": {
+      "@id": "vynedental:osteotomy",
+      "@type": "@id"
+    },
+    "lefort": {
+      "@id": "vynedental:lefort",
+      "@type": "@id"
+    },
+    "extract_bone_graft": {
+      "@id": "vynedental:extract_bone_graft",
+      "@type": "@id"
+    },
+    "frenectomy": {
+      "@id": "vynedental:frenectomy",
+      "@type": "@id"
+    },
+    "salivary_gland_procedures": {
+      "@id": "vynedental:salivary_gland_procedures",
+      "@type": "@id"
+    },
+    "special_surgical_procedures": {
+      "@id": "vynedental:special_surgical_procedures",
+      "@type": "@id"
+    },
+    "implant_placement_surgical": {
+      "@id": "vynedental:implant_placement_surgical",
+      "@type": "@id"
+    },
+    "appliance_removal": {
+      "@id": "vynedental:appliance_removal",
+      "@type": "@id"
+    },
+    "OrthodonticsCoverageTypeInput": "vynedental:OrthodonticsCoverageTypeInput",
+    "limited_orthodontic_treatment": {
+      "@id": "vynedental:limited_orthodontic_treatment",
+      "@type": "@id"
+    },
+    "comprehensive_orthodontic_treatment": {
+      "@id": "vynedental:comprehensive_orthodontic_treatment",
+      "@type": "@id"
+    },
+    "appliances": {
+      "@id": "vynedental:appliances",
+      "@type": "@id"
+    },
+    "orthodontic_evaluation": {
+      "@id": "vynedental:orthodontic_evaluation",
+      "@type": "@id"
+    },
+    "periodic_orthodontic_treatment_visit": {
+      "@id": "vynedental:periodic_orthodontic_treatment_visit",
+      "@type": "@id"
+    },
+    "periodic_orthognathic_surgery_visit": {
+      "@id": "vynedental:periodic_orthognathic_surgery_visit",
+      "@type": "@id"
+    },
+    "orthodontic_retention": {
+      "@id": "vynedental:orthodontic_retention",
+      "@type": "@id"
+    },
+    "orthodontic_appliance_removal_repair": {
+      "@id": "vynedental:orthodontic_appliance_removal_repair",
+      "@type": "@id"
+    },
+    "orthodontic_fixed_retainer_repair": {
+      "@id": "vynedental:orthodontic_fixed_retainer_repair",
+      "@type": "@id"
+    },
+    "orthodontic_repairs": {
+      "@id": "vynedental:orthodontic_repairs",
+      "@type": "@id"
+    },
+    "orthodontic_replacement": {
+      "@id": "vynedental:orthodontic_replacement",
+      "@type": "@id"
+    },
+    "AdjunctiveServicesCoverageTypeInput": "vynedental:AdjunctiveServicesCoverageTypeInput",
+    "palliative_treatment": {
+      "@id": "vynedental:palliative_treatment",
+      "@type": "@id"
+    },
+    "partial_denture_repair": {
+      "@id": "vynedental:partial_denture_repair",
+      "@type": "@id"
+    },
+    "tmj_therapy": {
+      "@id": "vynedental:tmj_therapy",
+      "@type": "@id"
+    },
+    "local_anesthesia": {
+      "@id": "vynedental:local_anesthesia",
+      "@type": "@id"
+    },
+    "deep_sedation": {
+      "@id": "vynedental:deep_sedation",
+      "@type": "@id"
+    },
+    "moderate_sedation": {
+      "@id": "vynedental:moderate_sedation",
+      "@type": "@id"
+    },
+    "nitrous": {
+      "@id": "vynedental:nitrous",
+      "@type": "@id"
+    },
+    "professional_consultation_in_person": {
+      "@id": "vynedental:professional_consultation_in_person",
+      "@type": "@id"
+    },
+    "professional_visits_limited_follow_up": {
+      "@id": "vynedental:professional_visits_limited_follow_up",
+      "@type": "@id"
+    },
+    "professional_visits_extended_home_care": {
+      "@id": "vynedental:professional_visits_extended_home_care",
+      "@type": "@id"
+    },
+    "drugs_injection": {
+      "@id": "vynedental:drugs_injection",
+      "@type": "@id"
+    },
+    "drugs_prescription_dispensing": {
+      "@id": "vynedental:drugs_prescription_dispensing",
+      "@type": "@id"
+    },
+    "miscellaneous_services_preventive_protective": {
+      "@id": "vynedental:miscellaneous_services_preventive_protective",
+      "@type": "@id"
+    },
+    "clean_inspect_removal_denture": {
+      "@id": "vynedental:clean_inspect_removal_denture",
+      "@type": "@id"
+    },
+    "custom_aesthetic_appliance": {
+      "@id": "vynedental:custom_aesthetic_appliance",
+      "@type": "@id"
+    },
+    "athletic_occlusal_guard": {
+      "@id": "vynedental:athletic_occlusal_guard",
+      "@type": "@id"
+    },
+    "occlusal_guard_adjustment_repair": {
+      "@id": "vynedental:occlusal_guard_adjustment_repair",
+      "@type": "@id"
+    },
+    "occlusal_guards": {
+      "@id": "vynedental:occlusal_guards",
+      "@type": "@id"
+    },
+    "orthodontic_splint_therapy": {
+      "@id": "vynedental:orthodontic_splint_therapy",
+      "@type": "@id"
+    },
+    "cosmetic_aesthetic": {
+      "@id": "vynedental:cosmetic_aesthetic",
+      "@type": "@id"
+    },
+    "whitening": {
+      "@id": "vynedental:whitening",
+      "@type": "@id"
+    },
+    "misc_fees": {
+      "@id": "vynedental:misc_fees",
+      "@type": "@id"
+    },
+    "appointment_support": {
+      "@id": "vynedental:appointment_support",
+      "@type": "@id"
+    },
+    "teledentistry": {
+      "@id": "vynedental:teledentistry",
+      "@type": "@id"
+    },
+    "patient_education": {
+      "@id": "vynedental:patient_education",
+      "@type": "@id"
+    },
+    "SleepApneaCoverageTypeInput": "vynedental:SleepApneaCoverageTypeInput",
+    "custom_appliance_fabrication_placement": {
+      "@id": "vynedental:custom_appliance_fabrication_placement",
+      "@type": "@id"
+    },
+    "adjustment_repair": {
+      "@id": "vynedental:adjustment_repair",
+      "@type": "@id"
+    },
+    "reline_resurfacing": {
+      "@id": "vynedental:reline_resurfacing",
+      "@type": "@id"
+    },
+    "oral_appliance_therapy_oat_accessories": {
+      "@id": "vynedental:oral_appliance_therapy_oat_accessories",
+      "@type": "@id"
+    },
+    "titration_follow_up": {
+      "@id": "vynedental:titration_follow_up",
+      "@type": "@id"
+    },
+    "testing_screening": {
+      "@id": "vynedental:testing_screening",
+      "@type": "@id"
+    },
+    "CoveragesInput": "vynedental:CoveragesInput",
+    "diagnostic": {
+      "@id": "vynedental:diagnostic",
+      "@type": "@id"
+    },
+    "preventive": {
+      "@id": "vynedental:preventive",
+      "@type": "@id"
+    },
+    "restorative": {
+      "@id": "vynedental:restorative",
+      "@type": "@id"
+    },
+    "endodontics": {
+      "@id": "vynedental:endodontics",
+      "@type": "@id"
+    },
+    "periodontics": {
+      "@id": "vynedental:periodontics",
+      "@type": "@id"
+    },
+    "prosthodontics_removable": {
+      "@id": "vynedental:prosthodontics_removable",
+      "@type": "@id"
+    },
+    "maxillofacial_prosthetics": {
+      "@id": "vynedental:maxillofacial_prosthetics",
+      "@type": "@id"
+    },
+    "implant_services": {
+      "@id": "vynedental:implant_services",
+      "@type": "@id"
+    },
+    "prosthodontics_fixed": {
+      "@id": "vynedental:prosthodontics_fixed",
+      "@type": "@id"
+    },
+    "oral_maxillofacial_surgery": {
+      "@id": "vynedental:oral_maxillofacial_surgery",
+      "@type": "@id"
+    },
+    "orthodontics": {
+      "@id": "vynedental:orthodontics",
+      "@type": "@id"
+    },
+    "adjunctive_services": {
+      "@id": "vynedental:adjunctive_services",
+      "@type": "@id"
+    },
+    "sleep_apnea": {
+      "@id": "vynedental:sleep_apnea",
+      "@type": "@id"
+    },
+    "PartialCoveragesInput": "vynedental:PartialCoveragesInput",
+    "BenefitTypeInput": "vynedental:BenefitTypeInput",
+    "network": {
+      "@id": "vynedental:network",
+      "@type": "@id"
+    },
+    "network_qualifier": {
+      "@id": "vynedental:network_qualifier"
+    },
+    "individual_deductible": {
+      "@id": "vynedental:individual_deductible",
+      "@type": "xsd:decimal"
+    },
+    "individual_deductible_remaining": {
+      "@id": "vynedental:individual_deductible_remaining",
+      "@type": "xsd:decimal"
+    },
+    "family_deductible": {
+      "@id": "vynedental:family_deductible",
+      "@type": "xsd:decimal"
+    },
+    "family_deductible_remaining": {
+      "@id": "vynedental:family_deductible_remaining",
+      "@type": "xsd:decimal"
+    },
+    "individual_maximum": {
+      "@id": "vynedental:individual_maximum",
+      "@type": "xsd:decimal"
+    },
+    "individual_maximum_remaining": {
+      "@id": "vynedental:individual_maximum_remaining",
+      "@type": "xsd:decimal"
+    },
+    "family_maximum": {
+      "@id": "vynedental:family_maximum",
+      "@type": "xsd:decimal"
+    },
+    "family_maximum_remaining": {
+      "@id": "vynedental:family_maximum_remaining",
+      "@type": "xsd:decimal"
+    },
+    "orthodontic_deductible": {
+      "@id": "vynedental:orthodontic_deductible",
+      "@type": "xsd:decimal"
+    },
+    "orthodontic_deductible_remaining": {
+      "@id": "vynedental:orthodontic_deductible_remaining",
+      "@type": "xsd:decimal"
+    },
+    "orthodontic_maximum": {
+      "@id": "vynedental:orthodontic_maximum",
+      "@type": "xsd:decimal"
+    },
+    "orthodontic_maximum_remaining": {
+      "@id": "vynedental:orthodontic_maximum_remaining",
+      "@type": "xsd:decimal"
+    },
+    "coverages": {
+      "@id": "vynedental:coverages",
+      "@type": "@id"
+    },
+    "PartialBenefitTypeInput": "vynedental:PartialBenefitTypeInput",
+    "PatientCoverageTypeInput": "vynedental:PatientCoverageTypeInput",
+    "effective_date": {
+      "@id": "vynedental:effective_date",
+      "@type": "xsd:string"
+    },
+    "end_date": {
+      "@id": "vynedental:end_date",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "vynedental:status"
+    },
+    "PatientTypeInput": "vynedental:PatientTypeInput",
+    "address": {
+      "@id": "vynedental:address"
+    },
+    "coverage": {
+      "@id": "vynedental:coverage",
+      "@type": "@id"
+    },
+    "dob": {
+      "@id": "vynedental:dob",
+      "@type": "xsd:string"
+    },
+    "first_name": {
+      "@id": "vynedental:first_name",
+      "@type": "xsd:string"
+    },
+    "gender": {
+      "@id": "vynedental:gender"
+    },
+    "last_name": {
+      "@id": "vynedental:last_name",
+      "@type": "xsd:string"
+    },
+    "member_id": {
+      "@id": "vynedental:member_id",
+      "@type": "xsd:string"
+    },
+    "middle_name": {
+      "@id": "vynedental:middle_name",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "vynedental:name",
+      "@type": "xsd:string"
+    },
+    "relationship": {
+      "@id": "vynedental:relationship"
+    },
+    "PayerTypeInput": "vynedental:PayerTypeInput",
+    "id": {
+      "@id": "vynedental:id",
+      "@type": "xsd:string"
+    },
+    "payer_id": {
+      "@id": "vynedental:payer_id",
+      "@type": "xsd:string"
+    },
+    "phone_number": {
+      "@id": "vynedental:phone_number",
+      "@type": "xsd:string"
+    },
+    "website": {
+      "@id": "vynedental:website",
+      "@type": "xsd:string"
+    },
+    "PlanTypeInput": "vynedental:PlanTypeInput",
+    "group_name": {
+      "@id": "vynedental:group_name",
+      "@type": "xsd:string"
+    },
+    "group_number": {
+      "@id": "vynedental:group_number",
+      "@type": "xsd:string"
+    },
+    "group_or_policy_number": {
+      "@id": "vynedental:group_or_policy_number",
+      "@type": "xsd:string"
+    },
+    "insurance_type": {
+      "@id": "vynedental:insurance_type",
+      "@type": "xsd:string"
+    },
+    "number": {
+      "@id": "vynedental:number",
+      "@type": "xsd:string"
+    },
+    "payer_plan_name": {
+      "@id": "vynedental:payer_plan_name",
+      "@type": "xsd:string"
+    },
+    "payer_plan_identifier": {
+      "@id": "vynedental:payer_plan_identifier",
+      "@type": "xsd:string"
+    },
+    "payer_plan_description": {
+      "@id": "vynedental:payer_plan_description",
+      "@type": "xsd:string"
+    },
+    "plan_type": {
+      "@id": "vynedental:plan_type"
+    },
+    "policy_period": {
+      "@id": "vynedental:policy_period"
+    },
+    "start_date": {
+      "@id": "vynedental:start_date",
+      "@type": "xsd:string"
+    },
+    "RulesTypeInput": "vynedental:RulesTypeInput",
+    "alternative_benefits_may_apply": {
+      "@id": "vynedental:alternative_benefits_may_apply"
+    },
+    "coordination_of_benefits_requirements": {
+      "@id": "vynedental:coordination_of_benefits_requirements",
+      "@type": "xsd:string"
+    },
+    "dependent_child_max_age": {
+      "@id": "vynedental:dependent_child_max_age",
+      "@type": "xsd:decimal"
+    },
+    "dependent_student_max_age": {
+      "@id": "vynedental:dependent_student_max_age",
+      "@type": "xsd:decimal"
+    },
+    "missing_tooth_clause_applies": {
+      "@id": "vynedental:missing_tooth_clause_applies"
+    },
+    "orthodontic_initial_payment_percentage": {
+      "@id": "vynedental:orthodontic_initial_payment_percentage",
+      "@type": "xsd:decimal"
+    },
+    "orthodontic_recurring_payment_frequency": {
+      "@id": "vynedental:orthodontic_recurring_payment_frequency"
+    },
+    "payment_on_seat_or_prep": {
+      "@id": "vynedental:payment_on_seat_or_prep"
+    },
+    "predetermination_requirements": {
+      "@id": "vynedental:predetermination_requirements",
+      "@type": "xsd:string"
+    },
+    "waiting_period_for_basic_services": {
+      "@id": "vynedental:waiting_period_for_basic_services"
+    },
+    "waiting_period_for_major_services": {
+      "@id": "vynedental:waiting_period_for_major_services"
+    },
+    "ProviderTypeInput": "vynedental:ProviderTypeInput",
+    "npi": {
+      "@id": "vynedental:npi",
+      "@type": "xsd:string"
+    },
+    "tax_id": {
+      "@id": "vynedental:tax_id",
+      "@type": "xsd:string"
+    },
+    "organization_name": {
+      "@id": "vynedental:organization_name",
+      "@type": "xsd:string"
+    },
+    "EBCoverageLevelEnumInput": "vynedental:EBCoverageLevelEnumInput",
+    "EBPlanPeriodEnumInput": "vynedental:EBPlanPeriodEnumInput",
+    "EBAgeLimitInput": "vynedental:EBAgeLimitInput",
+    "EBEligibilityDetailsInput": "vynedental:EBEligibilityDetailsInput",
+    "date": {
+      "@id": "vynedental:date",
+      "@type": "xsd:string"
+    },
+    "eligibility": {
+      "@id": "vynedental:eligibility",
+      "@type": "xsd:string"
+    },
+    "location": {
+      "@id": "vynedental:location",
+      "@type": "xsd:string"
+    },
+    "EBGenericHSDTypeInput": "vynedental:EBGenericHSDTypeInput",
+    "delivery_frequency": {
+      "@id": "vynedental:delivery_frequency",
+      "@type": "xsd:string"
+    },
+    "delivery_pattern_time": {
+      "@id": "vynedental:delivery_pattern_time",
+      "@type": "xsd:string"
+    },
+    "EBPlanMetadataTypeInput": "vynedental:EBPlanMetadataTypeInput",
+    "description": {
+      "@id": "vynedental:description",
+      "@type": "xsd:string"
+    },
+    "qualifier": {
+      "@id": "vynedental:qualifier",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "vynedental:value",
+      "@type": "xsd:string"
+    },
+    "EBReferenceTypeInput": "vynedental:EBReferenceTypeInput",
+    "reference_qualifier": {
+      "@id": "vynedental:reference_qualifier",
+      "@type": "xsd:string"
+    },
+    "reference_value": {
+      "@id": "vynedental:reference_value",
+      "@type": "xsd:string"
+    },
+    "EBServiceHistoryTypeInput": "vynedental:EBServiceHistoryTypeInput",
+    "category": {
+      "@id": "vynedental:category",
+      "@type": "xsd:string"
+    },
+    "tooth_code": {
+      "@id": "vynedental:tooth_code",
+      "@type": "xsd:string"
+    },
+    "tooth_range": {
+      "@id": "vynedental:tooth_range",
+      "@type": "xsd:string"
+    },
+    "tooth_surfaces": {
+      "@id": "vynedental:tooth_surfaces",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "vynedental:type",
+      "@type": "xsd:string"
+    },
+    "EBGenericBenefitTypeInput": "vynedental:EBGenericBenefitTypeInput",
+    "age_limit": {
+      "@id": "vynedental:age_limit"
+    },
+    "amount": {
+      "@id": "vynedental:amount",
+      "@type": "xsd:string"
+    },
+    "applies_to_deductible": {
+      "@id": "vynedental:applies_to_deductible",
+      "@type": "xsd:boolean"
+    },
+    "coverage_level": {
+      "@id": "vynedental:coverage_level"
+    },
+    "does_deductible_apply_to_basic": {
+      "@id": "vynedental:does_deductible_apply_to_basic",
+      "@type": "xsd:boolean"
+    },
+    "does_deductible_apply_to_preventive": {
+      "@id": "vynedental:does_deductible_apply_to_preventive",
+      "@type": "xsd:boolean"
+    },
+    "eligibility_details": {
+      "@id": "vynedental:eligibility_details",
+      "@container": "@list"
+    },
+    "health_service_descriptions": {
+      "@id": "vynedental:health_service_descriptions",
+      "@container": "@list"
+    },
+    "limitation_applies_to": {
+      "@id": "vynedental:limitation_applies_to",
+      "@container": "@list"
+    },
+    "metadata": {
+      "@id": "vynedental:metadata",
+      "@container": "@list"
+    },
+    "payer_specific_description": {
+      "@id": "vynedental:payer_specific_description",
+      "@type": "xsd:string"
+    },
+    "percent": {
+      "@id": "vynedental:percent",
+      "@type": "xsd:string"
+    },
+    "plan_period": {
+      "@id": "vynedental:plan_period"
+    },
+    "references": {
+      "@id": "vynedental:references",
+      "@container": "@list"
+    },
+    "service_dates": {
+      "@id": "vynedental:service_dates",
+      "@container": "@list"
+    },
+    "services_remaining": {
+      "@id": "vynedental:services_remaining",
+      "@type": "xsd:decimal"
+    },
+    "supported_procedure_codes": {
+      "@id": "vynedental:supported_procedure_codes",
+      "@container": "@list"
+    },
+    "EBBenefitComputedTypeInput": "vynedental:EBBenefitComputedTypeInput",
+    "EBCoverageTypeInput": "vynedental:EBCoverageTypeInput",
+    "EBBenefitAmountRemainingInput": "vynedental:EBBenefitAmountRemainingInput",
+    "key": {
+      "@id": "vynedental:key",
+      "@type": "xsd:string"
+    },
+    "remaining": {
+      "@id": "vynedental:remaining",
+      "@type": "xsd:string"
+    },
+    "used": {
+      "@id": "vynedental:used",
+      "@type": "xsd:string"
+    },
+    "EBAddressTypeInput": "vynedental:EBAddressTypeInput",
+    "street1": {
+      "@id": "vynedental:street1",
+      "@type": "xsd:string"
+    },
+    "street2": {
+      "@id": "vynedental:street2",
+      "@type": "xsd:string"
+    },
+    "EBPatientTypeMetadataInput": "vynedental:EBPatientTypeMetadataInput",
+    "EBPatientTypeInput": "vynedental:EBPatientTypeInput",
+    "age": {
+      "@id": "vynedental:age",
+      "@type": "xsd:string"
+    },
+    "is_subscriber": {
+      "@id": "vynedental:is_subscriber",
+      "@type": "xsd:boolean"
+    },
+    "EBEffectivePeriodInput": "vynedental:EBEffectivePeriodInput",
+    "is_a_waiting_period": {
+      "@id": "vynedental:is_a_waiting_period",
+      "@type": "xsd:boolean"
+    },
+    "EBMetadataTypeInput": "vynedental:EBMetadataTypeInput",
+    "dependent_age_limit": {
+      "@id": "vynedental:dependent_age_limit",
+      "@type": "xsd:string"
+    },
+    "student_age_limit": {
+      "@id": "vynedental:student_age_limit",
+      "@type": "xsd:string"
+    },
+    "EBPayerTypeInput": "vynedental:EBPayerTypeInput",
+    "claim_address": {
+      "@id": "vynedental:claim_address"
+    },
+    "phone": {
+      "@id": "vynedental:phone",
+      "@type": "xsd:string"
+    },
+    "EBPlanTypeInput": "vynedental:EBPlanTypeInput",
+    "period": {
+      "@id": "vynedental:period",
+      "@type": "xsd:string"
+    },
+    "EBProcedureCodeComputedTypeInput": "vynedental:EBProcedureCodeComputedTypeInput",
+    "category_service": {
+      "@id": "vynedental:category_service",
+      "@type": "xsd:string"
+    },
+    "disclaimers_string": {
+      "@id": "vynedental:disclaimers_string",
+      "@type": "xsd:string"
+    },
+    "is_covered": {
+      "@id": "vynedental:is_covered",
+      "@type": "xsd:boolean"
+    },
+    "limitation_applies_to_string": {
+      "@id": "vynedental:limitation_applies_to_string",
+      "@type": "xsd:string"
+    },
+    "percent_computed": {
+      "@id": "vynedental:percent_computed",
+      "@type": "xsd:string"
+    },
+    "searched_procedure_code": {
+      "@id": "vynedental:searched_procedure_code",
+      "@type": "xsd:string"
+    },
+    "service_dates_string": {
+      "@id": "vynedental:service_dates_string",
+      "@type": "xsd:string"
+    },
+    "EBProviderTypeInput": "vynedental:EBProviderTypeInput",
+    "EBRejectionReasonTypeInput": "vynedental:EBRejectionReasonTypeInput",
+    "code": {
+      "@id": "vynedental:code",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "vynedental:message",
+      "@type": "xsd:string"
+    },
+    "followup_action": {
+      "@id": "vynedental:followup_action",
+      "@type": "xsd:string"
+    },
+    "EBRetryDetailTypeInput": "vynedental:EBRetryDetailTypeInput",
+    "strategy_code": {
+      "@id": "vynedental:strategy_code",
+      "@type": "xsd:string"
+    },
+    "fields_used": {
+      "@id": "vynedental:fields_used",
+      "@container": "@list"
+    },
+    "reject_reason": {
+      "@id": "vynedental:reject_reason"
+    },
+    "invalid_fields": {
+      "@id": "vynedental:invalid_fields",
+      "@container": "@list"
+    },
+    "start": {
+      "@id": "vynedental:start",
+      "@type": "xsd:string"
+    },
+    "end": {
+      "@id": "vynedental:end",
+      "@type": "xsd:string"
+    },
+    "skipped_duplicate_of": {
+      "@id": "vynedental:skipped_duplicate_of",
+      "@type": "xsd:string"
+    },
+    "CoverageStatusEnum": "vynedental:CoverageStatusEnum",
+    "ClearCoverageStructureEnum": "vynedental:ClearCoverageStructureEnum",
+    "DentalClassificationEnum": "vynedental:DentalClassificationEnum",
+    "GenderEnum": "vynedental:GenderEnum",
+    "NetworkEnum": "vynedental:NetworkEnum",
+    "NetworkQualifierEnum": "vynedental:NetworkQualifierEnum",
+    "OrthodonticRecurringPaymentFrequencyEnum": "vynedental:OrthodonticRecurringPaymentFrequencyEnum",
+    "PlanTypeEnum": "vynedental:PlanTypeEnum",
+    "PolicyPeriodEnum": "vynedental:PolicyPeriodEnum",
+    "RelationshipEnum": "vynedental:RelationshipEnum",
+    "SourceIndicatorEnum": "vynedental:SourceIndicatorEnum",
+    "SeatPrepEnum": "vynedental:SeatPrepEnum",
+    "YesNoEnum": "vynedental:YesNoEnum",
+    "AddressType": "vynedental:AddressType",
+    "BaseLimitationComponentType": "vynedental:BaseLimitationComponentType",
+    "FrequencyComponentType": "vynedental:FrequencyComponentType",
+    "RemainingComponentType": "vynedental:RemainingComponentType",
+    "LimitationType": "vynedental:LimitationType",
+    "ServiceHistoryType": "vynedental:ServiceHistoryType",
+    "FeeComponentType": "vynedental:FeeComponentType",
+    "BaseCoverageType": "vynedental:BaseCoverageType",
+    "BenefitCoverageType": "vynedental:BenefitCoverageType",
+    "DiagnosticCoverageType": "vynedental:DiagnosticCoverageType",
+    "PreventiveCoverageType": "vynedental:PreventiveCoverageType",
+    "RestorativeCoverageType": "vynedental:RestorativeCoverageType",
+    "EndodonticsCoverageType": "vynedental:EndodonticsCoverageType",
+    "PeriodonticsCoverageType": "vynedental:PeriodonticsCoverageType",
+    "ProsthodonticsRemovableCoverageType": "vynedental:ProsthodonticsRemovableCoverageType",
+    "MaxillofacialProstheticsCoverageType": "vynedental:MaxillofacialProstheticsCoverageType",
+    "ImplantServicesCoverageType": "vynedental:ImplantServicesCoverageType",
+    "ProsthodonticsFixedCoverageType": "vynedental:ProsthodonticsFixedCoverageType",
+    "OralMaxillofacialSurgeryCoverageType": "vynedental:OralMaxillofacialSurgeryCoverageType",
+    "OrthodonticsCoverageType": "vynedental:OrthodonticsCoverageType",
+    "AdjunctiveServicesCoverageType": "vynedental:AdjunctiveServicesCoverageType",
+    "SleepApneaCoverageType": "vynedental:SleepApneaCoverageType",
+    "Coverages": "vynedental:Coverages",
+    "PartialCoverages": "vynedental:PartialCoverages",
+    "BenefitType": "vynedental:BenefitType",
+    "PartialBenefitType": "vynedental:PartialBenefitType",
+    "PatientCoverageType": "vynedental:PatientCoverageType",
+    "PatientType": "vynedental:PatientType",
+    "PayerType": "vynedental:PayerType",
+    "PlanType": "vynedental:PlanType",
+    "RulesType": "vynedental:RulesType",
+    "ProviderType": "vynedental:ProviderType",
+    "EBCoverageLevelEnum": "vynedental:EBCoverageLevelEnum",
+    "EBPlanPeriodEnum": "vynedental:EBPlanPeriodEnum",
+    "EBAgeLimit": "vynedental:EBAgeLimit",
+    "EBEligibilityDetails": "vynedental:EBEligibilityDetails",
+    "EBGenericHSDType": "vynedental:EBGenericHSDType",
+    "EBPlanMetadataType": "vynedental:EBPlanMetadataType",
+    "EBReferenceType": "vynedental:EBReferenceType"
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Vyne Dental API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Vyne Dental's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-13) from openapi/vynedental-eligibility-api-openapi.yml.",
+  "dcterms:created": "2026-10-13",
+  "dcterms:source": [
+    "openapi/vynedental-eligibility-api-openapi.yml"
+  ]
+}

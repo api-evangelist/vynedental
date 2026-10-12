@@ -1,0 +1,14 @@
+generated: '2026-10-13'
+method: searched
+source: https://developers.onederful.co/documentation/
+summary: Every Vyne API request carries a JWT bearer token obtained by POSTing client_id and client_secret (JSON body) to https://production.onederful.co/oauth2/token; tokens return scope feature:eligibility, expires_in 3600, token_type Bearer. A token invalidation endpoint (/oauth2/token/invalidate) and a JWKS (/.well-known/jwks.json) are published in the OpenAPI.
+schemes:
+- type: oauth2
+  flow: client_credentials
+  token_url: https://production.onederful.co/oauth2/token
+  token_format: JWT
+  scopes:
+  - feature:eligibility
+  header: 'Authorization: Bearer <token>'
+  token_lifetime_seconds: 3600
+docs: https://developers.onederful.co/documentation/

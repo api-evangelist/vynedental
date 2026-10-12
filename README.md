@@ -64,5 +64,21 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vyne Dental is a company surfaced via the API Evangelist harvest backlog (source: market-gap) and added to the network as a stub for full-pipeline profiling.
-- https://vynedental.com
+Vyne Dental is a dental revenue-cycle and connectivity company (clearinghouse claims and attachments, eligibility and benefits, patient statements and payments, the Vyne Trellis portal). Its public developer surface is the Eligibility and Benefits API family (Onederful API, ClearCoverage API, Standard API).
+
+## APIs
+
+- **Vyne Dental Eligibility and Benefits API (Onederful)** - 17 paths, OpenAPI 3.0 published by Vyne at https://production.onederful.co/swagger.json, saved verbatim in `openapi/_original/` (local copy adds only a title and the documented servers). Docs: https://developers.onederful.co/documentation/
+
+## Provenance
+
+- Ownership: vynedental.com/onederful/ redirects to vynedental.com/api-eligibility-benefits/, which links the "Vyne API Documentation Portal" at developers.onederful.co; that reference names production.onederful.co as the API host.
+- Authentication (OAuth2 client credentials, JWT bearer) and sandbox artifacts were read from the API reference. Remaining artifacts are derived by script from the spec.
+- Not documented in the spec: the Payer List endpoint (`GET /payer/list`), which appears only in the prose reference.
+
+## Links
+
+- Website: https://vynedental.com
+- Developer portal: https://developers.onederful.co/
+- Status: https://status.vynedental.com
+

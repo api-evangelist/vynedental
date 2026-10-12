@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vynedental/main/json-schema/vynedental-rules-type-schema.json",
+  "title": "RulesType",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/RulesType",
+  "type": "object",
+  "properties": {
+    "alternative_benefits_may_apply": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/YesNoEnum"
+        }
+      ]
+    },
+    "coordination_of_benefits_requirements": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dependent_child_max_age": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "dependent_student_max_age": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "missing_tooth_clause_applies": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/YesNoEnum"
+        }
+      ]
+    },
+    "orthodontic_initial_payment_percentage": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "orthodontic_recurring_payment_frequency": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/OrthodonticRecurringPaymentFrequencyEnum"
+        }
+      ]
+    },
+    "payment_on_seat_or_prep": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/SeatPrepEnum"
+        }
+      ]
+    },
+    "predetermination_requirements": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "waiting_period_for_basic_services": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/YesNoEnum"
+        }
+      ]
+    },
+    "waiting_period_for_major_services": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/YesNoEnum"
+        }
+      ]
+    }
+  },
+  "required": [
+    "alternative_benefits_may_apply",
+    "coordination_of_benefits_requirements",
+    "dependent_child_max_age",
+    "dependent_student_max_age",
+    "missing_tooth_clause_applies",
+    "orthodontic_initial_payment_percentage",
+    "orthodontic_recurring_payment_frequency",
+    "payment_on_seat_or_prep",
+    "predetermination_requirements",
+    "waiting_period_for_basic_services",
+    "waiting_period_for_major_services"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "OrthodonticRecurringPaymentFrequencyEnum": {
+      "type": "string",
+      "enum": [
+        "ANNUALLY",
+        "MONTHLY",
+        "QUARTERLY",
+        "SEMI_ANNUALLY",
+        "UNKNOWN"
+      ]
+    },
+    "SeatPrepEnum": {
+      "type": "string",
+      "enum": [
+        "PREP",
+        "SEAT",
+        "UNKNOWN"
+      ]
+    },
+    "YesNoEnum": {
+      "type": "string",
+      "enum": [
+        "NO",
+        "YES"
+      ]
+    }
+  }
+}

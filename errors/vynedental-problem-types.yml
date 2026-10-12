@@ -1,0 +1,47 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/vynedental-eligibility-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: null
+coverage:
+  operations: 17
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: Default Response
+  operations: 6
+  media_types:
+  - application/json
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthorized — no response body
+  operations: 3
+  media_types: []
+  schema: null
+- status: 403
+  title: Forbidden
+  description: Default Response
+  operations: 6
+  media_types:
+  - application/json
+  schema: null
+- status: 404
+  title: Not Found
+  description: Default Response
+  operations: 4
+  media_types:
+  - application/json
+  schema: null
+- status: 415
+  title: Unsupported Media Type
+  description: Content-Type must be application/edi-x12
+  operations: 3
+  media_types:
+  - application/json
+  schema: null

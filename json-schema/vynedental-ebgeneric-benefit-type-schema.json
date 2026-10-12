@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vynedental/main/json-schema/vynedental-ebgeneric-benefit-type-schema.json",
+  "title": "EBGenericBenefitType",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/EBGenericBenefitType",
+  "type": "object",
+  "properties": {
+    "age_limit": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EBAgeLimit"
+        }
+      ]
+    },
+    "amount": {
+      "type": "string"
+    },
+    "applies_to_deductible": {
+      "type": "boolean"
+    },
+    "category": {
+      "type": "string"
+    },
+    "coverage_level": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EBCoverageLevelEnum"
+        }
+      ]
+    },
+    "disclaimers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "does_deductible_apply_to_basic": {
+      "type": "boolean"
+    },
+    "does_deductible_apply_to_preventive": {
+      "type": "boolean"
+    },
+    "eligibility_details": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EBEligibilityDetails"
+      }
+    },
+    "health_service_descriptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EBGenericHSDType"
+      }
+    },
+    "insurance_type": {
+      "type": "string"
+    },
+    "limitation": {
+      "type": "string"
+    },
+    "limitation_applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EBPlanMetadataType"
+      }
+    },
+    "network": {
+      "type": "string"
+    },
+    "payer_specific_description": {
+      "type": "string"
+    },
+    "percent": {
+      "type": "string"
+    },
+    "plan_period": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/EBPlanPeriodEnum"
+        }
+      ]
+    },
+    "procedure_code": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "quantity_qualifier": {
+      "type": "string"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EBReferenceType"
+      }
+    },
+    "service_dates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/EBServiceHistoryType"
+      }
+    },
+    "service_type": {
+      "type": "string"
+    },
+    "services_remaining": {
+      "type": "number"
+    },
+    "supported_procedure_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "EBAgeLimit": {
+      "type": "object",
+      "properties": {
+        "age_high_value": {
+          "type": "string"
+        },
+        "age_low_value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EBCoverageLevelEnum": {
+      "type": "string",
+      "enum": [
+        "children_only",
+        "dependents_only",
+        "employee_and_children",
+        "employee_and_spouse",
+        "employee_only",
+        "family",
+        "individual",
+        "spouse_and_children",
+        "spouse_only",
+        "unknown"
+      ]
+    },
+    "EBEligibilityDetails": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "eligibility": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EBGenericHSDType": {
+      "type": "object",
+      "properties": {
+        "delivery_frequency": {
+          "type": "string"
+        },
+        "delivery_pattern_time": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "quantity_qualifier": {
+          "type": "string"
+        },
+        "time_period_qualifier": {
+          "type": "string"
+        },
+        "time_period_value": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "unit_qualifier": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EBPlanMetadataType": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "qualifier": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EBPlanPeriodEnum": {
+      "type": "string",
+      "enum": [
+        "calendar",
+        "contract",
+        "lifetime",
+        "lifetime_remaining",
+        "lifetime_used",
+        "plan",
+        "policy",
+        "remaining",
+        "service",
+        "unknown",
+        "used",
+        "year_to_date"
+      ]
+    },
+    "EBReferenceType": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "reference_qualifier": {
+          "type": "string"
+        },
+        "reference_value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EBServiceHistoryType": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "procedure_code": {
+          "type": "string"
+        },
+        "service_date": {
+          "type": "string"
+        },
+        "service_type": {
+          "type": "string"
+        },
+        "tooth_code": {
+          "type": "string"
+        },
+        "tooth_range": {
+          "type": "string"
+        },
+        "tooth_surfaces": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

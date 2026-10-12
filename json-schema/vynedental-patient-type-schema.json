@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/vynedental/main/json-schema/vynedental-patient-type-schema.json",
+  "title": "PatientType",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/vynedental-eligibility-api-openapi.yml#/components/schemas/PatientType",
+  "type": "object",
+  "properties": {
+    "address": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/AddressType"
+        }
+      ]
+    },
+    "coverage": {
+      "$ref": "#/$defs/PatientCoverageType"
+    },
+    "dob": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$"
+    },
+    "first_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gender": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/GenderEnum"
+        }
+      ]
+    },
+    "last_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "member_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "middle_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relationship": {
+      "nullable": true,
+      "allOf": [
+        {
+          "$ref": "#/$defs/RelationshipEnum"
+        }
+      ]
+    }
+  },
+  "required": [
+    "address",
+    "coverage",
+    "dob",
+    "first_name",
+    "gender",
+    "last_name",
+    "member_id",
+    "middle_name",
+    "name",
+    "relationship"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "AddressType": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "street": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zip": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "city",
+        "state",
+        "street",
+        "zip"
+      ],
+      "additionalProperties": false
+    },
+    "CoverageStatusEnum": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "NOT_FOUND",
+        "TERMINATED",
+        "UNKNOWN"
+      ]
+    },
+    "GenderEnum": {
+      "type": "string",
+      "enum": [
+        "FEMALE",
+        "MALE",
+        "UNKNOWN"
+      ]
+    },
+    "PatientCoverageType": {
+      "type": "object",
+      "properties": {
+        "effective_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$"
+        },
+        "end_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$"
+        },
+        "status": {
+          "nullable": true,
+          "allOf": [
+            {
+              "$ref": "#/$defs/CoverageStatusEnum"
+            }
+          ]
+        }
+      },
+      "required": [
+        "effective_date",
+        "end_date",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "RelationshipEnum": {
+      "type": "string",
+      "enum": [
+        "CHILD",
+        "DEPENDENT",
+        "SELF",
+        "SPOUSE",
+        "UNKNOWN"
+      ]
+    }
+  }
+}
