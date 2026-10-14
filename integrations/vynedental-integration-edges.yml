@@ -1,5 +1,5 @@
 generated: '2026-10-13'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/vynedental/integrations
 - https://zapier.com/apps/vyne-dental/integrations
@@ -7,6 +7,7 @@ source:
 - https://composio.dev/toolkits/vynedental
 - https://monid.ai/tools/vynedental
 checked:
+- eclinicalworks/integrations/eclinicalworks-integration-edges.yml
 - https://composio.dev/toolkits/vynedental
 - https://monid.ai/tools/vynedental
 - https://n8n.io/integrations/vynedental/
@@ -14,5 +15,22 @@ checked:
 - https://zapier.com/apps/vynedental/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: eClinicalWorks (own)
+  partner: eclinicalworks
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.eclinicalworks.com/about-us/partners/back-office/
+  mirror_of: eclinicalworks/integrations/eclinicalworks-integration-edges.yml
+  apps:
+  - Vyne Dental
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: back office
 templates: []
