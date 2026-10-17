@@ -1,0 +1,48 @@
+{
+  "provider": "vynedental",
+  "sources": [
+    "_original/vynedental-onederful-swagger.json"
+  ],
+  "outputs": [
+    "vynedental-well-known-api-openapi.yml",
+    "vynedental-async-api-openapi.yml",
+    "vynedental-edi-api-openapi.yml",
+    "vynedental-eligibility-api-openapi.yml",
+    "vynedental-eligibility-response-api-openapi.yml",
+    "vynedental-eligibility-status-api-openapi.yml",
+    "vynedental-enhanced-eligibility-api-openapi.yml",
+    "vynedental-oauth2-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vynedental-onederful-swagger.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "vynedental-onederful-swagger.json: tagged paths POST /async/eligibility -> Async",
+    "vynedental-onederful-swagger.json: tagged paths POST /async/eligibility/sequenced-search -> Async",
+    "vynedental-onederful-swagger.json: tagged paths POST /async/enhanced-eligibility -> Async",
+    "vynedental-onederful-swagger.json: tagged paths POST /async/enhanced-eligibility/targeted -> Async",
+    "vynedental-onederful-swagger.json: tagged paths GET /eligibility-response/{onederfulId} -> Eligibility Response",
+    "vynedental-onederful-swagger.json: tagged paths GET /eligibility-response/{onederfulId}/html -> Eligibility Response",
+    "vynedental-onederful-swagger.json: tagged paths POST /eligibility -> Eligibility",
+    "vynedental-onederful-swagger.json: tagged paths POST /enhanced-eligibility -> Enhanced Eligibility",
+    "vynedental-onederful-swagger.json: tagged paths POST /enhanced-eligibility/targeted -> Enhanced Eligibility",
+    "vynedental-onederful-swagger.json: tagged paths GET /eligibility-status/{onederfulId} -> Eligibility Status",
+    "vynedental-onederful-swagger.json: tagged paths POST /oauth2/token -> Oauth2",
+    "vynedental-onederful-swagger.json: tagged paths POST /oauth2/token/invalidate -> Oauth2",
+    "vynedental-onederful-swagger.json: tagged paths GET /.well-known/jwks.json -> .well Known",
+    "vynedental-onederful-swagger.json: declared missing tag: .well Known",
+    "vynedental-onederful-swagger.json: declared missing tag: Async",
+    "vynedental-onederful-swagger.json: declared missing tag: EDI",
+    "vynedental-onederful-swagger.json: declared missing tag: Eligibility",
+    "vynedental-onederful-swagger.json: declared missing tag: Eligibility Response",
+    "vynedental-onederful-swagger.json: declared missing tag: Eligibility Status",
+    "vynedental-onederful-swagger.json: declared missing tag: Enhanced Eligibility",
+    "vynedental-onederful-swagger.json: declared missing tag: Oauth2",
+    "apis.yml register: written (+7 apis, 8 total)"
+  ],
+  "skipped": [
+    "vynedental-eligibility-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

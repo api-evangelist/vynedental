@@ -76,7 +76,10 @@ common:
 apis:
 - aid: vynedental:eligibility-and-benefits-api
   name: Vyne Dental Eligibility and Benefits API (Onederful)
-  description: Real-time and asynchronous dental eligibility and benefits checks (JSON, HTML and EDI 271 responses), enhanced/ClearCoverage eligibility, async status and response retrieval, and OAuth2 token issuance. 17 paths published by Vyne Dental at production.onederful.co/swagger.json.
+  description: >-
+    Real-time and asynchronous dental eligibility and benefits checks (JSON, HTML and EDI 271 responses),
+    enhanced/ClearCoverage eligibility, async status and response retrieval, and OAuth2 token issuance.
+    17 paths published by Vyne Dental at production.onederful.co/swagger.json.
   humanURL: https://developers.onederful.co/documentation/
   baseURL: https://production.onederful.co
   tags:
@@ -107,6 +110,76 @@ apis:
     url: json-schema/vynedental-plan-type-schema.json
   - type: JSONSchema
     url: json-schema/vynedental-patient-type-schema.json
+- aid: vynedental:vynedental-async-api
+  name: Vyne Dental Async API
+  description: The Async API from Vyne Dental — 4 operation(s) for async.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Async
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-async-api-openapi.yml
+- aid: vynedental:vynedental-edi-api
+  name: Vyne Dental EDI API
+  description: The EDI API from Vyne Dental — 4 operation(s) for edi.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - EDI
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-edi-api-openapi.yml
+- aid: vynedental:vynedental-eligibility-response-api
+  name: Vyne Dental Eligibility Response API
+  description: The Eligibility Response API from Vyne Dental — 2 operation(s) for eligibility response.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Eligibility Response
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-eligibility-response-api-openapi.yml
+- aid: vynedental:vynedental-eligibility-status-api
+  name: Vyne Dental Eligibility Status API
+  description: The Eligibility Status API from Vyne Dental — 1 operation(s) for eligibility status.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Eligibility Status
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-eligibility-status-api-openapi.yml
+- aid: vynedental:vynedental-enhanced-eligibility-api
+  name: Vyne Dental Enhanced Eligibility API
+  description: The Enhanced Eligibility API from Vyne Dental — 2 operation(s) for enhanced eligibility.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Enhanced Eligibility
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-enhanced-eligibility-api-openapi.yml
+- aid: vynedental:vynedental-oauth2-api
+  name: Vyne Dental Oauth2 API
+  description: The Oauth2 API from Vyne Dental — 2 operation(s) for oauth2.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - Oauth2
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-oauth2-api-openapi.yml
+- aid: vynedental:vynedental-well-known-api
+  name: Vyne Dental .well Known API
+  description: The .well Known API from Vyne Dental — 1 operation(s) for .well known.
+  humanURL: https://developers.onederful.co/documentation/
+  baseURL: https://production.onederful.co
+  tags:
+  - .well Known
+  properties:
+  - type: OpenAPI
+    url: openapi/vynedental-well-known-api-openapi.yml
 x-enrichment:
   date: '2026-10-13'
   status: enriched

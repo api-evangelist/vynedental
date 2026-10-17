@@ -1,0 +1,3680 @@
+openapi: 3.2.0
+info:
+  title: Documentation Async API
+  version: 1.0.0
+servers: []
+tags:
+- name: Async
+paths:
+  /async/eligibility:
+    post:
+      summary: Asynchronous eligibility check
+      description: Enqueues an eligibility request for asynchronous processing. No retry behavior — a "member not found" rejection fails the transaction immediately. For per-payer configured retries, see POST /async/eligibility/sequenced-search. Requires feature:eligibility scope.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - anyOf:
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        network:
+                          type: string
+                        payer_specific_description:
+                          type: string
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    procedure_codes:
+                      type: array
+                      items:
+                        type: string
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                      required:
+                      - dob
+                    dependent:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - null
+                  required:
+                  - provider
+                  - payer
+                  - subscriber
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        network:
+                          type: string
+                        payer_specific_description:
+                          type: string
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    procedure_codes:
+                      type: array
+                      items:
+                        type: string
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                    dependent:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                        relationship_to_insured:
+                          type: string
+                      required:
+                      - dob
+                  required:
+                  - provider
+                  - payer
+                  - dependent
+              - type: object
+                properties:
+                  callback:
+                    type: string
+                    format: uri
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                - onederfulId
+                additionalProperties: false
+      tags:
+      - Async
+      operationId: postAsyncEligibility
+      x-operation-id-source: derived
+  /async/eligibility/sequenced-search:
+    post:
+      summary: Asynchronous eligibility check (Sequenced Alternate Member Searching)
+      description: Enqueues an eligibility request and, when the payer rejects it as "member not found", automatically retries using that payer's configured sequence of alternate member-data subsets before failing the transaction. Every attempt is recorded in a retry_details array on the response retrieved via GET /eligibility-response/{onederfulId}. Because each retry is an additional round-trip to the payer, a request on this endpoint can take considerably longer to complete than one on /async/eligibility. Requires feature:sequenced-search scope.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - anyOf:
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        network:
+                          type: string
+                        payer_specific_description:
+                          type: string
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    procedure_codes:
+                      type: array
+                      items:
+                        type: string
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                      required:
+                      - dob
+                    dependent:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - null
+                  required:
+                  - provider
+                  - payer
+                  - subscriber
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        network:
+                          type: string
+                        payer_specific_description:
+                          type: string
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    procedure_codes:
+                      type: array
+                      items:
+                        type: string
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                    dependent:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                        relationship_to_insured:
+                          type: string
+                      required:
+                      - dob
+                  required:
+                  - provider
+                  - payer
+                  - dependent
+              - type: object
+                properties:
+                  callback:
+                    type: string
+                    format: uri
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                - onederfulId
+                additionalProperties: false
+      tags:
+      - Async
+      operationId: postAsyncEligibilitySequencedSearch
+      x-operation-id-source: derived
+  /async/enhanced-eligibility:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - anyOf:
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                      required:
+                      - dob
+                    dependent:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - null
+                  required:
+                  - provider
+                  - payer
+                  - subscriber
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    subscriber:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                    dependent:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                        relationship_to_insured:
+                          type: string
+                      required:
+                      - dob
+                  required:
+                  - provider
+                  - payer
+                  - dependent
+              - type: object
+                properties:
+                  callback:
+                    type: string
+                    format: uri
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                - onederfulId
+                additionalProperties: false
+      tags:
+      - Async
+      summary: Create async enhanced eligibility
+      x-summary-source: derived
+      operationId: postAsyncEnhancedEligibility
+      x-operation-id-source: derived
+  /async/enhanced-eligibility/targeted:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - anyOf:
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    procedure_codes:
+                      minItems: 1
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - diagnostic
+                        - preventive
+                        - restorative
+                        - endodontics
+                        - periodontics
+                        - prosthodontics_removable
+                        - maxillofacial_prosthetics
+                        - implant_services
+                        - prosthodontics_fixed
+                        - oral_maxillofacial_surgery
+                        - orthodontics
+                        - adjunctive_services
+                        - sleep_apnea
+                        - exams
+                        - pre_diagnostic_services
+                        - fmx
+                        - periapicals
+                        - bitewings
+                        - panoramic_images
+                        - cephalometric_image
+                        - intraoral_photos
+                        - diagnostic_tests_exams
+                        - cone_beam
+                        - advanced_images
+                        - surface_scans
+                        - interpretation_and_report_only
+                        - advanced_imaging_cbct_interpretation
+                        - blood_saliva_tests
+                        - microbial_genetic_testing
+                        - caries_pulp_testing
+                        - abnormality_detection
+                        - diagnostic_cast
+                        - carie_risk_assessment
+                        - antigen_testing
+                        - image_only
+                        - prophy
+                        - fluoride
+                        - counseling
+                        - sealants
+                        - preventative_agents
+                        - space_maintainer_fixed
+                        - space_maintainer_removable
+                        - space_maintainer_rebond
+                        - space_maintainer_removal
+                        - distal_space_maintainer
+                        - amalgam_fillings
+                        - anterior_composite_fillings
+                        - posterior_composite_fillings
+                        - gold_foil_restoration
+                        - metallic_inlays
+                        - metallic_onlays
+                        - porcelain_inlays
+                        - porcelain_onlays
+                        - composite_inlays
+                        - composite_onlays
+                        - porcelain_ceramic_veneers
+                        - resin_veneers
+                        - porcelain_crowns
+                        - fullcast_crown
+                        - recement_crown
+                        - prefab_stainless_steel_crown
+                        - core_buildup
+                        - post_core
+                        - prefab_post_core
+                        - labial_veneer
+                        - pulp_capping
+                        - pulpotomy
+                        - pulpal_therapy
+                        - endo_therapy_permanent
+                        - endo_therapy_special
+                        - endo_retreat
+                        - apex_recal
+                        - pulpal_regeneration
+                        - apico_surgery
+                        - additional_endo
+                        - gingivectomy_gingivoplasty
+                        - surgical_removal_granulation_tissue
+                        - gingival_flap_procedures
+                        - crown_lengthening_procedures
+                        - osseous_surgery
+                        - perio_bone_graft
+                        - guided_tissue_regeneration
+                        - soft_tissue_grafts
+                        - autogenous_tissue_graft
+                        - scaling_and_root_planing
+                        - full_mouth_debridement
+                        - scaling_presence_of_inflammation
+                        - periodontal_maintenance
+                        - complete_dentures
+                        - immediate_dentures
+                        - partial_dentures
+                        - adjustments_complete_dentures
+                        - repairs_complete_dentures
+                        - repairs_partial_dentures
+                        - denture_rebase_procedures
+                        - denture_reline_procedures
+                        - interim_denture
+                        - interim_partial_denture
+                        - other_removable_prosthetic_services
+                        - facial_moulage
+                        - nasal_prosthesis
+                        - auricular_prosthesis
+                        - orbital_prosthesis
+                        - ocular_prosthesis
+                        - cranial_prosthesis
+                        - facial_prosthesis
+                        - obturator_prosthesis
+                        - mandibular_prosthesis
+                        - augmentative_prosthesis
+                        - speech_aid_prosthesis
+                        - palatal_prosthesis
+                        - pre_surgical_evaluation
+                        - surgical_implant_placement
+                        - subperiosteal_implants
+                        - implant_removal_repair
+                        - implant_bone_graft
+                        - implant_tissue_regeneration
+                        - implant_crowns_restorations
+                        - additional_implant_prosthetic_services
+                        - overdenture
+                        - hybrid_prosthesis
+                        - abutment_supported_crowns
+                        - implant_supported_crowns
+                        - abutment_supported_fixed_partial_denture_fpd
+                        - implant_supported_fixed_partial_denture_fpd
+                        - implant_maintenance
+                        - implant_crowns_prosthesis_repairs
+                        - recement
+                        - implant_component_replacement
+                        - pontics_porcelain_ceramic
+                        - pontics_cast_metal
+                        - pontics_titanium_high_noble_metal
+                        - pontics_porcelain_fused_to_metal
+                        - pontics_resin_with_metal
+                        - retainers_inlays_metallic_ceramic
+                        - retainers_onlays_ceramic_resin_metal
+                        - retainers_crowns_porcelain_ceramic
+                        - retainers_crowns_porcelain_fused_to_metal
+                        - retainers_crowns_metallic
+                        - services_recementation_repair
+                        - stress_breakers_precision_attachments
+                        - surgical_specialized_prosthetic_work
+                        - extractions_and_removals
+                        - advanced_surgical_procedures
+                        - alveoloplasty
+                        - vestibuloplasty
+                        - excision_of_soft_tissue_lesions
+                        - excision_of_intra_osseous_lesions
+                        - excision_of_bone_tissue
+                        - surgical_incision
+                        - treatment_of_closed_fractures
+                        - tmj_surgical
+                        - tmj_nonsurgical
+                        - wound_suturing
+                        - regeneration_procedures
+                        - osteoplasty_procedures
+                        - osteotomy
+                        - lefort
+                        - extract_bone_graft
+                        - frenectomy
+                        - salivary_gland_procedures
+                        - special_surgical_procedures
+                        - implant_placement_surgical
+                        - appliance_removal
+                        - limited_orthodontic_treatment
+                        - comprehensive_orthodontic_treatment
+                        - appliances
+                        - orthodontic_evaluation
+                        - periodic_orthodontic_treatment_visit
+                        - periodic_orthognathic_surgery_visit
+                        - orthodontic_retention
+                        - orthodontic_appliance_removal_repair
+                        - orthodontic_fixed_retainer_repair
+                        - orthodontic_repairs
+                        - orthodontic_replacement
+                        - palliative_treatment
+                        - partial_denture_repair
+                        - tmj_therapy
+                        - local_anesthesia
+                        - deep_sedation
+                        - moderate_sedation
+                        - nitrous
+                        - professional_consultation_in_person
+                        - professional_visits_limited_follow_up
+                        - professional_visits_extended_home_care
+                        - drugs_injection
+                        - drugs_prescription_dispensing
+                        - miscellaneous_services_preventive_protective
+                        - clean_inspect_removal_denture
+                        - custom_aesthetic_appliance
+                        - athletic_occlusal_guard
+                        - occlusal_guard_adjustment_repair
+                        - occlusal_guards
+                        - orthodontic_splint_therapy
+                        - cosmetic_aesthetic
+                        - whitening
+                        - misc_fees
+                        - appointment_support
+                        - teledentistry
+                        - patient_education
+                        - custom_appliance_fabrication_placement
+                        - adjustment_repair
+                        - reline_resurfacing
+                        - oral_appliance_therapy_oat_accessories
+                        - titration_follow_up
+                        - testing_screening
+                        - problem_focused_exams
+                        - full_mouth_series
+                        - periapical_radiographs
+                        - extraoral_radiographs
+                        - bitewing_radiographs
+                        - tmj_imaging
+                        - tomographic_survey
+                        - sialography
+                        - panoramic_radiograph
+                        - cephalometric_radiograph
+                        - intraoral_photo
+                        - mri_ultrasound_capture
+                        - advanced_imaging
+                        - intraoral_tomosynthesis
+                        - advanced_3d_services
+                        - blood_saliva_testing
+                        - cracked_tooth_testing
+                        - caries_risk_assessment
+                        - pathogen_testing
+                        - image_capture_only
+                        - diagnostic_other
+                        - dental_prophylaxis
+                        - topical_fluoride
+                        - preventive_counseling
+                        - sealant_services
+                        - preventive_resin_restoration
+                        - preventive_medicaments
+                        - fixed_space_maintainers
+                        - removable_space_maintainers
+                        - distal_shoe_maintainer
+                        - preventive_other
+                        - amalgam_restorations
+                        - posterior_composite_restorations
+                        - anterior_composite_restorations
+                        - composite_crown
+                        - gold_foil_restorations
+                        - resin_metal_crowns
+                        - ceramic_metal_crowns
+                        - partial_cast_crowns
+                        - fullcast_crowns
+                        - titanium_crowns
+                        - restorative_foundation
+                        - interim_crowns
+                        - recement_rebond_services
+                        - prefabricated_permanent_crowns
+                        - prefabricated_primary_crowns
+                        - tooth_fragment_reattachment
+                        - indirect_post_core
+                        - labial_veneers
+                        - pin_retention
+                        - additional_indirect_post
+                        - post_removal
+                        - restoration_removal
+                        - restoration_repairs
+                        - crown_customization
+                        - hydroxyapatite_medication
+                        - restorative_other
+                        - pulpotomy_services
+                        - primary_tooth_therapy
+                        - permanent_tooth_therapy
+                        - special_endodontic_therapy
+                        - endodontic_retreatment
+                        - apexification_recalcification
+                        - surgical_root_repair
+                        - periradicular_materials
+                        - endodontic_other
+                        - anatomic_crown_exposure
+                        - bone_replacement_grafts
+                        - regenerative_materials
+                        - surgical_revision
+                        - wedge_procedure
+                        - additional_tissue_grafts
+                        - barrier_removal
+                        - scaling_root_planing
+                        - localized_antimicrobials
+                        - periodontal_splinting
+                        - gingival_inflammation_scaling
+                        - gingival_irrigation
+                        - periodontic_other
+                        - unilateral_partials
+                        - denture_adjustments
+                        - complete_denture_repairs
+                        - partial_denture_repairs
+                        - denture_rebases
+                        - denture_relines
+                        - soft_liners
+                        - tissue_conditioning
+                        - precision_attachments_removeable
+                        - tooth_borne_overdentures
+                        - implant_modifications
+                        - interim_complete_dentures
+                        - interim_partial_dentures
+                        - metal_substructures
+                        - denture_duplication
+                        - prosthodontics_removable_other
+                        - guidance_prostheses
+                        - trismus_appliance
+                        - resection_prosthesis
+                        - speech_feeding_aids
+                        - surgical_stents_splints
+                        - radiation_carriers
+                        - medicament_carriers
+                        - commissure_splint
+                        - prosthesis_services
+                        - maxillofacial_prosthetics_other
+                        - implant_placement
+                        - implant_debridement
+                        - implant_removal
+                        - implant_bone_grafts
+                        - implant_regeneration
+                        - implant_bars_abutments
+                        - removable_implant_denture
+                        - implant_supported_denture
+                        - abutment_supported_fpd
+                        - implant_supported_fpd
+                        - implant_recement_rebond
+                        - implant_component_removal
+                        - implant_component_repair
+                        - implant_other
+                        - composite_pontics
+                        - cast_metal_pontics
+                        - titanium_pontics
+                        - ceramic_metal_pontics
+                        - resin_metal_pontics
+                        - interim_pontics
+                        - resin_bonded_retainers
+                        - retainer_inlays
+                        - retainer_onlays
+                        - composite_retainer_crowns
+                        - resin_metal_retainers
+                        - ceramic_retainer_crowns
+                        - ceramic_metal_retainers
+                        - partial_cast_retainers
+                        - full_cast_retainers
+                        - interim_retainer_crowns
+                        - connector_bars
+                        - fpd_recement_rebond
+                        - stress_breakers
+                        - precision_attachments_fixed
+                        - fpd_repairs
+                        - fixed_pediatric_partials
+                        - prosthodontics_other
+                        - extractions_removals
+                        - nerve_dissection
+                        - sinus_closure
+                        - tooth_reimplantation
+                        - tooth_exposure
+                        - tissue_biopsy_sampling
+                        - tooth_repositioning
+                        - anchorage_placement
+                        - bone_harvest_graft
+                        - corticotomy_procedures
+                        - anchorage_removal
+                        - soft_tissue_excision
+                        - intraosseous_excision
+                        - bone_tissue_excision
+                        - closed_fractures
+                        - open_fractures
+                        - unspecified_tmd
+                        - skin_grafts
+                        - hemostatic_biologics
+                        - orthognathic_indexing
+                        - osteotomy_procedures
+                        - lefort_procedures
+                        - bone_grafting
+                        - defect_repairs
+                        - tissue_regeneration
+                        - tissue_reduction
+                        - salivary_procedures
+                        - craniofacial_implants
+                        - facial_bone_grafts
+                        - appliance_fixation_services
+                        - oral_maxillofacial_surgery_other
+                        - limited_orthodontics
+                        - comprehensive_orthodontics
+                        - habit_appliances
+                        - treatment_visits
+                        - appliance_removal_repair
+                        - retainer_recement_rebond
+                        - retainer_repairs
+                        - retainer_replacement
+                        - orthodontics_other
+                        - fpd_sectioning
+                        - photobiomodulation_therapy
+                        - sedation_evaluation
+                        - minimal_sedation
+                        - professional_consultations
+                        - facility_visits
+                        - office_visits
+                        - case_presentation
+                        - therapeutic_drugs
+                        - dispensed_medicaments
+                        - desensitizing_services
+                        - patient_screening
+                        - facial_injectables
+                        - behavior_management
+                        - complication_treatment
+                        - guard_cleaning
+                        - adjunctive_services_other
+                        - sleep_apnea_other
+                        - D0120
+                        - D0140
+                        - D0145
+                        - D0150
+                        - D0160
+                        - D0170
+                        - D0171
+                        - D0180
+                        - D0190
+                        - D0191
+                        - D0210
+                        - D0220
+                        - D0230
+                        - D0240
+                        - D0250
+                        - D0251
+                        - D0270
+                        - D0272
+                        - D0273
+                        - D0274
+                        - D0277
+                        - D0330
+                        - D0340
+                        - D0350
+                        - D0310
+                        - D0320
+                        - D0321
+                        - D0322
+                        - D0364
+                        - D0365
+                        - D0366
+                        - D0367
+                        - D0368
+                        - D0380
+                        - D0381
+                        - D0382
+                        - D0383
+                        - D0384
+                        - D0385
+                        - D0386
+                        - D0369
+                        - D0370
+                        - D0371
+                        - D0372
+                        - D0373
+                        - D0374
+                        - D0387
+                        - D0388
+                        - D0389
+                        - D0801
+                        - D0802
+                        - D0803
+                        - D0804
+                        - D0391
+                        - D0393
+                        - D0394
+                        - D0395
+                        - D0396
+                        - D0411
+                        - D0412
+                        - D0417
+                        - D0418
+                        - D0419
+                        - D0414
+                        - D0415
+                        - D0416
+                        - D0422
+                        - D0423
+                        - D0425
+                        - D0460
+                        - D0431
+                        - D0461
+                        - D0470
+                        - D0600
+                        - D0601
+                        - D0602
+                        - D0603
+                        - D0604
+                        - D0605
+                        - D0606
+                        - D0701
+                        - D0702
+                        - D0703
+                        - D0704
+                        - D0705
+                        - D0706
+                        - D0707
+                        - D0708
+                        - D0709
+                        - D1110
+                        - D1120
+                        - D1206
+                        - D1208
+                        - D1301
+                        - D1310
+                        - D1320
+                        - D1321
+                        - D1330
+                        - D1351
+                        - D1352
+                        - D1353
+                        - D1354
+                        - D1355
+                        - D1510
+                        - D1516
+                        - D1517
+                        - D1520
+                        - D1526
+                        - D1527
+                        - D1551
+                        - D1552
+                        - D1553
+                        - D1556
+                        - D1557
+                        - D1558
+                        - D1575
+                        - D2140
+                        - D2150
+                        - D2160
+                        - D2161
+                        - D2940
+                        - D2330
+                        - D2331
+                        - D2332
+                        - D2335
+                        - D2391
+                        - D2392
+                        - D2393
+                        - D2394
+                        - D2410
+                        - D2420
+                        - D2430
+                        - D2510
+                        - D2520
+                        - D2530
+                        - D2542
+                        - D2543
+                        - D2544
+                        - D2610
+                        - D2620
+                        - D2630
+                        - D2642
+                        - D2643
+                        - D2644
+                        - D2650
+                        - D2651
+                        - D2652
+                        - D2662
+                        - D2663
+                        - D2664
+                        - D2710
+                        - D2712
+                        - D2720
+                        - D2721
+                        - D2722
+                        - D2740
+                        - D2750
+                        - D2751
+                        - D2752
+                        - D2753
+                        - D2780
+                        - D2781
+                        - D2782
+                        - D2783
+                        - D2790
+                        - D2791
+                        - D2792
+                        - D2794
+                        - D2799
+                        - D2920
+                        - D2930
+                        - D2933
+                        - D2934
+                        - D2950
+                        - D2951
+                        - D2952
+                        - D2954
+                        - D2960
+                        - D2961
+                        - D2962
+                        - D3110
+                        - D3120
+                        - D3220
+                        - D3221
+                        - D3222
+                        - D3230
+                        - D3240
+                        - D3310
+                        - D3320
+                        - D3330
+                        - D3331
+                        - D3332
+                        - D3333
+                        - D3346
+                        - D3347
+                        - D3348
+                        - D3351
+                        - D3352
+                        - D3353
+                        - D3355
+                        - D3356
+                        - D3357
+                        - D3410
+                        - D3421
+                        - D3425
+                        - D3426
+                        - D3471
+                        - D3472
+                        - D3473
+                        - D3501
+                        - D3502
+                        - D3503
+                        - D3428
+                        - D3429
+                        - D3430
+                        - D3431
+                        - D3432
+                        - D3450
+                        - D3460
+                        - D3470
+                        - D3910
+                        - D3911
+                        - D3920
+                        - D3921
+                        - D3950
+                        - D4210
+                        - D4211
+                        - D4212
+                        - D4921
+                        - D4230
+                        - D4231
+                        - D4240
+                        - D4241
+                        - D4249
+                        - D4260
+                        - D4261
+                        - D4263
+                        - D4264
+                        - D4265
+                        - D4266
+                        - D4267
+                        - D4268
+                        - D4270
+                        - D4273
+                        - D4274
+                        - D4275
+                        - D4276
+                        - D4277
+                        - D4278
+                        - D4283
+                        - D4285
+                        - D4286
+                        - D4341
+                        - D4342
+                        - D4355
+                        - D4346
+                        - D4910
+                        - D5110
+                        - D5120
+                        - D5130
+                        - D5140
+                        - D5211
+                        - D5212
+                        - D5213
+                        - D5214
+                        - D5221
+                        - D5222
+                        - D5223
+                        - D5224
+                        - D5225
+                        - D5226
+                        - D5227
+                        - D5228
+                        - D5282
+                        - D5283
+                        - D5284
+                        - D5286
+                        - D5410
+                        - D5411
+                        - D5421
+                        - D5422
+                        - D5511
+                        - D5512
+                        - D5520
+                        - D5611
+                        - D5612
+                        - D5621
+                        - D5622
+                        - D5630
+                        - D5640
+                        - D5650
+                        - D5660
+                        - D5670
+                        - D5671
+                        - D5710
+                        - D5711
+                        - D5720
+                        - D5721
+                        - D5725
+                        - D5730
+                        - D5731
+                        - D5740
+                        - D5741
+                        - D5750
+                        - D5751
+                        - D5760
+                        - D5761
+                        - D5810
+                        - D5811
+                        - D5820
+                        - D5821
+                        - D5765
+                        - D5850
+                        - D5851
+                        - D5862
+                        - D5863
+                        - D5864
+                        - D5865
+                        - D5866
+                        - D5867
+                        - D5875
+                        - D5876
+                        - D5877
+                        - D5878
+                        - D5911
+                        - D5912
+                        - D5913
+                        - D5922
+                        - D5926
+                        - D5914
+                        - D5927
+                        - D5915
+                        - D5928
+                        - D5916
+                        - D5923
+                        - D5924
+                        - D5919
+                        - D5925
+                        - D5929
+                        - D5931
+                        - D5932
+                        - D5933
+                        - D5936
+                        - D5934
+                        - D5935
+                        - D5984
+                        - D5985
+                        - D5952
+                        - D5953
+                        - D5960
+                        - D5954
+                        - D5955
+                        - D5958
+                        - D5959
+                        - D6190
+                        - D6010
+                        - D6011
+                        - D6012
+                        - D6013
+                        - D6040
+                        - D6050
+                        - D6100
+                        - D6101
+                        - D6102
+                        - D6105
+                        - D6103
+                        - D6104
+                        - D6106
+                        - D6107
+                        - D6055
+                        - D6056
+                        - D6057
+                        - D6051
+                        - D6191
+                        - D6192
+                        - D6110
+                        - D6111
+                        - D6112
+                        - D6113
+                        - D6114
+                        - D6115
+                        - D6116
+                        - D6117
+                        - D6118
+                        - D6119
+                        - D6058
+                        - D6059
+                        - D6060
+                        - D6061
+                        - D6097
+                        - D6062
+                        - D6063
+                        - D6064
+                        - D6094
+                        - D6065
+                        - D6066
+                        - D6082
+                        - D6083
+                        - D6084
+                        - D6067
+                        - D6086
+                        - D6087
+                        - D6088
+                        - D6068
+                        - D6069
+                        - D6070
+                        - D6071
+                        - D6195
+                        - D6072
+                        - D6073
+                        - D6074
+                        - D6194
+                        - D6075
+                        - D6076
+                        - D6098
+                        - D6099
+                        - D6120
+                        - D6077
+                        - D6121
+                        - D6122
+                        - D6123
+                        - D6049
+                        - D6080
+                        - D6180
+                        - D6081
+                        - D6085
+                        - D6090
+                        - D6091
+                        - D6089
+                        - D6092
+                        - D6093
+                        - D6193
+                        - D6197
+                        - D6198
+                        - D6205
+                        - D6210
+                        - D6211
+                        - D6212
+                        - D6214
+                        - D6240
+                        - D6241
+                        - D6242
+                        - D6243
+                        - D6245
+                        - D6250
+                        - D6251
+                        - D6252
+                        - D6253
+                        - D6545
+                        - D6548
+                        - D6549
+                        - D6600
+                        - D6601
+                        - D6602
+                        - D6603
+                        - D6604
+                        - D6605
+                        - D6606
+                        - D6607
+                        - D6624
+                        - D6608
+                        - D6609
+                        - D6610
+                        - D6611
+                        - D6612
+                        - D6613
+                        - D6614
+                        - D6615
+                        - D6634
+                        - D6710
+                        - D6740
+                        - D6780
+                        - D6781
+                        - D6782
+                        - D6783
+                        - D6784
+                        - D6720
+                        - D6721
+                        - D6722
+                        - D6750
+                        - D6751
+                        - D6752
+                        - D6753
+                        - D6790
+                        - D6791
+                        - D6792
+                        - D6793
+                        - D6794
+                        - D6920
+                        - D6930
+                        - D6940
+                        - D6950
+                        - D6980
+                        - D6985
+                        - D7111
+                        - D7140
+                        - D7210
+                        - D7220
+                        - D7230
+                        - D7240
+                        - D7241
+                        - D7250
+                        - D7251
+                        - D7252
+                        - D7259
+                        - D7260
+                        - D7261
+                        - D7270
+                        - D7272
+                        - D7280
+                        - D7282
+                        - D7283
+                        - D7284
+                        - D7285
+                        - D7286
+                        - D7287
+                        - D7288
+                        - D7290
+                        - D7291
+                        - D7292
+                        - D7293
+                        - D7294
+                        - D7295
+                        - D7296
+                        - D7297
+                        - D7298
+                        - D7299
+                        - D7300
+                        - D7310
+                        - D7311
+                        - D7320
+                        - D7321
+                        - D7340
+                        - D7350
+                        - D7410
+                        - D7411
+                        - D7412
+                        - D7413
+                        - D7414
+                        - D7415
+                        - D7465
+                        - D7440
+                        - D7441
+                        - D7450
+                        - D7451
+                        - D7460
+                        - D7461
+                        - D7471
+                        - D7472
+                        - D7473
+                        - D7485
+                        - D7490
+                        - D7509
+                        - D7510
+                        - D7511
+                        - D7520
+                        - D7521
+                        - D7530
+                        - D7540
+                        - D7550
+                        - D7560
+                        - D7610
+                        - D7620
+                        - D7630
+                        - D7640
+                        - D7650
+                        - D7660
+                        - D7670
+                        - D7671
+                        - D7680
+                        - D7710
+                        - D7720
+                        - D7730
+                        - D7740
+                        - D7750
+                        - D7760
+                        - D7770
+                        - D7771
+                        - D7780
+                        - D7810
+                        - D7820
+                        - D7830
+                        - D7840
+                        - D7850
+                        - D7852
+                        - D7854
+                        - D7856
+                        - D7858
+                        - D7860
+                        - D7865
+                        - D7872
+                        - D7873
+                        - D7874
+                        - D7875
+                        - D7876
+                        - D7877
+                        - D7870
+                        - D7871
+                        - D7880
+                        - D7881
+                        - D7899
+                        - D7910
+                        - D7911
+                        - D7912
+                        - D7921
+                        - D7922
+                        - D7955
+                        - D7956
+                        - D7957
+                        - D7939
+                        - D7940
+                        - D7941
+                        - D7943
+                        - D7944
+                        - D7945
+                        - D7946
+                        - D7947
+                        - D7948
+                        - D7949
+                        - D7950
+                        - D7951
+                        - D7952
+                        - D7953
+                        - D7961
+                        - D7962
+                        - D7963
+                        - D7979
+                        - D7980
+                        - D7981
+                        - D7982
+                        - D7983
+                        - D7990
+                        - D7991
+                        - D7993
+                        - D7994
+                        - D7995
+                        - D7996
+                        - D7997
+                        - D7998
+                        - D8010
+                        - D8020
+                        - D8030
+                        - D8040
+                        - D8070
+                        - D8080
+                        - D8090
+                        - D8210
+                        - D8220
+                        - D8660
+                        - D8670
+                        - D8671
+                        - D8680
+                        - D8681
+                        - D8695
+                        - D8696
+                        - D8697
+                        - D8698
+                        - D8699
+                        - D8701
+                        - D8702
+                        - D8703
+                        - D8704
+                        - D9110
+                        - D9120
+                        - D9130
+                        - D9210
+                        - D9211
+                        - D9212
+                        - D9215
+                        - D9224
+                        - D9225
+                        - D9222
+                        - D9223
+                        - D9244
+                        - D9239
+                        - D9248
+                        - D9245
+                        - D9246
+                        - D9247
+                        - D9243
+                        - D9230
+                        - D9310
+                        - D9311
+                        - D9410
+                        - D9420
+                        - D9430
+                        - D9440
+                        - D9450
+                        - D9610
+                        - D9612
+                        - D9613
+                        - D9630
+                        - D9910
+                        - D9911
+                        - D9912
+                        - D9913
+                        - D9914
+                        - D9932
+                        - D9933
+                        - D9934
+                        - D9935
+                        - D9936
+                        - D9938
+                        - D9939
+                        - D9941
+                        - D9942
+                        - D9943
+                        - D9944
+                        - D9945
+                        - D9946
+                        - D9950
+                        - D9951
+                        - D9952
+                        - D9970
+                        - D9971
+                        - D9972
+                        - D9973
+                        - D9974
+                        - D9975
+                        - D9961
+                        - D9985
+                        - D9986
+                        - D9987
+                        - D9990
+                        - D9991
+                        - D9992
+                        - D9993
+                        - D9920
+                        - D9995
+                        - D9996
+                        - D9994
+                        - D9997
+                        - D9947
+                        - D9948
+                        - D9949
+                        - D9953
+                        - D9954
+                        - D9955
+                        - D9956
+                        - D9957
+                        - D0426
+                        - D0999
+                        - D1999
+                        - D2390
+                        - D2949
+                        - D2910
+                        - D2915
+                        - D2928
+                        - D2931
+                        - D2932
+                        - D2929
+                        - D2921
+                        - D2953
+                        - D2955
+                        - D2956
+                        - D2980
+                        - D2981
+                        - D2982
+                        - D2983
+                        - D2971
+                        - D2991
+                        - D2957
+                        - D2975
+                        - D2976
+                        - D2989
+                        - D2990
+                        - D2999
+                        - D3999
+                        - D4245
+                        - D4381
+                        - D4322
+                        - D4323
+                        - D4920
+                        - D4999
+                        - D5899
+                        - D5909
+                        - D5930
+                        - D5937
+                        - D5938
+                        - D5939
+                        - D5940
+                        - D5941
+                        - D5942
+                        - D5943
+                        - D5944
+                        - D5945
+                        - D5946
+                        - D5947
+                        - D5948
+                        - D5949
+                        - D5951
+                        - D5982
+                        - D5988
+                        - D5983
+                        - D5986
+                        - D5991
+                        - D5995
+                        - D5996
+                        - D5987
+                        - D5992
+                        - D5993
+                        - D5999
+                        - D6280
+                        - D6096
+                        - D6196
+                        - D6199
+                        - D6999
+                        - D7920
+                        - D7970
+                        - D7971
+                        - D7972
+                        - D7999
+                        - D8091
+                        - D8999
+                        - D9128
+                        - D9129
+                        - D9219
+                        - D9930
+                        - D9999
+                        - D9959
+                    subscriber:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                      required:
+                      - dob
+                    dependent:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - null
+                  required:
+                  - provider
+                  - payer
+                  - procedure_codes
+                  - subscriber
+                - type: object
+                  properties:
+                    provider:
+                      type: object
+                      properties:
+                        npi:
+                          type: string
+                          minLength: 10
+                          maxLength: 10
+                        tax_id:
+                          type: string
+                          minLength: 9
+                          maxLength: 9
+                        gender:
+                          type: string
+                          enum:
+                          - M
+                          - F
+                          - U
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - npi
+                    payer:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                      required:
+                      - id
+                    version:
+                      type: string
+                    location_id:
+                      type: string
+                    options:
+                      type: object
+                      properties:
+                        status_classifier:
+                          type: boolean
+                      required:
+                      - status_classifier
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnumInput'
+                    procedure_codes:
+                      minItems: 1
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                        - diagnostic
+                        - preventive
+                        - restorative
+                        - endodontics
+                        - periodontics
+                        - prosthodontics_removable
+                        - maxillofacial_prosthetics
+                        - implant_services
+                        - prosthodontics_fixed
+                        - oral_maxillofacial_surgery
+                        - orthodontics
+                        - adjunctive_services
+                        - sleep_apnea
+                        - exams
+                        - pre_diagnostic_services
+                        - fmx
+                        - periapicals
+                        - bitewings
+                        - panoramic_images
+                        - cephalometric_image
+                        - intraoral_photos
+                        - diagnostic_tests_exams
+                        - cone_beam
+                        - advanced_images
+                        - surface_scans
+                        - interpretation_and_report_only
+                        - advanced_imaging_cbct_interpretation
+                        - blood_saliva_tests
+                        - microbial_genetic_testing
+                        - caries_pulp_testing
+                        - abnormality_detection
+                        - diagnostic_cast
+                        - carie_risk_assessment
+                        - antigen_testing
+                        - image_only
+                        - prophy
+                        - fluoride
+                        - counseling
+                        - sealants
+                        - preventative_agents
+                        - space_maintainer_fixed
+                        - space_maintainer_removable
+                        - space_maintainer_rebond
+                        - space_maintainer_removal
+                        - distal_space_maintainer
+                        - amalgam_fillings
+                        - anterior_composite_fillings
+                        - posterior_composite_fillings
+                        - gold_foil_restoration
+                        - metallic_inlays
+                        - metallic_onlays
+                        - porcelain_inlays
+                        - porcelain_onlays
+                        - composite_inlays
+                        - composite_onlays
+                        - porcelain_ceramic_veneers
+                        - resin_veneers
+                        - porcelain_crowns
+                        - fullcast_crown
+                        - recement_crown
+                        - prefab_stainless_steel_crown
+                        - core_buildup
+                        - post_core
+                        - prefab_post_core
+                        - labial_veneer
+                        - pulp_capping
+                        - pulpotomy
+                        - pulpal_therapy
+                        - endo_therapy_permanent
+                        - endo_therapy_special
+                        - endo_retreat
+                        - apex_recal
+                        - pulpal_regeneration
+                        - apico_surgery
+                        - additional_endo
+                        - gingivectomy_gingivoplasty
+                        - surgical_removal_granulation_tissue
+                        - gingival_flap_procedures
+                        - crown_lengthening_procedures
+                        - osseous_surgery
+                        - perio_bone_graft
+                        - guided_tissue_regeneration
+                        - soft_tissue_grafts
+                        - autogenous_tissue_graft
+                        - scaling_and_root_planing
+                        - full_mouth_debridement
+                        - scaling_presence_of_inflammation
+                        - periodontal_maintenance
+                        - complete_dentures
+                        - immediate_dentures
+                        - partial_dentures
+                        - adjustments_complete_dentures
+                        - repairs_complete_dentures
+                        - repairs_partial_dentures
+                        - denture_rebase_procedures
+                        - denture_reline_procedures
+                        - interim_denture
+                        - interim_partial_denture
+                        - other_removable_prosthetic_services
+                        - facial_moulage
+                        - nasal_prosthesis
+                        - auricular_prosthesis
+                        - orbital_prosthesis
+                        - ocular_prosthesis
+                        - cranial_prosthesis
+                        - facial_prosthesis
+                        - obturator_prosthesis
+                        - mandibular_prosthesis
+                        - augmentative_prosthesis
+                        - speech_aid_prosthesis
+                        - palatal_prosthesis
+                        - pre_surgical_evaluation
+                        - surgical_implant_placement
+                        - subperiosteal_implants
+                        - implant_removal_repair
+                        - implant_bone_graft
+                        - implant_tissue_regeneration
+                        - implant_crowns_restorations
+                        - additional_implant_prosthetic_services
+                        - overdenture
+                        - hybrid_prosthesis
+                        - abutment_supported_crowns
+                        - implant_supported_crowns
+                        - abutment_supported_fixed_partial_denture_fpd
+                        - implant_supported_fixed_partial_denture_fpd
+                        - implant_maintenance
+                        - implant_crowns_prosthesis_repairs
+                        - recement
+                        - implant_component_replacement
+                        - pontics_porcelain_ceramic
+                        - pontics_cast_metal
+                        - pontics_titanium_high_noble_metal
+                        - pontics_porcelain_fused_to_metal
+                        - pontics_resin_with_metal
+                        - retainers_inlays_metallic_ceramic
+                        - retainers_onlays_ceramic_resin_metal
+                        - retainers_crowns_porcelain_ceramic
+                        - retainers_crowns_porcelain_fused_to_metal
+                        - retainers_crowns_metallic
+                        - services_recementation_repair
+                        - stress_breakers_precision_attachments
+                        - surgical_specialized_prosthetic_work
+                        - extractions_and_removals
+                        - advanced_surgical_procedures
+                        - alveoloplasty
+                        - vestibuloplasty
+                        - excision_of_soft_tissue_lesions
+                        - excision_of_intra_osseous_lesions
+                        - excision_of_bone_tissue
+                        - surgical_incision
+                        - treatment_of_closed_fractures
+                        - tmj_surgical
+                        - tmj_nonsurgical
+                        - wound_suturing
+                        - regeneration_procedures
+                        - osteoplasty_procedures
+                        - osteotomy
+                        - lefort
+                        - extract_bone_graft
+                        - frenectomy
+                        - salivary_gland_procedures
+                        - special_surgical_procedures
+                        - implant_placement_surgical
+                        - appliance_removal
+                        - limited_orthodontic_treatment
+                        - comprehensive_orthodontic_treatment
+                        - appliances
+                        - orthodontic_evaluation
+                        - periodic_orthodontic_treatment_visit
+                        - periodic_orthognathic_surgery_visit
+                        - orthodontic_retention
+                        - orthodontic_appliance_removal_repair
+                        - orthodontic_fixed_retainer_repair
+                        - orthodontic_repairs
+                        - orthodontic_replacement
+                        - palliative_treatment
+                        - partial_denture_repair
+                        - tmj_therapy
+                        - local_anesthesia
+                        - deep_sedation
+                        - moderate_sedation
+                        - nitrous
+                        - professional_consultation_in_person
+                        - professional_visits_limited_follow_up
+                        - professional_visits_extended_home_care
+                        - drugs_injection
+                        - drugs_prescription_dispensing
+                        - miscellaneous_services_preventive_protective
+                        - clean_inspect_removal_denture
+                        - custom_aesthetic_appliance
+                        - athletic_occlusal_guard
+                        - occlusal_guard_adjustment_repair
+                        - occlusal_guards
+                        - orthodontic_splint_therapy
+                        - cosmetic_aesthetic
+                        - whitening
+                        - misc_fees
+                        - appointment_support
+                        - teledentistry
+                        - patient_education
+                        - custom_appliance_fabrication_placement
+                        - adjustment_repair
+                        - reline_resurfacing
+                        - oral_appliance_therapy_oat_accessories
+                        - titration_follow_up
+                        - testing_screening
+                        - problem_focused_exams
+                        - full_mouth_series
+                        - periapical_radiographs
+                        - extraoral_radiographs
+                        - bitewing_radiographs
+                        - tmj_imaging
+                        - tomographic_survey
+                        - sialography
+                        - panoramic_radiograph
+                        - cephalometric_radiograph
+                        - intraoral_photo
+                        - mri_ultrasound_capture
+                        - advanced_imaging
+                        - intraoral_tomosynthesis
+                        - advanced_3d_services
+                        - blood_saliva_testing
+                        - cracked_tooth_testing
+                        - caries_risk_assessment
+                        - pathogen_testing
+                        - image_capture_only
+                        - diagnostic_other
+                        - dental_prophylaxis
+                        - topical_fluoride
+                        - preventive_counseling
+                        - sealant_services
+                        - preventive_resin_restoration
+                        - preventive_medicaments
+                        - fixed_space_maintainers
+                        - removable_space_maintainers
+                        - distal_shoe_maintainer
+                        - preventive_other
+                        - amalgam_restorations
+                        - posterior_composite_restorations
+                        - anterior_composite_restorations
+                        - composite_crown
+                        - gold_foil_restorations
+                        - resin_metal_crowns
+                        - ceramic_metal_crowns
+                        - partial_cast_crowns
+                        - fullcast_crowns
+                        - titanium_crowns
+                        - restorative_foundation
+                        - interim_crowns
+                        - recement_rebond_services
+                        - prefabricated_permanent_crowns
+                        - prefabricated_primary_crowns
+                        - tooth_fragment_reattachment
+                        - indirect_post_core
+                        - labial_veneers
+                        - pin_retention
+                        - additional_indirect_post
+                        - post_removal
+                        - restoration_removal
+                        - restoration_repairs
+                        - crown_customization
+                        - hydroxyapatite_medication
+                        - restorative_other
+                        - pulpotomy_services
+                        - primary_tooth_therapy
+                        - permanent_tooth_therapy
+                        - special_endodontic_therapy
+                        - endodontic_retreatment
+                        - apexification_recalcification
+                        - surgical_root_repair
+                        - periradicular_materials
+                        - endodontic_other
+                        - anatomic_crown_exposure
+                        - bone_replacement_grafts
+                        - regenerative_materials
+                        - surgical_revision
+                        - wedge_procedure
+                        - additional_tissue_grafts
+                        - barrier_removal
+                        - scaling_root_planing
+                        - localized_antimicrobials
+                        - periodontal_splinting
+                        - gingival_inflammation_scaling
+                        - gingival_irrigation
+                        - periodontic_other
+                        - unilateral_partials
+                        - denture_adjustments
+                        - complete_denture_repairs
+                        - partial_denture_repairs
+                        - denture_rebases
+                        - denture_relines
+                        - soft_liners
+                        - tissue_conditioning
+                        - precision_attachments_removeable
+                        - tooth_borne_overdentures
+                        - implant_modifications
+                        - interim_complete_dentures
+                        - interim_partial_dentures
+                        - metal_substructures
+                        - denture_duplication
+                        - prosthodontics_removable_other
+                        - guidance_prostheses
+                        - trismus_appliance
+                        - resection_prosthesis
+                        - speech_feeding_aids
+                        - surgical_stents_splints
+                        - radiation_carriers
+                        - medicament_carriers
+                        - commissure_splint
+                        - prosthesis_services
+                        - maxillofacial_prosthetics_other
+                        - implant_placement
+                        - implant_debridement
+                        - implant_removal
+                        - implant_bone_grafts
+                        - implant_regeneration
+                        - implant_bars_abutments
+                        - removable_implant_denture
+                        - implant_supported_denture
+                        - abutment_supported_fpd
+                        - implant_supported_fpd
+                        - implant_recement_rebond
+                        - implant_component_removal
+                        - implant_component_repair
+                        - implant_other
+                        - composite_pontics
+                        - cast_metal_pontics
+                        - titanium_pontics
+                        - ceramic_metal_pontics
+                        - resin_metal_pontics
+                        - interim_pontics
+                        - resin_bonded_retainers
+                        - retainer_inlays
+                        - retainer_onlays
+                        - composite_retainer_crowns
+                        - resin_metal_retainers
+                        - ceramic_retainer_crowns
+                        - ceramic_metal_retainers
+                        - partial_cast_retainers
+                        - full_cast_retainers
+                        - interim_retainer_crowns
+                        - connector_bars
+                        - fpd_recement_rebond
+                        - stress_breakers
+                        - precision_attachments_fixed
+                        - fpd_repairs
+                        - fixed_pediatric_partials
+                        - prosthodontics_other
+                        - extractions_removals
+                        - nerve_dissection
+                        - sinus_closure
+                        - tooth_reimplantation
+                        - tooth_exposure
+                        - tissue_biopsy_sampling
+                        - tooth_repositioning
+                        - anchorage_placement
+                        - bone_harvest_graft
+                        - corticotomy_procedures
+                        - anchorage_removal
+                        - soft_tissue_excision
+                        - intraosseous_excision
+                        - bone_tissue_excision
+                        - closed_fractures
+                        - open_fractures
+                        - unspecified_tmd
+                        - skin_grafts
+                        - hemostatic_biologics
+                        - orthognathic_indexing
+                        - osteotomy_procedures
+                        - lefort_procedures
+                        - bone_grafting
+                        - defect_repairs
+                        - tissue_regeneration
+                        - tissue_reduction
+                        - salivary_procedures
+                        - craniofacial_implants
+                        - facial_bone_grafts
+                        - appliance_fixation_services
+                        - oral_maxillofacial_surgery_other
+                        - limited_orthodontics
+                        - comprehensive_orthodontics
+                        - habit_appliances
+                        - treatment_visits
+                        - appliance_removal_repair
+                        - retainer_recement_rebond
+                        - retainer_repairs
+                        - retainer_replacement
+                        - orthodontics_other
+                        - fpd_sectioning
+                        - photobiomodulation_therapy
+                        - sedation_evaluation
+                        - minimal_sedation
+                        - professional_consultations
+                        - facility_visits
+                        - office_visits
+                        - case_presentation
+                        - therapeutic_drugs
+                        - dispensed_medicaments
+                        - desensitizing_services
+                        - patient_screening
+                        - facial_injectables
+                        - behavior_management
+                        - complication_treatment
+                        - guard_cleaning
+                        - adjunctive_services_other
+                        - sleep_apnea_other
+                        - D0120
+                        - D0140
+                        - D0145
+                        - D0150
+                        - D0160
+                        - D0170
+                        - D0171
+                        - D0180
+                        - D0190
+                        - D0191
+                        - D0210
+                        - D0220
+                        - D0230
+                        - D0240
+                        - D0250
+                        - D0251
+                        - D0270
+                        - D0272
+                        - D0273
+                        - D0274
+                        - D0277
+                        - D0330
+                        - D0340
+                        - D0350
+                        - D0310
+                        - D0320
+                        - D0321
+                        - D0322
+                        - D0364
+                        - D0365
+                        - D0366
+                        - D0367
+                        - D0368
+                        - D0380
+                        - D0381
+                        - D0382
+                        - D0383
+                        - D0384
+                        - D0385
+                        - D0386
+                        - D0369
+                        - D0370
+                        - D0371
+                        - D0372
+                        - D0373
+                        - D0374
+                        - D0387
+                        - D0388
+                        - D0389
+                        - D0801
+                        - D0802
+                        - D0803
+                        - D0804
+                        - D0391
+                        - D0393
+                        - D0394
+                        - D0395
+                        - D0396
+                        - D0411
+                        - D0412
+                        - D0417
+                        - D0418
+                        - D0419
+                        - D0414
+                        - D0415
+                        - D0416
+                        - D0422
+                        - D0423
+                        - D0425
+                        - D0460
+                        - D0431
+                        - D0461
+                        - D0470
+                        - D0600
+                        - D0601
+                        - D0602
+                        - D0603
+                        - D0604
+                        - D0605
+                        - D0606
+                        - D0701
+                        - D0702
+                        - D0703
+                        - D0704
+                        - D0705
+                        - D0706
+                        - D0707
+                        - D0708
+                        - D0709
+                        - D1110
+                        - D1120
+                        - D1206
+                        - D1208
+                        - D1301
+                        - D1310
+                        - D1320
+                        - D1321
+                        - D1330
+                        - D1351
+                        - D1352
+                        - D1353
+                        - D1354
+                        - D1355
+                        - D1510
+                        - D1516
+                        - D1517
+                        - D1520
+                        - D1526
+                        - D1527
+                        - D1551
+                        - D1552
+                        - D1553
+                        - D1556
+                        - D1557
+                        - D1558
+                        - D1575
+                        - D2140
+                        - D2150
+                        - D2160
+                        - D2161
+                        - D2940
+                        - D2330
+                        - D2331
+                        - D2332
+                        - D2335
+                        - D2391
+                        - D2392
+                        - D2393
+                        - D2394
+                        - D2410
+                        - D2420
+                        - D2430
+                        - D2510
+                        - D2520
+                        - D2530
+                        - D2542
+                        - D2543
+                        - D2544
+                        - D2610
+                        - D2620
+                        - D2630
+                        - D2642
+                        - D2643
+                        - D2644
+                        - D2650
+                        - D2651
+                        - D2652
+                        - D2662
+                        - D2663
+                        - D2664
+                        - D2710
+                        - D2712
+                        - D2720
+                        - D2721
+                        - D2722
+                        - D2740
+                        - D2750
+                        - D2751
+                        - D2752
+                        - D2753
+                        - D2780
+                        - D2781
+                        - D2782
+                        - D2783
+                        - D2790
+                        - D2791
+                        - D2792
+                        - D2794
+                        - D2799
+                        - D2920
+                        - D2930
+                        - D2933
+                        - D2934
+                        - D2950
+                        - D2951
+                        - D2952
+                        - D2954
+                        - D2960
+                        - D2961
+                        - D2962
+                        - D3110
+                        - D3120
+                        - D3220
+                        - D3221
+                        - D3222
+                        - D3230
+                        - D3240
+                        - D3310
+                        - D3320
+                        - D3330
+                        - D3331
+                        - D3332
+                        - D3333
+                        - D3346
+                        - D3347
+                        - D3348
+                        - D3351
+                        - D3352
+                        - D3353
+                        - D3355
+                        - D3356
+                        - D3357
+                        - D3410
+                        - D3421
+                        - D3425
+                        - D3426
+                        - D3471
+                        - D3472
+                        - D3473
+                        - D3501
+                        - D3502
+                        - D3503
+                        - D3428
+                        - D3429
+                        - D3430
+                        - D3431
+                        - D3432
+                        - D3450
+                        - D3460
+                        - D3470
+                        - D3910
+                        - D3911
+                        - D3920
+                        - D3921
+                        - D3950
+                        - D4210
+                        - D4211
+                        - D4212
+                        - D4921
+                        - D4230
+                        - D4231
+                        - D4240
+                        - D4241
+                        - D4249
+                        - D4260
+                        - D4261
+                        - D4263
+                        - D4264
+                        - D4265
+                        - D4266
+                        - D4267
+                        - D4268
+                        - D4270
+                        - D4273
+                        - D4274
+                        - D4275
+                        - D4276
+                        - D4277
+                        - D4278
+                        - D4283
+                        - D4285
+                        - D4286
+                        - D4341
+                        - D4342
+                        - D4355
+                        - D4346
+                        - D4910
+                        - D5110
+                        - D5120
+                        - D5130
+                        - D5140
+                        - D5211
+                        - D5212
+                        - D5213
+                        - D5214
+                        - D5221
+                        - D5222
+                        - D5223
+                        - D5224
+                        - D5225
+                        - D5226
+                        - D5227
+                        - D5228
+                        - D5282
+                        - D5283
+                        - D5284
+                        - D5286
+                        - D5410
+                        - D5411
+                        - D5421
+                        - D5422
+                        - D5511
+                        - D5512
+                        - D5520
+                        - D5611
+                        - D5612
+                        - D5621
+                        - D5622
+                        - D5630
+                        - D5640
+                        - D5650
+                        - D5660
+                        - D5670
+                        - D5671
+                        - D5710
+                        - D5711
+                        - D5720
+                        - D5721
+                        - D5725
+                        - D5730
+                        - D5731
+                        - D5740
+                        - D5741
+                        - D5750
+                        - D5751
+                        - D5760
+                        - D5761
+                        - D5810
+                        - D5811
+                        - D5820
+                        - D5821
+                        - D5765
+                        - D5850
+                        - D5851
+                        - D5862
+                        - D5863
+                        - D5864
+                        - D5865
+                        - D5866
+                        - D5867
+                        - D5875
+                        - D5876
+                        - D5877
+                        - D5878
+                        - D5911
+                        - D5912
+                        - D5913
+                        - D5922
+                        - D5926
+                        - D5914
+                        - D5927
+                        - D5915
+                        - D5928
+                        - D5916
+                        - D5923
+                        - D5924
+                        - D5919
+                        - D5925
+                        - D5929
+                        - D5931
+                        - D5932
+                        - D5933
+                        - D5936
+                        - D5934
+                        - D5935
+                        - D5984
+                        - D5985
+                        - D5952
+                        - D5953
+                        - D5960
+                        - D5954
+                        - D5955
+                        - D5958
+                        - D5959
+                        - D6190
+                        - D6010
+                        - D6011
+                        - D6012
+                        - D6013
+                        - D6040
+                        - D6050
+                        - D6100
+                        - D6101
+                        - D6102
+                        - D6105
+                        - D6103
+                        - D6104
+                        - D6106
+                        - D6107
+                        - D6055
+                        - D6056
+                        - D6057
+                        - D6051
+                        - D6191
+                        - D6192
+                        - D6110
+                        - D6111
+                        - D6112
+                        - D6113
+                        - D6114
+                        - D6115
+                        - D6116
+                        - D6117
+                        - D6118
+                        - D6119
+                        - D6058
+                        - D6059
+                        - D6060
+                        - D6061
+                        - D6097
+                        - D6062
+                        - D6063
+                        - D6064
+                        - D6094
+                        - D6065
+                        - D6066
+                        - D6082
+                        - D6083
+                        - D6084
+                        - D6067
+                        - D6086
+                        - D6087
+                        - D6088
+                        - D6068
+                        - D6069
+                        - D6070
+                        - D6071
+                        - D6195
+                        - D6072
+                        - D6073
+                        - D6074
+                        - D6194
+                        - D6075
+                        - D6076
+                        - D6098
+                        - D6099
+                        - D6120
+                        - D6077
+                        - D6121
+                        - D6122
+                        - D6123
+                        - D6049
+                        - D6080
+                        - D6180
+                        - D6081
+                        - D6085
+                        - D6090
+                        - D6091
+                        - D6089
+                        - D6092
+                        - D6093
+                        - D6193
+                        - D6197
+                        - D6198
+                        - D6205
+                        - D6210
+                        - D6211
+                        - D6212
+                        - D6214
+                        - D6240
+                        - D6241
+                        - D6242
+                        - D6243
+                        - D6245
+                        - D6250
+                        - D6251
+                        - D6252
+                        - D6253
+                        - D6545
+                        - D6548
+                        - D6549
+                        - D6600
+                        - D6601
+                        - D6602
+                        - D6603
+                        - D6604
+                        - D6605
+                        - D6606
+                        - D6607
+                        - D6624
+                        - D6608
+                        - D6609
+                        - D6610
+                        - D6611
+                        - D6612
+                        - D6613
+                        - D6614
+                        - D6615
+                        - D6634
+                        - D6710
+                        - D6740
+                        - D6780
+                        - D6781
+                        - D6782
+                        - D6783
+                        - D6784
+                        - D6720
+                        - D6721
+                        - D6722
+                        - D6750
+                        - D6751
+                        - D6752
+                        - D6753
+                        - D6790
+                        - D6791
+                        - D6792
+                        - D6793
+                        - D6794
+                        - D6920
+                        - D6930
+                        - D6940
+                        - D6950
+                        - D6980
+                        - D6985
+                        - D7111
+                        - D7140
+                        - D7210
+                        - D7220
+                        - D7230
+                        - D7240
+                        - D7241
+                        - D7250
+                        - D7251
+                        - D7252
+                        - D7259
+                        - D7260
+                        - D7261
+                        - D7270
+                        - D7272
+                        - D7280
+                        - D7282
+                        - D7283
+                        - D7284
+                        - D7285
+                        - D7286
+                        - D7287
+                        - D7288
+                        - D7290
+                        - D7291
+                        - D7292
+                        - D7293
+                        - D7294
+                        - D7295
+                        - D7296
+                        - D7297
+                        - D7298
+                        - D7299
+                        - D7300
+                        - D7310
+                        - D7311
+                        - D7320
+                        - D7321
+                        - D7340
+                        - D7350
+                        - D7410
+                        - D7411
+                        - D7412
+                        - D7413
+                        - D7414
+                        - D7415
+                        - D7465
+                        - D7440
+                        - D7441
+                        - D7450
+                        - D7451
+                        - D7460
+                        - D7461
+                        - D7471
+                        - D7472
+                        - D7473
+                        - D7485
+                        - D7490
+                        - D7509
+                        - D7510
+                        - D7511
+                        - D7520
+                        - D7521
+                        - D7530
+                        - D7540
+                        - D7550
+                        - D7560
+                        - D7610
+                        - D7620
+                        - D7630
+                        - D7640
+                        - D7650
+                        - D7660
+                        - D7670
+                        - D7671
+                        - D7680
+                        - D7710
+                        - D7720
+                        - D7730
+                        - D7740
+                        - D7750
+                        - D7760
+                        - D7770
+                        - D7771
+                        - D7780
+                        - D7810
+                        - D7820
+                        - D7830
+                        - D7840
+                        - D7850
+                        - D7852
+                        - D7854
+                        - D7856
+                        - D7858
+                        - D7860
+                        - D7865
+                        - D7872
+                        - D7873
+                        - D7874
+                        - D7875
+                        - D7876
+                        - D7877
+                        - D7870
+                        - D7871
+                        - D7880
+                        - D7881
+                        - D7899
+                        - D7910
+                        - D7911
+                        - D7912
+                        - D7921
+                        - D7922
+                        - D7955
+                        - D7956
+                        - D7957
+                        - D7939
+                        - D7940
+                        - D7941
+                        - D7943
+                        - D7944
+                        - D7945
+                        - D7946
+                        - D7947
+                        - D7948
+                        - D7949
+                        - D7950
+                        - D7951
+                        - D7952
+                        - D7953
+                        - D7961
+                        - D7962
+                        - D7963
+                        - D7979
+                        - D7980
+                        - D7981
+                        - D7982
+                        - D7983
+                        - D7990
+                        - D7991
+                        - D7993
+                        - D7994
+                        - D7995
+                        - D7996
+                        - D7997
+                        - D7998
+                        - D8010
+                        - D8020
+                        - D8030
+                        - D8040
+                        - D8070
+                        - D8080
+                        - D8090
+                        - D8210
+                        - D8220
+                        - D8660
+                        - D8670
+                        - D8671
+                        - D8680
+                        - D8681
+                        - D8695
+                        - D8696
+                        - D8697
+                        - D8698
+                        - D8699
+                        - D8701
+                        - D8702
+                        - D8703
+                        - D8704
+                        - D9110
+                        - D9120
+                        - D9130
+                        - D9210
+                        - D9211
+                        - D9212
+                        - D9215
+                        - D9224
+                        - D9225
+                        - D9222
+                        - D9223
+                        - D9244
+                        - D9239
+                        - D9248
+                        - D9245
+                        - D9246
+                        - D9247
+                        - D9243
+                        - D9230
+                        - D9310
+                        - D9311
+                        - D9410
+                        - D9420
+                        - D9430
+                        - D9440
+                        - D9450
+                        - D9610
+                        - D9612
+                        - D9613
+                        - D9630
+                        - D9910
+                        - D9911
+                        - D9912
+                        - D9913
+                        - D9914
+                        - D9932
+                        - D9933
+                        - D9934
+                        - D9935
+                        - D9936
+                        - D9938
+                        - D9939
+                        - D9941
+                        - D9942
+                        - D9943
+                        - D9944
+                        - D9945
+                        - D9946
+                        - D9950
+                        - D9951
+                        - D9952
+                        - D9970
+                        - D9971
+                        - D9972
+                        - D9973
+                        - D9974
+                        - D9975
+                        - D9961
+                        - D9985
+                        - D9986
+                        - D9987
+                        - D9990
+                        - D9991
+                        - D9992
+                        - D9993
+                        - D9920
+                        - D9995
+                        - D9996
+                        - D9994
+                        - D9997
+                        - D9947
+                        - D9948
+                        - D9949
+                        - D9953
+                        - D9954
+                        - D9955
+                        - D9956
+                        - D9957
+                        - D0426
+                        - D0999
+                        - D1999
+                        - D2390
+                        - D2949
+                        - D2910
+                        - D2915
+                        - D2928
+                        - D2931
+                        - D2932
+                        - D2929
+                        - D2921
+                        - D2953
+                        - D2955
+                        - D2956
+                        - D2980
+                        - D2981
+                        - D2982
+                        - D2983
+                        - D2971
+                        - D2991
+                        - D2957
+                        - D2975
+                        - D2976
+                        - D2989
+                        - D2990
+                        - D2999
+                        - D3999
+                        - D4245
+                        - D4381
+                        - D4322
+                        - D4323
+                        - D4920
+                        - D4999
+                        - D5899
+                        - D5909
+                        - D5930
+                        - D5937
+                        - D5938
+                        - D5939
+                        - D5940
+                        - D5941
+                        - D5942
+                        - D5943
+                        - D5944
+                        - D5945
+                        - D5946
+                        - D5947
+                        - D5948
+                        - D5949
+                        - D5951
+                        - D5982
+                        - D5988
+                        - D5983
+                        - D5986
+                        - D5991
+                        - D5995
+                        - D5996
+                        - D5987
+                        - D5992
+                        - D5993
+                        - D5999
+                        - D6280
+                        - D6096
+                        - D6196
+                        - D6199
+                        - D6999
+                        - D7920
+                        - D7970
+                        - D7971
+                        - D7972
+                        - D7999
+                        - D8091
+                        - D8999
+                        - D9128
+                        - D9129
+                        - D9219
+                        - D9930
+                        - D9999
+                        - D9959
+                    subscriber:
+                      type:
+                      - object
+                      - 'null'
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                    dependent:
+                      type: object
+                      properties:
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        gender:
+                          allOf:
+                          - $ref: '#/components/schemas/GenderEnumInput'
+                        group_number:
+                          type: string
+                        address_line_one:
+                          type: string
+                        address_line_two:
+                          type:
+                          - string
+                          - 'null'
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        zip_code:
+                          type: string
+                        dob:
+                          type: string
+                        member_id:
+                          type: string
+                          minLength: 2
+                        relationship_to_insured:
+                          type: string
+                      required:
+                      - dob
+                  required:
+                  - provider
+                  - payer
+                  - procedure_codes
+                  - dependent
+              - type: object
+                properties:
+                  callback:
+                    type: string
+                    format: uri
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                required:
+                - onederfulId
+                additionalProperties: false
+      tags:
+      - Async
+      summary: Create async enhanced eligibility targeted
+      x-summary-source: derived
+      operationId: postAsyncEnhancedEligibilityTargeted
+      x-operation-id-source: derived
+components:
+  schemas:
+    ClearCoverageStructureEnumInput:
+      type: string
+      enum:
+      - CLEAR_COVERAGE_V1
+      - CLEAR_COVERAGE_V2
+    GenderEnumInput:
+      type: string
+      enum:
+      - FEMALE
+      - MALE
+      - UNKNOWN
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,2542 @@
+openapi: 3.2.0
+info:
+  title: Documentation Eligibility Response API
+  version: 1.0.0
+servers: []
+tags:
+- name: Eligibility Response
+paths:
+  /eligibility-response/{onederfulId}:
+    get:
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        in: path
+        name: onederfulId
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    active_coverage:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    benefit_computed:
+                      allOf:
+                      - $ref: '#/components/schemas/EBBenefitComputedType'
+                    coinsurance:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    coinsurance_computed:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    copayment:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    coverage:
+                      allOf:
+                      - $ref: '#/components/schemas/EBCoverageType'
+                    deductible:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    deductible_computed:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBBenefitAmountRemaining'
+                    dependents:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBPatientType'
+                    disclaimers:
+                      type: array
+                      items:
+                        type: string
+                    effective_dates:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBEffectivePeriod'
+                    limitations:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    maximum_computed:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBBenefitAmountRemaining'
+                    maximums:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    metadata:
+                      allOf:
+                      - $ref: '#/components/schemas/EBMetadataType'
+                    network_options_computed:
+                      type: array
+                      items:
+                        type: string
+                    not_covered:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    onederfulId:
+                      type: string
+                    out_of_pocket:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    patient:
+                      allOf:
+                      - $ref: '#/components/schemas/EBPatientType'
+                    patient_computed:
+                      allOf:
+                      - $ref: '#/components/schemas/EBPatientType'
+                    payer:
+                      allOf:
+                      - $ref: '#/components/schemas/EBPayerType'
+                    payer_specific_info:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    payer_uuid:
+                      type: string
+                    plan:
+                      allOf:
+                      - $ref: '#/components/schemas/EBPlanType'
+                    procedure_code_computed:
+                      allOf:
+                      - $ref: '#/components/schemas/EBProcedureCodeComputedType'
+                    procedure_code_list_computed:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBProcedureCodeComputedType'
+                    provider:
+                      allOf:
+                      - $ref: '#/components/schemas/EBProviderType'
+                    subscriber:
+                      allOf:
+                      - $ref: '#/components/schemas/EBPatientType'
+                    waiting_period:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBGenericBenefitType'
+                    retry_details:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EBRetryDetailType'
+                  additionalProperties: false
+                - type: object
+                  properties:
+                    benefits:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BenefitType'
+                    conditional_disclaimers:
+                      type: array
+                      items:
+                        type: string
+                    empty_networks:
+                      type: array
+                      items:
+                        anyOf:
+                        - $ref: '#/components/schemas/NetworkEnum'
+                        - $ref: '#/components/schemas/NetworkQualifierEnum'
+                    onederfulId:
+                      type:
+                      - string
+                      - 'null'
+                    provider:
+                      allOf:
+                      - $ref: '#/components/schemas/ProviderType'
+                    patient:
+                      $ref: '#/components/schemas/PatientType'
+                    payer:
+                      $ref: '#/components/schemas/PayerType'
+                    payer_transaction_id:
+                      type:
+                      - string
+                      - 'null'
+                    plan:
+                      $ref: '#/components/schemas/PlanType'
+                    request_id:
+                      type:
+                      - string
+                      - 'null'
+                    response_id:
+                      type:
+                      - string
+                      - 'null'
+                    response_structure:
+                      allOf:
+                      - $ref: '#/components/schemas/ClearCoverageStructureEnum'
+                    rules:
+                      $ref: '#/components/schemas/RulesType'
+                    subscriber:
+                      $ref: '#/components/schemas/PatientType'
+                  required:
+                  - benefits
+                  - conditional_disclaimers
+                  - empty_networks
+                  - onederfulId
+                  - provider
+                  - patient
+                  - payer
+                  - payer_transaction_id
+                  - plan
+                  - request_id
+                  - response_id
+                  - rules
+                  - subscriber
+                  additionalProperties: false
+                - type: object
+                  properties:
+                    onederfulId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    code:
+                      type: string
+                    message:
+                      type: string
+                    primaryReason:
+                      type: string
+                    errors:
+                      type: array
+                      items:
+                        type: object
+                        properties: {}
+                        additionalProperties: false
+                    status_code:
+                      type:
+                      - string
+                      - 'null'
+                    status_description:
+                      type:
+                      - string
+                      - 'null'
+                  required:
+                  - onederfulId
+                  - code
+                  - message
+                  - primaryReason
+                  - errors
+                  additionalProperties: false
+                - type: object
+                  properties:
+                    onederfulId:
+                      type: string
+                      format: uuid
+                      pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                    statusCode:
+                      type: number
+                      enum:
+                      - 200
+                    error:
+                      type:
+                      - string
+                      - 'null'
+                      enum:
+                      - null
+                    message:
+                      anyOf:
+                      - type: string
+                        enum:
+                        - Response is not ready
+                      - type: string
+                        enum:
+                        - Response unavailable
+                      - type: string
+                        enum:
+                        - Response only available in EDI format.
+                  required:
+                  - onederfulId
+                  - statusCode
+                  - error
+                  - message
+                  additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Unauthorized request
+                  message:
+                    type: string
+                    enum:
+                    - User is unauthorized to view this request
+                required:
+                - error
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Invalid request
+                  message:
+                    type: string
+                    enum:
+                    - Request could not be located
+                required:
+                - error
+                - message
+                additionalProperties: false
+      tags:
+      - Eligibility Response
+      summary: Get eligibility response by onederful id
+      x-summary-source: derived
+      operationId: getEligibilityResponseByOnederfulId
+      x-operation-id-source: derived
+  /eligibility-response/{onederfulId}/html:
+    get:
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        in: path
+        name: onederfulId
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    enum:
+                    - 200
+                  error:
+                    type:
+                    - string
+                    - 'null'
+                    enum:
+                    - null
+                  message:
+                    anyOf:
+                    - type: string
+                      enum:
+                      - Response is not ready
+                    - type: string
+                      enum:
+                      - Response unavailable
+                    - type: string
+                      enum:
+                      - Response only available in EDI format.
+                required:
+                - statusCode
+                - error
+                - message
+                additionalProperties: false
+            text/html:
+              schema:
+                type: string
+                format: html
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Unauthorized request
+                  message:
+                    type: string
+                    enum:
+                    - User is unauthorized to view this request
+                required:
+                - error
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                      enum:
+                      - Invalid request
+                    message:
+                      type: string
+                      enum:
+                      - Request could not be located
+                  required:
+                  - error
+                  - message
+                  additionalProperties: false
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                      enum:
+                      - UnsupportedFeatureException
+                    message:
+                      type: string
+                      enum:
+                      - This feature is only available for a Standard Eligibility Response.
+                  required:
+                  - error
+                  - message
+                  additionalProperties: false
+      tags:
+      - Eligibility Response
+      summary: Get eligibility response by onederful id html
+      x-summary-source: derived
+      operationId: getEligibilityResponseByOnederfulIdHtml
+      x-operation-id-source: derived
+components:
+  schemas:
+    ProviderType:
+      type: object
+      properties:
+        npi:
+          type:
+          - string
+          - 'null'
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+        tax_id:
+          type:
+          - string
+          - 'null'
+        organization_name:
+          type:
+          - string
+          - 'null'
+      required:
+      - npi
+      - first_name
+      - last_name
+      - tax_id
+      - organization_name
+      additionalProperties: false
+    EBRetryDetailType:
+      type: object
+      properties:
+        strategy_code:
+          type: string
+        fields_used:
+          type: array
+          items:
+            type: string
+        reject_reason:
+          allOf:
+          - $ref: '#/components/schemas/EBRejectionReasonType'
+        invalid_fields:
+          type: array
+          items:
+            type: string
+        start:
+          type: string
+        end:
+          type: string
+        skipped_duplicate_of:
+          type: string
+      required:
+      - strategy_code
+      - fields_used
+      - reject_reason
+      - invalid_fields
+      - start
+      - end
+      additionalProperties: false
+    PeriodonticsCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        gingivectomy_gingivoplasty:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        surgical_removal_granulation_tissue:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        gingival_flap_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        crown_lengthening_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        osseous_surgery:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        perio_bone_graft:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        guided_tissue_regeneration:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        soft_tissue_grafts:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        autogenous_tissue_graft:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        scaling_and_root_planing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        full_mouth_debridement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        scaling_presence_of_inflammation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        periodontal_maintenance:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - gingivectomy_gingivoplasty
+      - surgical_removal_granulation_tissue
+      - gingival_flap_procedures
+      - crown_lengthening_procedures
+      - osseous_surgery
+      - perio_bone_graft
+      - guided_tissue_regeneration
+      - soft_tissue_grafts
+      - autogenous_tissue_graft
+      - scaling_and_root_planing
+      - full_mouth_debridement
+      - scaling_presence_of_inflammation
+      - periodontal_maintenance
+      additionalProperties: false
+    RestorativeCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        amalgam_fillings:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        anterior_composite_fillings:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        posterior_composite_fillings:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        gold_foil_restoration:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        porcelain_inlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        metallic_inlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        porcelain_onlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        metallic_onlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        porcelain_ceramic_veneers:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        resin_veneers:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        porcelain_crowns:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        fullcast_crown:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        recement_crown:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        prefab_stainless_steel_crown:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        core_buildup:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        post_core:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        prefab_post_core:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        labial_veneer:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        composite_inlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        composite_onlays:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - amalgam_fillings
+      - anterior_composite_fillings
+      - posterior_composite_fillings
+      - gold_foil_restoration
+      - porcelain_inlays
+      - metallic_inlays
+      - porcelain_onlays
+      - metallic_onlays
+      - porcelain_ceramic_veneers
+      - resin_veneers
+      - porcelain_crowns
+      - fullcast_crown
+      - recement_crown
+      - prefab_stainless_steel_crown
+      - core_buildup
+      - post_core
+      - prefab_post_core
+      - labial_veneer
+      - composite_inlays
+      - composite_onlays
+      additionalProperties: false
+    OrthodonticsCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        limited_orthodontic_treatment:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        comprehensive_orthodontic_treatment:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        appliances:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_evaluation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        periodic_orthodontic_treatment_visit:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        periodic_orthognathic_surgery_visit:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_retention:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_appliance_removal_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_fixed_retainer_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_repairs:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_replacement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - limited_orthodontic_treatment
+      - comprehensive_orthodontic_treatment
+      - appliances
+      - orthodontic_evaluation
+      - periodic_orthodontic_treatment_visit
+      - periodic_orthognathic_surgery_visit
+      - orthodontic_retention
+      - orthodontic_appliance_removal_repair
+      - orthodontic_fixed_retainer_repair
+      - orthodontic_repairs
+      - orthodontic_replacement
+      additionalProperties: false
+    DentalClassificationEnum:
+      type: string
+      enum:
+      - BASIC
+      - MAJOR
+      - ORTHO
+      - PREVENTIVE
+    ClearCoverageStructureEnum:
+      type: string
+      enum:
+      - CLEAR_COVERAGE_V1
+      - CLEAR_COVERAGE_V2
+    ProcedureCodeType:
+      type: string
+      minLength: 5
+      maxLength: 5
+      pattern: ^D.*
+    EBAgeLimit:
+      type: object
+      properties:
+        age_high_value:
+          type: string
+        age_low_value:
+          type: string
+      additionalProperties: false
+    BenefitType:
+      type: object
+      properties:
+        network:
+          $ref: '#/components/schemas/NetworkEnum'
+        network_qualifier:
+          allOf:
+          - $ref: '#/components/schemas/NetworkQualifierEnum'
+        individual_deductible:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        individual_deductible_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        family_deductible:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        family_deductible_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        individual_maximum:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        individual_maximum_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        family_maximum:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        family_maximum_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        orthodontic_deductible:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        orthodontic_deductible_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        orthodontic_maximum:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        orthodontic_maximum_remaining:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        coverages:
+          $ref: '#/components/schemas/Coverages'
+      required:
+      - network
+      - network_qualifier
+      - individual_deductible
+      - individual_deductible_remaining
+      - family_deductible
+      - family_deductible_remaining
+      - individual_maximum
+      - individual_maximum_remaining
+      - family_maximum
+      - family_maximum_remaining
+      - orthodontic_deductible
+      - orthodontic_deductible_remaining
+      - orthodontic_maximum
+      - orthodontic_maximum_remaining
+      - coverages
+      additionalProperties: false
+    EndodonticsCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        pulp_capping:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pulpotomy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pulpal_therapy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        endo_therapy_permanent:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        endo_therapy_special:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        endo_retreat:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        apex_recal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pulpal_regeneration:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        apico_surgery:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        additional_endo:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - pulp_capping
+      - pulpotomy
+      - pulpal_therapy
+      - endo_therapy_permanent
+      - endo_therapy_special
+      - endo_retreat
+      - apex_recal
+      - pulpal_regeneration
+      - apico_surgery
+      - additional_endo
+      additionalProperties: false
+    ServiceHistoryType:
+      type: object
+      properties:
+        service_type:
+          type:
+          - string
+          - 'null'
+        procedure_code:
+          allOf:
+          - $ref: '#/components/schemas/ProcedureCodeType'
+        service_date:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+        tooth:
+          type:
+          - string
+          - 'null'
+        surfaces:
+          type:
+          - string
+          - 'null'
+        area:
+          type:
+          - string
+          - 'null'
+      required:
+      - procedure_code
+      - service_date
+      - tooth
+      - surfaces
+      - area
+      additionalProperties: false
+    NetworkEnum:
+      type: string
+      enum:
+      - IN_NETWORK
+      - OUT_OF_NETWORK
+    NetworkQualifierEnum:
+      type: string
+      enum:
+      - PPO
+      - PREMIER
+    EBProcedureCodeComputedType:
+      type: object
+      properties:
+        category:
+          type: string
+        category_service:
+          type: string
+        disclaimers:
+          type: array
+          items:
+            type: string
+        disclaimers_string:
+          type: string
+        eligibility_details:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBEligibilityDetails'
+        is_covered:
+          type: boolean
+        limitation:
+          type: string
+        limitation_applies_to:
+          type: array
+          items:
+            type: string
+        limitation_applies_to_string:
+          type: string
+        percent_computed:
+          type: string
+        searched_procedure_code:
+          type: string
+        service_dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBServiceHistoryType'
+        service_dates_string:
+          type: string
+        service_type:
+          type: string
+        services_remaining:
+          type: number
+      additionalProperties: false
+    PayerType:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        payer_id:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        phone_number:
+          type:
+          - string
+          - 'null'
+        address:
+          allOf:
+          - $ref: '#/components/schemas/AddressType'
+        website:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - website
+      additionalProperties: false
+    LimitationType:
+      type: object
+      properties:
+        age_high_components:
+          $ref: '#/components/schemas/BaseLimitationComponentType'
+        age_high_value:
+          type:
+          - number
+          - 'null'
+        age_low_components:
+          $ref: '#/components/schemas/BaseLimitationComponentType'
+        age_low_value:
+          type:
+          - number
+          - 'null'
+        frequency_component:
+          $ref: '#/components/schemas/FrequencyComponentType'
+        frequency_count:
+          type:
+          - number
+          - 'null'
+        frequency_rule:
+          type:
+          - string
+          - 'null'
+        remaining_component:
+          $ref: '#/components/schemas/RemainingComponentType'
+        remaining_count:
+          type:
+          - number
+          - 'null'
+      required:
+      - age_high_components
+      - age_high_value
+      - age_low_components
+      - age_low_value
+      - frequency_component
+      - frequency_count
+      - frequency_rule
+      - remaining_component
+      - remaining_count
+      additionalProperties: false
+    FeeComponentType:
+      type: object
+      properties:
+        allowable:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        copayment:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+      required:
+      - allowable
+      - copayment
+      additionalProperties: false
+    BaseLimitationComponentType:
+      type: object
+      properties:
+        quantity:
+          type: string
+        quantity_qualifier:
+          type: string
+      additionalProperties: false
+    EBBenefitAmountRemaining:
+      type: object
+      properties:
+        amount:
+          type: string
+        category:
+          type: string
+        coverage_level:
+          allOf:
+          - $ref: '#/components/schemas/EBCoverageLevelEnum'
+        key:
+          type: string
+        network:
+          type: string
+        plan_period:
+          allOf:
+          - $ref: '#/components/schemas/EBPlanPeriodEnum'
+        remaining:
+          type: string
+        service_type:
+          type: string
+        used:
+          type: string
+      additionalProperties: false
+    RemainingComponentType:
+      type: object
+      properties:
+        quantity:
+          type: string
+        quantity_qualifier:
+          type: string
+        time_period_qualifier:
+          type: string
+        time_period_value:
+          type: string
+        unit_qualifier:
+          type: string
+        unit:
+          type: string
+      additionalProperties: false
+    RelationshipEnum:
+      type: string
+      enum:
+      - CHILD
+      - DEPENDENT
+      - SELF
+      - SPOUSE
+      - UNKNOWN
+    EBEffectivePeriod:
+      type: object
+      properties:
+        category:
+          type: string
+        effective_date:
+          type: string
+        is_a_waiting_period:
+          type: boolean
+        network:
+          type: string
+        service_type:
+          type: string
+      additionalProperties: false
+    ProsthodonticsFixedCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        pontics_porcelain_ceramic:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pontics_cast_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pontics_titanium_high_noble_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pontics_porcelain_fused_to_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pontics_resin_with_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        retainers_inlays_metallic_ceramic:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        retainers_onlays_ceramic_resin_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        retainers_crowns_porcelain_ceramic:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        retainers_crowns_porcelain_fused_to_metal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        retainers_crowns_metallic:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        services_recementation_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        stress_breakers_precision_attachments:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        surgical_specialized_prosthetic_work:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - pontics_porcelain_ceramic
+      - pontics_cast_metal
+      - pontics_titanium_high_noble_metal
+      - pontics_porcelain_fused_to_metal
+      - pontics_resin_with_metal
+      - retainers_inlays_metallic_ceramic
+      - retainers_onlays_ceramic_resin_metal
+      - retainers_crowns_porcelain_ceramic
+      - retainers_crowns_porcelain_fused_to_metal
+      - retainers_crowns_metallic
+      - services_recementation_repair
+      - stress_breakers_precision_attachments
+      - surgical_specialized_prosthetic_work
+      additionalProperties: false
+    PlanType:
+      type: object
+      properties:
+        disclaimers:
+          type: array
+          items:
+            type: string
+        end_date:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+        group_name:
+          type:
+          - string
+          - 'null'
+        group_number:
+          type:
+          - string
+          - 'null'
+        group_or_policy_number:
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        insurance_type:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        number:
+          type:
+          - string
+          - 'null'
+        payer_plan_name:
+          type:
+          - string
+          - 'null'
+        payer_plan_identifier:
+          type:
+          - string
+          - 'null'
+        payer_plan_description:
+          type:
+          - string
+          - 'null'
+        plan_type:
+          allOf:
+          - $ref: '#/components/schemas/PlanTypeEnum'
+        policy_period:
+          allOf:
+          - $ref: '#/components/schemas/PolicyPeriodEnum'
+        start_date:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+      required:
+      - disclaimers
+      - end_date
+      - group_name
+      - group_number
+      - group_or_policy_number
+      - id
+      - insurance_type
+      - name
+      - number
+      - payer_plan_name
+      - payer_plan_identifier
+      - payer_plan_description
+      - plan_type
+      - policy_period
+      - start_date
+      additionalProperties: false
+    OrthodonticRecurringPaymentFrequencyEnum:
+      type: string
+      enum:
+      - ANNUALLY
+      - MONTHLY
+      - QUARTERLY
+      - SEMI_ANNUALLY
+      - UNKNOWN
+    PatientType:
+      type: object
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/AddressType'
+        coverage:
+          $ref: '#/components/schemas/PatientCoverageType'
+        dob:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+        first_name:
+          type:
+          - string
+          - 'null'
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+        last_name:
+          type:
+          - string
+          - 'null'
+        member_id:
+          type:
+          - string
+          - 'null'
+        middle_name:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        relationship:
+          allOf:
+          - $ref: '#/components/schemas/RelationshipEnum'
+      required:
+      - address
+      - coverage
+      - dob
+      - first_name
+      - gender
+      - last_name
+      - member_id
+      - middle_name
+      - name
+      - relationship
+      additionalProperties: false
+    FrequencyComponentType:
+      type: object
+      properties:
+        quantity:
+          type: string
+        quantity_qualifier:
+          type: string
+        time_period_qualifier:
+          type: string
+        time_period_value:
+          type: string
+        unit_qualifier:
+          type: string
+        unit:
+          type: string
+      additionalProperties: false
+    PatientCoverageType:
+      type: object
+      properties:
+        effective_date:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+        end_date:
+          type:
+          - string
+          - 'null'
+          pattern: ^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$
+        status:
+          allOf:
+          - $ref: '#/components/schemas/CoverageStatusEnum'
+      required:
+      - effective_date
+      - end_date
+      - status
+      additionalProperties: false
+    EBMetadataType:
+      type: object
+      properties:
+        dependent_age_limit:
+          type: string
+        student_age_limit:
+          type: string
+      additionalProperties: false
+    CoverageStatusEnum:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - NOT_FOUND
+      - TERMINATED
+      - UNKNOWN
+    SeatPrepEnum:
+      type: string
+      enum:
+      - PREP
+      - SEAT
+      - UNKNOWN
+    AdjunctiveServicesCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        palliative_treatment:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        partial_denture_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        tmj_therapy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        local_anesthesia:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        deep_sedation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        moderate_sedation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        nitrous:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        professional_consultation_in_person:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        professional_visits_limited_follow_up:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        professional_visits_extended_home_care:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        drugs_injection:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        drugs_prescription_dispensing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        miscellaneous_services_preventive_protective:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        clean_inspect_removal_denture:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        custom_aesthetic_appliance:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        athletic_occlusal_guard:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        occlusal_guard_adjustment_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        occlusal_guards:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orthodontic_splint_therapy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        cosmetic_aesthetic:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        whitening:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        misc_fees:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        appointment_support:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        teledentistry:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        patient_education:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - palliative_treatment
+      - partial_denture_repair
+      - tmj_therapy
+      - local_anesthesia
+      - deep_sedation
+      - moderate_sedation
+      - nitrous
+      - professional_consultation_in_person
+      - professional_visits_limited_follow_up
+      - professional_visits_extended_home_care
+      - drugs_injection
+      - drugs_prescription_dispensing
+      - miscellaneous_services_preventive_protective
+      - clean_inspect_removal_denture
+      - custom_aesthetic_appliance
+      - athletic_occlusal_guard
+      - occlusal_guard_adjustment_repair
+      - occlusal_guards
+      - orthodontic_splint_therapy
+      - cosmetic_aesthetic
+      - whitening
+      - misc_fees
+      - appointment_support
+      - teledentistry
+      - patient_education
+      additionalProperties: false
+    ProsthodonticsRemovableCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        complete_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        immediate_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        partial_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        adjustments_complete_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        repairs_complete_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        repairs_partial_dentures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        denture_rebase_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        denture_reline_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        interim_denture:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        interim_partial_denture:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        other_removable_prosthetic_services:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - complete_dentures
+      - immediate_dentures
+      - partial_dentures
+      - adjustments_complete_dentures
+      - repairs_complete_dentures
+      - repairs_partial_dentures
+      - denture_rebase_procedures
+      - denture_reline_procedures
+      - interim_denture
+      - interim_partial_denture
+      - other_removable_prosthetic_services
+      additionalProperties: false
+    GenderEnum:
+      type: string
+      enum:
+      - FEMALE
+      - MALE
+      - UNKNOWN
+    EBEligibilityDetails:
+      type: object
+      properties:
+        date:
+          type: string
+        eligibility:
+          type: string
+        location:
+          type: string
+      additionalProperties: false
+    RulesType:
+      type: object
+      properties:
+        alternative_benefits_may_apply:
+          allOf:
+          - $ref: '#/components/schemas/YesNoEnum'
+        coordination_of_benefits_requirements:
+          type:
+          - string
+          - 'null'
+        dependent_child_max_age:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        dependent_student_max_age:
+          type:
+          - number
+          - 'null'
+          minimum: 0
+        missing_tooth_clause_applies:
+          allOf:
+          - $ref: '#/components/schemas/YesNoEnum'
+        orthodontic_initial_payment_percentage:
+          type:
+          - number
+          - 'null'
+        orthodontic_recurring_payment_frequency:
+          allOf:
+          - $ref: '#/components/schemas/OrthodonticRecurringPaymentFrequencyEnum'
+        payment_on_seat_or_prep:
+          allOf:
+          - $ref: '#/components/schemas/SeatPrepEnum'
+        predetermination_requirements:
+          type:
+          - string
+          - 'null'
+        waiting_period_for_basic_services:
+          allOf:
+          - $ref: '#/components/schemas/YesNoEnum'
+        waiting_period_for_major_services:
+          allOf:
+          - $ref: '#/components/schemas/YesNoEnum'
+      required:
+      - alternative_benefits_may_apply
+      - coordination_of_benefits_requirements
+      - dependent_child_max_age
+      - dependent_student_max_age
+      - missing_tooth_clause_applies
+      - orthodontic_initial_payment_percentage
+      - orthodontic_recurring_payment_frequency
+      - payment_on_seat_or_prep
+      - predetermination_requirements
+      - waiting_period_for_basic_services
+      - waiting_period_for_major_services
+      additionalProperties: false
+    EBPlanType:
+      type: object
+      properties:
+        group_name:
+          type: string
+        group_number:
+          type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBPlanMetadataType'
+        name:
+          type: string
+        number:
+          type: string
+        period:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+        payer_plan_name:
+          type: string
+        payer_plan_identifier:
+          type: string
+        insurance_type:
+          type: string
+      additionalProperties: false
+    Coverages:
+      type: object
+      properties:
+        diagnostic:
+          $ref: '#/components/schemas/DiagnosticCoverageType'
+        preventive:
+          $ref: '#/components/schemas/PreventiveCoverageType'
+        restorative:
+          $ref: '#/components/schemas/RestorativeCoverageType'
+        endodontics:
+          $ref: '#/components/schemas/EndodonticsCoverageType'
+        periodontics:
+          $ref: '#/components/schemas/PeriodonticsCoverageType'
+        prosthodontics_removable:
+          $ref: '#/components/schemas/ProsthodonticsRemovableCoverageType'
+        maxillofacial_prosthetics:
+          $ref: '#/components/schemas/MaxillofacialProstheticsCoverageType'
+        implant_services:
+          $ref: '#/components/schemas/ImplantServicesCoverageType'
+        prosthodontics_fixed:
+          $ref: '#/components/schemas/ProsthodonticsFixedCoverageType'
+        oral_maxillofacial_surgery:
+          $ref: '#/components/schemas/OralMaxillofacialSurgeryCoverageType'
+        orthodontics:
+          $ref: '#/components/schemas/OrthodonticsCoverageType'
+        adjunctive_services:
+          $ref: '#/components/schemas/AdjunctiveServicesCoverageType'
+        sleep_apnea:
+          $ref: '#/components/schemas/SleepApneaCoverageType'
+      required:
+      - diagnostic
+      - preventive
+      - restorative
+      - endodontics
+      - periodontics
+      - prosthodontics_removable
+      - maxillofacial_prosthetics
+      - implant_services
+      - prosthodontics_fixed
+      - oral_maxillofacial_surgery
+      - orthodontics
+      - adjunctive_services
+      - sleep_apnea
+      additionalProperties: false
+    AddressType:
+      type: object
+      properties:
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+      required:
+      - city
+      - state
+      - street
+      - zip
+      additionalProperties: false
+    EBPatientTypeMetadata:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      additionalProperties: false
+    EBRejectionReasonType:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        followup_action:
+          type: string
+      additionalProperties: false
+    EBGenericBenefitType:
+      type: object
+      properties:
+        age_limit:
+          allOf:
+          - $ref: '#/components/schemas/EBAgeLimit'
+        amount:
+          type: string
+        applies_to_deductible:
+          type: boolean
+        category:
+          type: string
+        coverage_level:
+          allOf:
+          - $ref: '#/components/schemas/EBCoverageLevelEnum'
+        disclaimers:
+          type: array
+          items:
+            type: string
+        does_deductible_apply_to_basic:
+          type: boolean
+        does_deductible_apply_to_preventive:
+          type: boolean
+        eligibility_details:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBEligibilityDetails'
+        health_service_descriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBGenericHSDType'
+        insurance_type:
+          type: string
+        limitation:
+          type: string
+        limitation_applies_to:
+          type: array
+          items:
+            type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBPlanMetadataType'
+        network:
+          type: string
+        payer_specific_description:
+          type: string
+        percent:
+          type: string
+        plan_period:
+          allOf:
+          - $ref: '#/components/schemas/EBPlanPeriodEnum'
+        procedure_code:
+          type: string
+        quantity:
+          type: string
+        quantity_qualifier:
+          type: string
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBReferenceType'
+        service_dates:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBServiceHistoryType'
+        service_type:
+          type: string
+        services_remaining:
+          type: number
+        supported_procedure_codes:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    YesNoEnum:
+      type: string
+      enum:
+      - 'NO'
+      - 'YES'
+    EBPayerType:
+      type: object
+      properties:
+        claim_address:
+          allOf:
+          - $ref: '#/components/schemas/EBAddressType'
+        id:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+      additionalProperties: false
+    EBProviderType:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        npi:
+          type: string
+        organization_name:
+          type: string
+        tax_id:
+          type: string
+      additionalProperties: false
+    MaxillofacialProstheticsCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        facial_moulage:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        obturator_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        facial_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        mandibular_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        palatal_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        speech_aid_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        augmentative_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        nasal_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        orbital_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        auricular_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        ocular_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        cranial_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - facial_moulage
+      - obturator_prosthesis
+      - facial_prosthesis
+      - mandibular_prosthesis
+      - palatal_prosthesis
+      - speech_aid_prosthesis
+      - augmentative_prosthesis
+      - nasal_prosthesis
+      - orbital_prosthesis
+      - auricular_prosthesis
+      - ocular_prosthesis
+      - cranial_prosthesis
+      additionalProperties: false
+    EBReferenceType:
+      type: object
+      properties:
+        description:
+          type: string
+        reference_qualifier:
+          type: string
+        reference_value:
+          type: string
+      additionalProperties: false
+    EBPlanPeriodEnum:
+      type: string
+      enum:
+      - calendar
+      - contract
+      - lifetime
+      - lifetime_remaining
+      - lifetime_used
+      - plan
+      - policy
+      - remaining
+      - service
+      - unknown
+      - used
+      - year_to_date
+    PolicyPeriodEnum:
+      type: string
+      enum:
+      - CALENDAR
+      - PLAN
+    BenefitCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        alternate_benefit_applies:
+          type: boolean
+        fees:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/FeeComponentType'
+        procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        dental_classification:
+          allOf:
+          - $ref: '#/components/schemas/DentalClassificationEnum'
+        disclaimers:
+          type: array
+          items:
+            type: string
+        limitation:
+          $ref: '#/components/schemas/LimitationType'
+        service_history:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceHistoryType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - alternate_benefit_applies
+      - fees
+      - procedure_codes
+      - dental_classification
+      - disclaimers
+      - limitation
+      - service_history
+      additionalProperties: false
+    PreventiveCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        prophy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        fluoride:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        counseling:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        sealants:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        preventative_agents:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        space_maintainer_fixed:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        space_maintainer_removable:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        space_maintainer_rebond:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        space_maintainer_removal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        distal_space_maintainer:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - prophy
+      - fluoride
+      - counseling
+      - sealants
+      - preventative_agents
+      - space_maintainer_fixed
+      - space_maintainer_removable
+      - space_maintainer_rebond
+      - space_maintainer_removal
+      - distal_space_maintainer
+      additionalProperties: false
+    EBCoverageLevelEnum:
+      type: string
+      enum:
+      - children_only
+      - dependents_only
+      - employee_and_children
+      - employee_and_spouse
+      - employee_only
+      - family
+      - individual
+      - spouse_and_children
+      - spouse_only
+      - unknown
+    EBServiceHistoryType:
+      type: object
+      properties:
+        category:
+          type: string
+        procedure_code:
+          type: string
+        service_date:
+          type: string
+        service_type:
+          type: string
+        tooth_code:
+          type: string
+        tooth_range:
+          type: string
+        tooth_surfaces:
+          type: string
+        type:
+          type: string
+        value:
+          type: string
+      additionalProperties: false
+    EBGenericHSDType:
+      type: object
+      properties:
+        delivery_frequency:
+          type: string
+        delivery_pattern_time:
+          type: string
+        quantity:
+          type: string
+        quantity_qualifier:
+          type: string
+        time_period_qualifier:
+          type: string
+        time_period_value:
+          type: string
+        unit:
+          type: string
+        unit_qualifier:
+          type: string
+      additionalProperties: false
+    SourceIndicatorEnum:
+      type: string
+      enum:
+      - BY_CATEGORY
+      - BY_CATEGORY_CODES
+      - BY_PROCEDURE_CODE
+    EBPlanMetadataType:
+      type: object
+      properties:
+        description:
+          type: string
+        qualifier:
+          type: string
+        value:
+          type: string
+      additionalProperties: false
+    DiagnosticCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        exams:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        pre_diagnostic_services:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        fmx:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        periapicals:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        bitewings:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        panoramic_images:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        cephalometric_image:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        intraoral_photos:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        diagnostic_tests_exams:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        cone_beam:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        advanced_images:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        surface_scans:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        interpretation_and_report_only:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        advanced_imaging_cbct_interpretation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        blood_saliva_tests:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        microbial_genetic_testing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        caries_pulp_testing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        abnormality_detection:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        diagnostic_cast:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        carie_risk_assessment:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        caries_risk_assessment:
+          allOf:
+          - $ref: '#/components/schemas/BenefitCoverageType'
+        antigen_testing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        image_only:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - exams
+      - pre_diagnostic_services
+      - fmx
+      - periapicals
+      - bitewings
+      - panoramic_images
+      - cephalometric_image
+      - intraoral_photos
+      - diagnostic_tests_exams
+      - cone_beam
+      - advanced_images
+      - surface_scans
+      - interpretation_and_report_only
+      - advanced_imaging_cbct_interpretation
+      - blood_saliva_tests
+      - microbial_genetic_testing
+      - caries_pulp_testing
+      - abnormality_detection
+      - diagnostic_cast
+      - carie_risk_assessment
+      - antigen_testing
+      - image_only
+      additionalProperties: false
+    EBCoverageType:
+      type: object
+      properties:
+        effective_date:
+          type: string
+        end_date:
+          type: string
+        start_date:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - terminated
+          - unknown
+      additionalProperties: false
+    EBAddressType:
+      type: object
+      properties:
+        city:
+          type: string
+        state:
+          type: string
+        street1:
+          type: string
+        street2:
+          type: string
+        zip:
+          type: string
+      additionalProperties: false
+    EBPatientType:
+      type: object
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/EBAddressType'
+        age:
+          type: string
+        coverage:
+          allOf:
+          - $ref: '#/components/schemas/EBCoverageType'
+        dob:
+          type: string
+        first_name:
+          type: string
+        gender:
+          type: string
+        is_subscriber:
+          type: boolean
+        last_name:
+          type: string
+        member_id:
+          type: string
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/EBPatientTypeMetadata'
+        middle_name:
+          type: string
+        name:
+          type: string
+        relationship:
+          type: string
+      additionalProperties: false
+    PlanTypeEnum:
+      type: string
+      enum:
+      - GOV
+      - HMO
+      - IDM
+      - POS
+      - PPO
+      - GROUP_POLICY
+      - UKN
+    ImplantServicesCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        pre_surgical_evaluation:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        surgical_implant_placement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        subperiosteal_implants:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_bone_graft:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_crowns_restorations:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        additional_implant_prosthetic_services:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        overdenture:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        hybrid_prosthesis:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        abutment_supported_crowns:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_supported_crowns:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        abutment_supported_fixed_partial_denture_fpd:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_supported_fixed_partial_denture_fpd:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_maintenance:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_crowns_prosthesis_repairs:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        recement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_component_replacement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_removal_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_tissue_regeneration:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - pre_surgical_evaluation
+      - surgical_implant_placement
+      - subperiosteal_implants
+      - implant_bone_graft
+      - implant_crowns_restorations
+      - additional_implant_prosthetic_services
+      - overdenture
+      - hybrid_prosthesis
+      - abutment_supported_crowns
+      - implant_supported_crowns
+      - abutment_supported_fixed_partial_denture_fpd
+      - implant_supported_fixed_partial_denture_fpd
+      - implant_maintenance
+      - implant_crowns_prosthesis_repairs
+      - recement
+      - implant_component_replacement
+      - implant_removal_repair
+      - implant_tissue_regeneration
+      additionalProperties: false
+    EBBenefitComputedType:
+      type: object
+      properties:
+        amount:
+          type: string
+        percent:
+          type: string
+      additionalProperties: false
+    SleepApneaCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        custom_appliance_fabrication_placement:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        adjustment_repair:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        reline_resurfacing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        oral_appliance_therapy_oat_accessories:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        titration_follow_up:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        testing_screening:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - custom_appliance_fabrication_placement
+      - adjustment_repair
+      - reline_resurfacing
+      - oral_appliance_therapy_oat_accessories
+      - titration_follow_up
+      - testing_screening
+      additionalProperties: false
+    OralMaxillofacialSurgeryCoverageType:
+      type: object
+      properties:
+        coinsurance_percentage:
+          type:
+          - number
+          - 'null'
+        deductible_applies:
+          type:
+          - boolean
+          - 'null'
+        maximum_applies:
+          type:
+          - boolean
+          - 'null'
+        non_covered_procedure_codes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcedureCodeType'
+        source_indicator:
+          allOf:
+          - $ref: '#/components/schemas/SourceIndicatorEnum'
+        extractions_and_removals:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        advanced_surgical_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        alveoloplasty:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        vestibuloplasty:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        excision_of_soft_tissue_lesions:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        excision_of_intra_osseous_lesions:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        excision_of_bone_tissue:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        surgical_incision:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        treatment_of_closed_fractures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        tmj_surgical:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        tmj_nonsurgical:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        wound_suturing:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        regeneration_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        osteoplasty_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        osteotomy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        lefort:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        extract_bone_graft:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        frenectomy:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        salivary_gland_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        special_surgical_procedures:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        implant_placement_surgical:
+          $ref: '#/components/schemas/BenefitCoverageType'
+        appliance_removal:
+          $ref: '#/components/schemas/BenefitCoverageType'
+      required:
+      - coinsurance_percentage
+      - deductible_applies
+      - maximum_applies
+      - non_covered_procedure_codes
+      - source_indicator
+      - extractions_and_removals
+      - advanced_surgical_procedures
+      - alveoloplasty
+      - vestibuloplasty
+      - excision_of_soft_tissue_lesions
+      - excision_of_intra_osseous_lesions
+      - excision_of_bone_tissue
+      - surgical_incision
+      - treatment_of_closed_fractures
+      - tmj_surgical
+      - tmj_nonsurgical
+      - wound_suturing
+      - regeneration_procedures
+      - osteoplasty_procedures
+      - osteotomy
+      - lefort
+      - extract_bone_graft
+      - frenectomy
+      - salivary_gland_procedures
+      - special_surgical_procedures
+      - implant_placement_surgical
+      - appliance_removal
+      additionalProperties: false
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

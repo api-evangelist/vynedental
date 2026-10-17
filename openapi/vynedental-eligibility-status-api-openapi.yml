@@ -1,0 +1,128 @@
+openapi: 3.2.0
+info:
+  title: Documentation Eligibility Status API
+  version: 1.0.0
+servers: []
+tags:
+- name: Eligibility Status
+paths:
+  /eligibility-status/{onederfulId}:
+    get:
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        in: path
+        name: onederfulId
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                    enum:
+                    - 200
+                  error:
+                    type:
+                    - string
+                    - 'null'
+                    enum:
+                    - null
+                  message:
+                    type: string
+                    enum:
+                    - History retrieved successfully
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        requestId:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - callback_completed
+                          - callback_failed
+                          - completed
+                          - failed
+                          - queued
+                          - processing
+                          - requeued
+                          - response_requested
+                          - response_returned
+                          - response_failed
+                          - response_unavailable
+                        createdAt:
+                          type: string
+                          format: date-time
+                        metadata: {}
+                      required:
+                      - requestId
+                      - status
+                      - createdAt
+                      additionalProperties: false
+                required:
+                - statusCode
+                - error
+                - message
+                - history
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Unauthorized request
+                  message:
+                    type: string
+                    enum:
+                    - User is unauthorized to view this request
+                required:
+                - error
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Invalid request
+                  message:
+                    type: string
+                    enum:
+                    - Request could not be located
+                required:
+                - error
+                - message
+                additionalProperties: false
+      tags:
+      - Eligibility Status
+      summary: Get eligibility status by onederful id
+      x-summary-source: derived
+      operationId: getEligibilityStatusByOnederfulId
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

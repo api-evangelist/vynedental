@@ -1,0 +1,395 @@
+openapi: 3.2.0
+info:
+  title: Documentation EDI API
+  version: 1.0.0
+servers: []
+tags:
+- name: EDI
+paths:
+  /async/edi/eligibility:
+    post:
+      summary: Asynchronous EDI eligibility check
+      tags:
+      - EDI
+      description: Accepts an X12 EDI 270 eligibility inquiry and enqueues it for processing. Returns HTTP 202 with the request ID in X-Onederful-Id on success. On parse failure, returns an X12 EDI 999 Functional Acknowledgement synchronously. Supply X-Callback-Url to receive the 271 response at a webhook. Authentication and authorization failures return the HTTP status code only with no response body. Requires feature:edi-eligibility scope.
+      requestBody:
+        content:
+          application/edi-x12:
+            schema:
+              type: string
+              description: X12 EDI 270 eligibility inquiry
+        description: X12 EDI 270 eligibility inquiry
+      parameters:
+      - schema:
+          type: string
+          format: uri
+        in: header
+        name: x-callback-url
+        required: false
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: X12 EDI 999 Functional Acknowledgement — returned synchronously on parse failure
+          content:
+            application/edi-x12:
+              schema:
+                type: string
+                description: X12 EDI 999 Functional Acknowledgement — returned synchronously on parse failure
+          headers:
+            X-Onederful-Id:
+              description: Onederful request ID for this EDI transaction
+              schema:
+                type: string
+                format: uuid
+        '202':
+          description: Accepted — request enqueued for processing. No response body.
+          headers:
+            X-Onederful-Id:
+              description: Onederful request ID for this EDI transaction
+              schema:
+                type: string
+                format: uuid
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  primaryReason:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: false
+                  status_code:
+                    type:
+                    - string
+                    - 'null'
+                  status_description:
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - onederfulId
+                - code
+                - message
+                - primaryReason
+                - errors
+                additionalProperties: false
+        '401':
+          description: Unauthorized — no response body
+        '403':
+          description: Forbidden — no response body
+        '415':
+          description: Content-Type must be application/edi-x12
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - error
+                - message
+                additionalProperties: false
+                description: Content-Type must be application/edi-x12
+      operationId: postAsyncEdiEligibility
+      x-operation-id-source: derived
+  /async/edi/eligibility/sequenced-search:
+    post:
+      summary: Asynchronous EDI eligibility check (Sequenced Alternate Member Searching)
+      tags:
+      - EDI
+      description: Accepts an X12 EDI 270 eligibility inquiry and enqueues it for processing. Returns HTTP 202 with the request ID in X-Onederful-Id on success. On parse failure, returns an X12 EDI 999 Functional Acknowledgement synchronously. Supply X-Callback-Url to receive the 271 response at a webhook. Authentication and authorization failures return the HTTP status code only with no response body. Requires feature:edi-sequenced-search scope.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              description: X12 EDI 270 eligibility inquiry
+        description: X12 EDI 270 eligibility inquiry
+      parameters:
+      - schema:
+          type: string
+          format: uri
+        in: header
+        name: x-callback-url
+        required: false
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: X12 EDI 999 Functional Acknowledgement — returned synchronously on parse failure
+          content:
+            application/json:
+              schema:
+                type: string
+                description: X12 EDI 999 Functional Acknowledgement — returned synchronously on parse failure
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  primaryReason:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: false
+                  status_code:
+                    type:
+                    - string
+                    - 'null'
+                  status_description:
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - onederfulId
+                - code
+                - message
+                - primaryReason
+                - errors
+                additionalProperties: false
+        '415':
+          description: Content-Type must be application/edi-x12
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - error
+                - message
+                additionalProperties: false
+                description: Content-Type must be application/edi-x12
+      operationId: postAsyncEdiEligibilitySequencedSearch
+      x-operation-id-source: derived
+  /eligibility-response/{onederfulId}/edi:
+    get:
+      summary: Retrieve EDI 271 for a prior async eligibility request
+      tags:
+      - EDI
+      description: Returns the X12 EDI 271 eligibility response for an asynchronous request identified by onederfulId. Returns HTTP 202 if processing is not yet complete. Authentication failures return the HTTP status code only with no response body.
+      parameters:
+      - schema:
+          type: string
+          format: uuid
+          pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+        in: path
+        name: onederfulId
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: X12 EDI 271 eligibility response
+          content:
+            application/edi-x12:
+              schema:
+                type: string
+                description: X12 EDI 271 eligibility response
+          headers:
+            X-Onederful-Id:
+              description: Onederful request ID for this EDI transaction
+              schema:
+                type: string
+                format: uuid
+        '202':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  message:
+                    type: string
+                    enum:
+                    - Response is not ready
+                required:
+                - onederfulId
+                - message
+                additionalProperties: false
+        '401':
+          description: Unauthorized — no response body
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    enum:
+                    - Unauthorized request
+                  message:
+                    type: string
+                required:
+                - error
+                - message
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                      enum:
+                      - Invalid request
+                    message:
+                      type: string
+                  required:
+                  - error
+                  - message
+                  additionalProperties: false
+                - type: object
+                  properties:
+                    error:
+                      type: string
+                      enum:
+                      - UnsupportedFeatureException
+                    message:
+                      type: string
+                      enum:
+                      - This feature is only available for a Standard Eligibility Response.
+                  required:
+                  - error
+                  - message
+                  additionalProperties: false
+      operationId: getEligibilityResponseByOnederfulIdEdi
+      x-operation-id-source: derived
+  /edi/eligibility:
+    post:
+      summary: Synchronous EDI eligibility check
+      tags:
+      - EDI
+      description: Accepts an X12 EDI 270 eligibility inquiry and returns an X12 EDI 271 eligibility response synchronously. On parse failure, returns an X12 EDI 999 Functional Acknowledgement. Authentication and authorization failures return the HTTP status code only with no response body. Requires feature:eligibility scope.
+      requestBody:
+        content:
+          application/edi-x12:
+            schema:
+              type: string
+              description: X12 EDI 270 eligibility inquiry
+        description: X12 EDI 270 eligibility inquiry
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: X12 EDI 271 eligibility response or 999 Functional Acknowledgement
+          content:
+            application/edi-x12:
+              schema:
+                type: string
+                description: X12 EDI 271 eligibility response or 999 Functional Acknowledgement
+          headers:
+            X-Onederful-Id:
+              description: Onederful request ID for this EDI transaction
+              schema:
+                type: string
+                format: uuid
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  onederfulId:
+                    type: string
+                    format: uuid
+                    pattern: ^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  primaryReason:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                      additionalProperties: false
+                  status_code:
+                    type:
+                    - string
+                    - 'null'
+                  status_description:
+                    type:
+                    - string
+                    - 'null'
+                required:
+                - onederfulId
+                - code
+                - message
+                - primaryReason
+                - errors
+                additionalProperties: false
+        '401':
+          description: Unauthorized — no response body
+        '403':
+          description: Forbidden — no response body
+        '415':
+          description: Content-Type must be application/edi-x12
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - error
+                - message
+                additionalProperties: false
+                description: Content-Type must be application/edi-x12
+      operationId: postEdiEligibility
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

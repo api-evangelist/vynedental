@@ -1,0 +1,25 @@
+openapi: 3.2.0
+info:
+  title: Documentation .well Known API
+  version: 1.0.0
+servers: []
+tags:
+- name: .well Known
+paths:
+  /.well-known/jwks.json:
+    get:
+      responses:
+        '200':
+          description: Default Response
+      tags:
+      - .well Known
+      summary: Get well known jwks json
+      x-summary-source: derived
+      operationId: getWellKnownJwksJson
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
