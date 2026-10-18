@@ -166,6 +166,8 @@ apis:
   humanURL: https://developers.onederful.co/documentation/
   baseURL: https://production.onederful.co
   tags:
+  - Authentication
+  tags_raw:
   - Oauth2
   properties:
   - type: OpenAPI
