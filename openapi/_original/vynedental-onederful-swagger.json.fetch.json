@@ -1,0 +1,12 @@
+{
+ "url": "https://production.onederful.co/swagger.json",
+ "requested_url": "https://production.onederful.co/swagger.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 271155,
+ "sha256": "be18ea2e8752596f3062be3bb9deacb110390842484d5f3befe06c782829a0be",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
