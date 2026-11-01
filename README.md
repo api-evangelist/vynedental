@@ -64,21 +64,137 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vyne Dental is a dental revenue-cycle and connectivity company (clearinghouse claims and attachments, eligibility and benefits, patient statements and payments, the Vyne Trellis portal). Its public developer surface is the Eligibility and Benefits API family (Onederful API, ClearCoverage API, Standard API).
+Vyne Dental is a dental revenue-cycle and connectivity company: clearinghouse claims and attachments (FastAttach), eligibility and benefits verification, patient statements and payments, and the Vyne Trellis practice portal. Its developer surface is the Eligibility and Benefits API family (Onederful API, ClearCoverage API, Standard API) documented at the Vyne API Documentation Portal (developers.onederful.co), returning JSON, HTML or X12 270/271 responses from hundreds of dental payers, with OAuth2 bearer authentication and a sandbox.
 
-## APIs
+**Areas:** Company · Dental · Healthcare · Insurance · Eligibility · Claims · EDI · Payments
 
-- **Vyne Dental Eligibility and Benefits API (Onederful)** - 17 paths, OpenAPI 3.0 published by Vyne at https://production.onederful.co/swagger.json, saved verbatim in `openapi/_original/` (local copy adds only a title and the documented servers). Docs: https://developers.onederful.co/documentation/
+## Vyne Dental on APIs.io
 
-## Provenance
+Everything profiled for Vyne Dental is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/vynedental/](https://apis.io/providers/vynedental/)** — or go straight to one of the APIs or properties below.
 
-- Ownership: vynedental.com/onederful/ redirects to vynedental.com/api-eligibility-benefits/, which links the "Vyne API Documentation Portal" at developers.onederful.co; that reference names production.onederful.co as the API host.
-- Authentication (OAuth2 client credentials, JWT bearer) and sandbox artifacts were read from the API reference. Remaining artifacts are derived by script from the spec.
-- Not documented in the spec: the Payer List endpoint (`GET /payer/list`), which appears only in the prose reference.
+### APIs (8)
 
-## Links
+- [Vyne Dental Eligibility and Benefits API (Onederful)](https://apis.io/apis/vynedental/eligibility-and-benefits-api/) — Real-time and asynchronous dental eligibility and benefits checks (JSON, HTML and EDI 271 responses), enhanced/ClearCoverage eligibility, async status and…
+- [Vyne Dental Async API](https://apis.io/apis/vynedental/vynedental-async-api/) — The Async API from Vyne Dental — 4 operation(s) for async.
+- [Vyne Dental EDI API](https://apis.io/apis/vynedental/vynedental-edi-api/) — The EDI API from Vyne Dental — 4 operation(s) for edi.
+- [Vyne Dental Eligibility Response API](https://apis.io/apis/vynedental/vynedental-eligibility-response-api/) — The Eligibility Response API from Vyne Dental — 2 operation(s) for eligibility response.
+- [Vyne Dental Eligibility Status API](https://apis.io/apis/vynedental/vynedental-eligibility-status-api/) — The Eligibility Status API from Vyne Dental — 1 operation(s) for eligibility status.
+- [Vyne Dental Enhanced Eligibility API](https://apis.io/apis/vynedental/vynedental-enhanced-eligibility-api/) — The Enhanced Eligibility API from Vyne Dental — 2 operation(s) for enhanced eligibility.
+- [Vyne Dental Oauth2 API](https://apis.io/apis/vynedental/vynedental-oauth2-api/) — The Oauth2 API from Vyne Dental — 2 operation(s) for oauth2.
+- [Vyne Dental .well Known API](https://apis.io/apis/vynedental/vynedental-well-known-api/) — The .well Known API from Vyne Dental — 1 operation(s) for .well known.
 
-- Website: https://vynedental.com
-- Developer portal: https://developers.onederful.co/
-- Status: https://status.vynedental.com
+### Published properties
 
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [vynedental-mcp.yml](https://apis.io/servers/vynedental/vynedental-mcp-yml/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Vynedental Agentic Access](https://apis.io/agentic-access/vynedental/vynedental-agentic-access/)
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [BenefitType](https://apis.io/schemas/vynedental/vynedental-benefit-type/)
+- [EBGenericBenefitType](https://apis.io/schemas/vynedental/vynedental-ebgeneric-benefit-type/)
+- [PartialBenefitType](https://apis.io/schemas/vynedental/vynedental-partial-benefit-type/)
+- [PatientType](https://apis.io/schemas/vynedental/vynedental-patient-type/)
+- [PlanType](https://apis.io/schemas/vynedental/vynedental-plan-type/)
+- [RulesType](https://apis.io/schemas/vynedental/vynedental-rules-type/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Vynedental Context](https://apis.io/jsonld/vynedental/vynedental-context/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Vyne Dental API Rules](https://apis.io/rules/vynedental/vynedental-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Vynedental Authentication](https://apis.io/security/vynedental/vynedental-authentication/)
+- [Vynedental Domain Security](https://apis.io/security/vynedental/vynedental-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://vynedental.com)
+- [Documentation](https://developers.onederful.co/documentation/)
+- [API reference](https://production.onederful.co/api-docs/)
+- [Pricing](https://vynedental.com/schedule-a-demo/)
+- [Support](https://developer.onederful.co/docs/faq/)
+- [Changelog](https://vynedental.com/resources/blog/release-notes/)
+- [Blog](https://developer.onederful.co/blog/)
+- [Terms of service](https://vynedental.com/terms/)
+- [Privacy policy](https://vynedental.com/privacy/)
+- [Status](https://status.vynedental.com)
+
+## API Evangelist rating
+
+**Kin Score 46.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.8 |
+| Contract governance | 22.0 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 44.7 |
+
+**Agent readiness 19.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/vynedental/](https://apis.io/providers/vynedental/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Vyne Dental: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/vynedental/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
